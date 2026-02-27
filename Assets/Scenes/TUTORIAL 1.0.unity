@@ -1142,6 +1142,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1150423294354411484, guid: 9542c4ea16f07d449b70df85f01ed65c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1150423294354411484, guid: 9542c4ea16f07d449b70df85f01ed65c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1150423294354411484, guid: 9542c4ea16f07d449b70df85f01ed65c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.86
       objectReference: {fileID: 0}
@@ -1189,6 +1197,18 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 286496894}
+    - target: {fileID: 7576325153772225983, guid: 9542c4ea16f07d449b70df85f01ed65c, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7576325153772225983, guid: 9542c4ea16f07d449b70df85f01ed65c, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7576325153772225983, guid: 9542c4ea16f07d449b70df85f01ed65c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1602288116, guid: 380626d362210254c8b3d191b4bafef6, type: 3}
     - target: {fileID: 8878193472629275080, guid: 9542c4ea16f07d449b70df85f01ed65c, type: 3}
       propertyPath: whatIsDamageable.m_Bits
       value: 0
