@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 4172441254343601062}
   - component: {fileID: 7007343838131778183}
   - component: {fileID: 2328700927507034704}
-  - component: {fileID: 5565236496228629489}
+  - component: {fileID: 4421530729973229200}
   m_Layer: 10
   m_Name: Alive
   m_TagString: Enemy
@@ -263,8 +263,8 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!61 &5565236496228629489
-BoxCollider2D:
+--- !u!70 &4421530729973229200
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -296,18 +296,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 0.34, y: 0.42}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
   m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Direction: 0
 --- !u!1 &8426724655607775949
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,7 +353,7 @@ MonoBehaviour:
   touchDamage: 10
   touchDamageWidth: 1
   touchDamageHeight: 2
-  isChasingPlayer: 0
+  isChasingPlayer: 1
   chaseRadius: 4
   chaseSpeed: 3.5
   chaseRadiusObject: {fileID: 529573067655013599}
