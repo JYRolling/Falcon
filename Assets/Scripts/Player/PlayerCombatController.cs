@@ -2,133 +2,52 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// PlayerCombatController
+// Stripped of all melee input / hitbox / animation logic.
+// Now provides simple damage calculation helpers and still receives damage via `Damage(float[])`.
 public class PlayerCombatController : MonoBehaviour
 {
+    [Header("Damage configuration (used by other systems)")]
+    [Tooltip("Base damage value used when constructing attack details")]
     [SerializeField]
-    private bool combatEnabled;
-    [SerializeField]
-    private float inputTimer, attack1Radius, attack1Damage;
-    [SerializeField]
-    private Transform attack1HitBoxPos;
-    [SerializeField]
-    private LayerMask whatIsDamageable;
-    [SerializeField]
-    private float attack1Duration = 0.4f; // Duration used when no Animator is present
+    private float attack1Damage = 1f;
 
-    private bool gotInput, isAttacking, isFirstAttack;
-
-    private float lastInputTime = Mathf.NegativeInfinity;
-
-    private float[] attackDetails = new float[2];
-
-    private Animator anim;
-
+    // Player receive-damage dependencies
     private PlayerController PC;
     private PlayerStats PS;
 
     private void Start()
     {
-        anim = GetComponent<Animator>();
-        if (anim != null)
-        {
-            anim.SetBool("canAttack", combatEnabled);
-        }
         PC = GetComponent<PlayerController>();
         PS = GetComponent<PlayerStats>();
     }
 
-    private void Update()
+    // Public API - build the float[] attackDetails used across the project:
+    // [0] = damage amount, [1] = attacker X position (used to determine knockback direction)
+    public float[] CreateAttackDetails()
     {
-        CheckCombatInput();
-        CheckAttacks();
+        float[] details = new float[2];
+        details[0] = attack1Damage;
+        details[1] = transform.position.x;
+        return details;
     }
 
-    private void CheckCombatInput()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (combatEnabled)
-            {
-                //Attempt combat
-                gotInput = true;
-                lastInputTime = Time.time;
-            }
-        }
-    }
+    // Convenience accessors
+    public float GetAttackDamage() => attack1Damage;
+    public void SetAttackDamage(float value) => attack1Damage = value;
 
-    private void CheckAttacks()
-    {
-        if (gotInput)
-        {
-            //Perform Attack1
-            if (!isAttacking)
-            {
-                gotInput = false;
-                isAttacking = true;
-                isFirstAttack = !isFirstAttack;
-
-                if (anim != null)
-                {
-                    anim.SetBool("attack1", true);
-                    anim.SetBool("firstAttack", isFirstAttack);
-                    anim.SetBool("isAttacking", isAttacking);
-                }
-                else
-                {
-                    // No Animator: handle attack flow in code
-                    StartCoroutine(PerformAttackWithoutAnimator());
-                }
-            }
-        }
-
-        if (Time.time >= lastInputTime + inputTimer)
-        {
-            //Wait for new input
-            gotInput = false;
-        }
-    }
-
-    private IEnumerator PerformAttackWithoutAnimator()
-    {
-        // Optional: simulate a small wind-up before the hitbox is active.
-        // Here we wait half the attack duration, then trigger the hit, then finish.
-        float hitTime = attack1Duration * 0.5f;
-        yield return new WaitForSeconds(hitTime);
-
-        CheckAttackHitBox();
-
-        yield return new WaitForSeconds(attack1Duration - hitTime);
-
-        FinishAttack1();
-    }
-
-    private void CheckAttackHitBox()
-    {
-        Collider2D[] detectedObjects = Physics2D.OverlapCircleAll(attack1HitBoxPos.position, attack1Radius, whatIsDamageable);
-
-        attackDetails[0] = attack1Damage;
-        attackDetails[1] = transform.position.x;
-
-        foreach (Collider2D collider in detectedObjects)
-        {
-            // Send damage to parent (keeps existing project convention)
-            collider.transform.parent.SendMessage("Damage", attackDetails);
-            //Instantiate hit particle (kept as comment because original code left it commented)
-        }
-    }
-
-    private void FinishAttack1()
-    {
-        isAttacking = false;
-        if (anim != null)
-        {
-            anim.SetBool("isAttacking", isAttacking);
-            anim.SetBool("attack1", false);
-        }
-    }
-
+    // Receive damage handler (kept so other systems can SendMessage("Damage", float[]))
+    // Maintains original behavior: decrease health, apply knockback unless dashing.
     private void Damage(float[] attackDetails)
     {
+        if (PC == null || PS == null)
+        {
+            // fallback safety: try to acquire components
+            PC = GetComponent<PlayerController>();
+            PS = GetComponent<PlayerStats>();
+            if (PC == null || PS == null) return;
+        }
+
         if (!PC.GetDashStatus())
         {
             int direction;
@@ -147,10 +66,4 @@ public class PlayerCombatController : MonoBehaviour
             PC.Knockback(direction);
         }
     }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(attack1HitBoxPos.position, attack1Radius);
-    }
-
 }

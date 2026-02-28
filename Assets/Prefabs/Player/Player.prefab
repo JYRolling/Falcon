@@ -373,6 +373,7 @@ GameObject:
   - component: {fileID: 1150423294354411484}
   - component: {fileID: 7576325153772225983}
   - component: {fileID: 2507503105849811424}
+  - component: {fileID: 6287978033719952128}
   - component: {fileID: 1941739168557617443}
   - component: {fileID: 9162193416405884827}
   - component: {fileID: 7294559260300435634}
@@ -485,6 +486,41 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!70 &6287978033719952128
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4123387611931252861}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.03411314}
+  m_Size: {x: 0.13430941, y: 0.43709517}
+  m_Direction: 0
 --- !u!95 &1941739168557617443
 Animator:
   serializedVersion: 5
@@ -586,15 +622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f45143fbbb57b4eae9628ced569cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combatEnabled: 1
-  inputTimer: 0.2
-  attack1Radius: 1
-  attack1Damage: 50
-  attack1HitBoxPos: {fileID: 4097764014359054072}
-  whatIsDamageable:
-    serializedVersion: 2
-    m_Bits: 256
-  attack1Duration: 0.4
+  attack1Damage: 0
 --- !u!70 &3889338414212339511
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

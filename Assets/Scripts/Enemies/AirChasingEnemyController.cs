@@ -20,9 +20,9 @@ public class AirChasingEnemyController : MonoBehaviour
     // Prevent enemies colliding with each other by disabling Enemy-Enemy collisions once.
     private static bool s_enemyCollisionsIgnored = false;
 
-    // New: keep track of BoxCollider2D from all enemies so we can ignore collisions between them
-    private static List<BoxCollider2D> s_enemyBoxColliders = new List<BoxCollider2D>();
-    private readonly List<BoxCollider2D> _localBoxColliders = new List<BoxCollider2D>();
+    // New: keep track of Collider2D from all enemies so we can ignore collisions between them
+    private static List<Collider2D> s_enemyColliders = new List<Collider2D>();
+    private readonly List<Collider2D> _localColliders = new List<Collider2D>();
 
     [Header("Patrol")]
     [SerializeField] private Transform patrolPointA;
@@ -87,45 +87,45 @@ public class AirChasingEnemyController : MonoBehaviour
             }
         }
 
-        // Register this enemy's BoxCollider2D components and ignore collisions with existing enemy colliders.
-        RegisterEnemyBoxColliders();
+        // Register this enemy's Collider2D components and ignore collisions with existing enemy colliders.
+        RegisterEnemyColliders();
     }
 
     private void OnDestroy()
     {
-        UnregisterEnemyBoxColliders();
+        UnregisterEnemyColliders();
     }
 
-    private void RegisterEnemyBoxColliders()
+    private void RegisterEnemyColliders()
     {
-        _localBoxColliders.Clear();
-        var boxes = GetComponentsInChildren<BoxCollider2D>();
-        foreach (var b in boxes)
+        _localColliders.Clear();
+        var cols = GetComponentsInChildren<Collider2D>();
+        foreach (var c in cols)
         {
-            if (b == null) continue;
-            _localBoxColliders.Add(b);
+            if (c == null) continue;
+            _localColliders.Add(c);
 
-            // ignore collision with already-registered enemy boxes
-            foreach (var other in s_enemyBoxColliders)
+            // ignore collision with already-registered enemy colliders
+            foreach (var other in s_enemyColliders)
             {
                 if (other != null)
-                    Physics2D.IgnoreCollision(b, other, true);
+                    Physics2D.IgnoreCollision(c, other, true);
             }
 
             // add to global list if not already present
-            if (!s_enemyBoxColliders.Contains(b))
-                s_enemyBoxColliders.Add(b);
+            if (!s_enemyColliders.Contains(c))
+                s_enemyColliders.Add(c);
         }
     }
 
-    private void UnregisterEnemyBoxColliders()
+    private void UnregisterEnemyColliders()
     {
-        foreach (var b in _localBoxColliders)
+        foreach (var c in _localColliders)
         {
-            if (b != null)
-                s_enemyBoxColliders.Remove(b);
+            if (c != null)
+                s_enemyColliders.Remove(c);
         }
-        _localBoxColliders.Clear();
+        _localColliders.Clear();
     }
 
     private void Start()
