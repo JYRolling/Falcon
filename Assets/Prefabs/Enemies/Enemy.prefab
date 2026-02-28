@@ -263,7 +263,7 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.01629877, y: -0.16059852}
+  m_Offset: {x: 0.01629877, y: -0.0746904}
   m_Size: {x: 0.7651701, y: 0.7651701}
   m_Direction: 0
 --- !u!1 &8426724655607775949
@@ -277,7 +277,7 @@ GameObject:
   - component: {fileID: 4994157300945197892}
   - component: {fileID: 1918753980708302951}
   m_Layer: 10
-  m_Name: Enemy1
+  m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
