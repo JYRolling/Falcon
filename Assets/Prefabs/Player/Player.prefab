@@ -380,8 +380,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b4e537688b0652d47b1ed128a3e44237, type: 2}
   defaultShootingType: {fileID: 0}
   fallbackShootingStyle: 0
-  multiShotPoint1: {fileID: 7703976377198259580}
-  multiShotPoint2: {fileID: 5331469609966004178}
+  multiShotPoint1: {fileID: 0}
+  multiShotPoint2: {fileID: 0}
   point: {fileID: 4155587531777718160, guid: 725040c6f08463c44948c45cc90279e9, type: 3}
   numberOfPoints: 50
   spaceBetweenPoints: 0.025
@@ -448,7 +448,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6999723560801021349}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.45, y: -1.13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
