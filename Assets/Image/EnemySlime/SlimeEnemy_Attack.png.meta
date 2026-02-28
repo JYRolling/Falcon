@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cd94a1480f2993547b8db2bed15b4803
+guid: 4f9d6d1068873fb4d90996a4aa2c4b94
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,106 +97,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Idle_Fox_0
+      name: SlimeEnemy_Attack_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 8
         y: 0
         width: 200
         height: 206
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b251b290e301e014db498b4f93d8796d
-      internalID: -1582545191
+      spriteID: 3a6ca4109db7b8e47b2a29a79e6ee272
+      internalID: 614786580
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_Fox_1
+      name: SlimeEnemy_Attack_1
       rect:
         serializedVersion: 2
-        x: 200
+        x: 208
         y: 0
         width: 200
         height: 206
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a2e1018e85553c41aad262ac3408d45
-      internalID: 1976704625
+      spriteID: 3bcf528eabe67b94686fadf96c9b07fe
+      internalID: 1451874629
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_Fox_2
+      name: SlimeEnemy_Attack_2
       rect:
         serializedVersion: 2
-        x: 400
+        x: 408
         y: 0
         width: 200
         height: 206
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f52ee0cd065f544dafbe019e0ef0d4a
-      internalID: -157556714
+      spriteID: d86f1c6230df13548bdd1a4a991b2689
+      internalID: -324278069
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_Fox_3
+      name: SlimeEnemy_Attack_3
       rect:
         serializedVersion: 2
-        x: 600
+        x: 608
         y: 0
         width: 200
         height: 206
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d6d85d799c03464897e99c2b8e37673
-      internalID: -34805727
+      spriteID: abf792715f17fb34c9d8ebc597bef26b
+      internalID: -1762121246
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_Fox_4
+      name: SlimeEnemy_Attack_4
       rect:
         serializedVersion: 2
-        x: 800
+        x: 808
         y: 0
         width: 200
         height: 206
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f789bdf31fe39c48a43d4c18e394c7f
-      internalID: 1951278241
+      spriteID: 5313e5f0ff75cd042b3a244317e4803a
+      internalID: -829964923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SlimeEnemy_Attack_5
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 0
+        width: 200
+        height: 206
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b97298c6042d13644a3d1ebe3eb45b96
+      internalID: -124100056
       vertices: []
       indices: 
       edges: []
@@ -212,11 +233,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Idle_Fox_0: -1582545191
-      Idle_Fox_1: 1976704625
-      Idle_Fox_2: -157556714
-      Idle_Fox_3: -34805727
-      Idle_Fox_4: 1951278241
+      SlimeEnemy_Attack_0: 614786580
+      SlimeEnemy_Attack_1: 1451874629
+      SlimeEnemy_Attack_2: -324278069
+      SlimeEnemy_Attack_3: -1762121246
+      SlimeEnemy_Attack_4: -829964923
+      SlimeEnemy_Attack_5: -124100056
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

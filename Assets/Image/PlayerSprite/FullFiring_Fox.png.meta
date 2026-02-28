@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cd94a1480f2993547b8db2bed15b4803
+guid: 42fc641cff3727c4eb9184eba73dd002
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Idle_Fox_0
+      name: FullFiring_Fox_0
       rect:
         serializedVersion: 2
         x: 0
@@ -111,14 +111,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b251b290e301e014db498b4f93d8796d
-      internalID: -1582545191
+      spriteID: a0b9694f6d755ca44b4a8efe7023e176
+      internalID: -34445001
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_Fox_1
+      name: FullFiring_Fox_1
       rect:
         serializedVersion: 2
         x: 200
@@ -132,14 +132,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a2e1018e85553c41aad262ac3408d45
-      internalID: 1976704625
+      spriteID: cfeb34fc993327045add4a8c887c3db5
+      internalID: -1855077012
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_Fox_2
+      name: FullFiring_Fox_2
       rect:
         serializedVersion: 2
         x: 400
@@ -153,14 +153,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f52ee0cd065f544dafbe019e0ef0d4a
-      internalID: -157556714
+      spriteID: 46f76ad2c1ae53a48989d7e657897e03
+      internalID: -834317243
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_Fox_3
+      name: FullFiring_Fox_3
       rect:
         serializedVersion: 2
         x: 600
@@ -174,29 +174,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d6d85d799c03464897e99c2b8e37673
-      internalID: -34805727
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idle_Fox_4
-      rect:
-        serializedVersion: 2
-        x: 800
-        y: 0
-        width: 200
-        height: 206
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2f789bdf31fe39c48a43d4c18e394c7f
-      internalID: 1951278241
+      spriteID: b4a62281bfde7ca44907fdf7dd776784
+      internalID: 666749229
       vertices: []
       indices: 
       edges: []
@@ -212,11 +191,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Idle_Fox_0: -1582545191
-      Idle_Fox_1: 1976704625
-      Idle_Fox_2: -157556714
-      Idle_Fox_3: -34805727
-      Idle_Fox_4: 1951278241
+      FullFiring_Fox_0: -34445001
+      FullFiring_Fox_1: -1855077012
+      FullFiring_Fox_2: -834317243
+      FullFiring_Fox_3: 666749229
+      FullFiring_Fox_4: 882205661
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

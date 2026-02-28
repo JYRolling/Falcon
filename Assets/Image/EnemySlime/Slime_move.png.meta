@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cd94a1480f2993547b8db2bed15b4803
+guid: ee37bc9609f3cc64e8fcabcc5fd416c0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Idle_Fox_0
+      name: Slime_move_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 104
         y: 0
-        width: 200
-        height: 206
+        width: 100
+        height: 103
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,20 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b251b290e301e014db498b4f93d8796d
-      internalID: -1582545191
+      spriteID: 74e6a8a748ca89845bb3d83f335c5d31
+      internalID: 297795293
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_Fox_1
+      name: Slime_move_1
       rect:
         serializedVersion: 2
-        x: 200
+        x: 204
         y: 0
-        width: 200
-        height: 206
+        width: 100
+        height: 103
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,20 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a2e1018e85553c41aad262ac3408d45
-      internalID: 1976704625
+      spriteID: ddf4dc5b3593a1a4396838917adc29c5
+      internalID: -1378793830
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_Fox_2
+      name: Slime_move_2
       rect:
         serializedVersion: 2
-        x: 400
+        x: 304
         y: 0
-        width: 200
-        height: 206
+        width: 100
+        height: 103
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f52ee0cd065f544dafbe019e0ef0d4a
-      internalID: -157556714
+      spriteID: bd2af7180415b114da56f8dcd6b7ebcd
+      internalID: 1513314315
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_Fox_3
+      name: Slime_move_3
       rect:
         serializedVersion: 2
-        x: 600
+        x: 404
         y: 0
-        width: 200
-        height: 206
+        width: 100
+        height: 103
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,29 +174,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d6d85d799c03464897e99c2b8e37673
-      internalID: -34805727
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idle_Fox_4
-      rect:
-        serializedVersion: 2
-        x: 800
-        y: 0
-        width: 200
-        height: 206
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2f789bdf31fe39c48a43d4c18e394c7f
-      internalID: 1951278241
+      spriteID: 3ba2091389f13104a8fb675ae53f8bc3
+      internalID: -2144688917
       vertices: []
       indices: 
       edges: []
@@ -212,11 +191,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Idle_Fox_0: -1582545191
-      Idle_Fox_1: 1976704625
-      Idle_Fox_2: -157556714
-      Idle_Fox_3: -34805727
-      Idle_Fox_4: 1951278241
+      Slime_move_0: 297795293
+      Slime_move_1: -1378793830
+      Slime_move_2: 1513314315
+      Slime_move_3: -2144688917
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
