@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8412950683029543036}
@@ -81,8 +81,8 @@ SpriteRenderer:
   m_SortingLayerID: 109109693
   m_SortingLayer: 2
   m_SortingOrder: 50
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0, g: 0.4339623, b: 0.11888556, a: 1}
+  m_Sprite: {fileID: 1564846485, guid: 667b04213a619a740aca068a369c0321, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -172,8 +172,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 1}
+  m_Offset: {x: 0, y: -0.00000011920929}
+  m_Size: {x: 0.799049, y: 1.1164967}
   m_Direction: 0
 --- !u!1 &5017185110751606982
 GameObject:
@@ -227,13 +227,12 @@ MonoBehaviour:
   lastTouchDamageTime: 0
   touchDamageCooldown: 0.2
   touchDamage: 20
-  touchDamageWidth: 1
-  touchDamageHeight: 2
+  touchDamageWidth: 0.8
+  touchDamageHeight: 1
   isBoss: 1
   canChase: 1
   chaseRadius: 20
   chaseSpeed: 3
-  chaseStopDistance: 0
   autoDashEnabled: 1
   dashSpeed: 12
   dashTime: 0.25
@@ -242,7 +241,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6893207421243802147, guid: a29c5ff3da9a19e4b912e5042db8a14f, type: 3}
   bulletSpawnPoints:
   - {fileID: 6440610602611173307}
-  bulletsPerSet: 1
+  bulletsPerSet: 3
   setsPerVolley: 1
   timeBetweenBullets: 0.15
   timeBetweenSets: 3
