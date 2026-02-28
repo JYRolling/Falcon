@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Multi2
   shootingStyle: 1
-  icon: {fileID: 360330623, guid: e685ddaefc32bec4c836739cb01ee1c0, type: 3}
+  icon: {fileID: 21300000, guid: 650f745f02fcdb84ab6d117ac9ae0adb, type: 3}
   arrowPrefab: {fileID: 0}
   arrowType: {fileID: 0}
   projectileCount: 2
-  spreadAngle: 30
+  spreadAngle: 15
   launchForceMultiplier: 1

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Multi3
   shootingStyle: 1
-  icon: {fileID: 21300000, guid: db3b51144229e2041a4b9fa214b926a5, type: 3}
+  icon: {fileID: 21300000, guid: 650f745f02fcdb84ab6d117ac9ae0adb, type: 3}
   arrowPrefab: {fileID: 0}
   arrowType: {fileID: 0}
   projectileCount: 3
