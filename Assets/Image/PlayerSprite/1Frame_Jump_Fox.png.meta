@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -95,7 +95,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: 1Frame_Jump_Fox_0
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 200
+        height: 204
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2ed5b3a40aba0443a7536e9293b2e20
+      internalID: -1400793302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1Frame_Jump_Fox_1
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 0
+        width: 200
+        height: 203
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7670c0b43633e7b429424461e382d610
+      internalID: 737654620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1Frame_Jump_Fox_2
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 0
+        width: 200
+        height: 203
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40063263479a6e040b202c972c094f96
+      internalID: -1636525838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1Frame_Jump_Fox_3
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 0
+        width: 200
+        height: 203
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ee4dda5b0168e645945d4f8dddea819
+      internalID: 405718357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -106,7 +190,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      1Frame_Jump_Fox_0: -1400793302
+      1Frame_Jump_Fox_1: 737654620
+      1Frame_Jump_Fox_2: -1636525838
+      1Frame_Jump_Fox_3: 405718357
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

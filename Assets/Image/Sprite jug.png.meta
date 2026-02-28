@@ -789,6 +789,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Sprite jug_0
+      rect:
+        serializedVersion: 2
+        x: 1697
+        y: 637
+        width: 531
+        height: 368
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04dd712ed5a65064ca47a7a43f384e51
+      internalID: 1874774562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -814,6 +835,7 @@ TextureImporter:
       Skull1: -1297047051
       Skull2: 1927578441
       Spore: -1161028001
+      Sprite jug_0: 1874774562
       Sprite jug_10: -1012335433
       Sprite jug_12: 78367366
       Sprite jug_13: 2075097689
