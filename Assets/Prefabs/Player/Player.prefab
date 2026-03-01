@@ -410,7 +410,7 @@ Transform:
   m_GameObject: {fileID: 6944156197364082430}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.954, z: 0}
+  m_LocalPosition: {x: 0.092, y: -0.954, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -607,7 +607,7 @@ MonoBehaviour:
   amountOfJumps: 1
   movementSpeed: 9
   jumpForce: 25
-  groundCheckRadius: 0.3
+  groundCheckRadius: 0.39
   wallCheckDistance: 0.65
   wallSlideSpeed: 1
   movementForceInAir: 50
