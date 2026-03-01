@@ -30,8 +30,6 @@ public class GameManager : MonoBehaviour
             return;
         }
         Instance = this;
-        // Optionally persist across scenes:
-        // DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
@@ -60,8 +58,29 @@ public class GameManager : MonoBehaviour
             if (player != null && respawnPoint != null)
             {
                 var playerTemp = Instantiate(player, respawnPoint.position, respawnPoint.rotation);
+
+                // Ensure Cinemachine follows new player
                 if (CVC != null)
                     CVC.m_Follow = playerTemp.transform;
+
+                // Assign existing scene HealthBar (if present) to the new player so the UI updates
+                var ps = playerTemp.GetComponent<PlayerStats>();
+                if (ps != null)
+                {
+                    var hb = FindObjectOfType<HealthBar>();
+                    if (hb != null)
+                    {
+                        ps.AssignHealthBar(hb);
+                    }
+                    else
+                    {
+                        Debug.LogWarning("GameManager: No HealthBar found in scene to assign to respawned player.");
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning("GameManager: Spawned player prefab does not contain PlayerStats component.");
+                }
             }
             else
             {
