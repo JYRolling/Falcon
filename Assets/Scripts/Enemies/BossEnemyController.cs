@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossEnemyController : MonoBehaviour
 {
@@ -65,6 +66,12 @@ public class BossEnemyController : MonoBehaviour
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private LayerMask whatIsPlayer;
     [SerializeField] private GameObject hitParticle;
+
+    [Header("Optional: scene transition on boss defeat")]
+    [Tooltip("Name of scene to load when this boss is defeated. Leave empty to disable.")]
+    [SerializeField] private string sceneToLoadOnDefeat = "";
+    [Tooltip("Delay (seconds) before loading the scene after boss death.")]
+    [SerializeField] private float sceneLoadDelay = 1.0f;
 
     private float currentHealth;
 
@@ -351,11 +358,7 @@ public class BossEnemyController : MonoBehaviour
         // Attacks are executed by the BossPatternLoop coroutine (DoShootVolley).
     }
 
-    private void ExitAttackingState()
-    {
-        if (aliveAnim != null)
-            aliveAnim.SetBool("Attacking", false);
-    }
+    private void ExitAttackingState() { }
 
     //-- DEAD --------------------------------------------------------------------
 
@@ -367,7 +370,15 @@ public class BossEnemyController : MonoBehaviour
         // unregister UI (may hide if no other bosses registered)
         BossHealthBar.Instance?.UnregisterBoss();
 
-        Destroy(gameObject);
+        // optional scene load
+        if (!string.IsNullOrEmpty(sceneToLoadOnDefeat))
+        {
+            StartCoroutine(LoadSceneAfterDelay(sceneToLoadOnDefeat, sceneLoadDelay));
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void UpdateDeadState() { }
@@ -623,5 +634,12 @@ public class BossEnemyController : MonoBehaviour
     private void FlipForMovement()
     {
         facingDirection *= -1;
+    }
+
+    // coroutine to load a scene by name after a delay
+    private IEnumerator LoadSceneAfterDelay(string sceneName, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene(sceneName);
     }
 }

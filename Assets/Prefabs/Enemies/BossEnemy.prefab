@@ -244,7 +244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundCheckDistance: 0.5
   wallCheckDistance: 0.1
-  movementSpeed: 4
+  movementSpeed: 8
   bossStats: {fileID: 8768467482845431533}
   lastTouchDamageTime: 0
   isBoss: 1
@@ -274,6 +274,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   hitParticle: {fileID: 6240072112886026631, guid: b422d378313ccbb4d8acb6196f1cdbbd, type: 3}
+  sceneToLoadOnDefeat: End
+  sceneLoadDelay: 1
 --- !u!1 &5251117327365484032
 GameObject:
   m_ObjectHideFlags: 0
