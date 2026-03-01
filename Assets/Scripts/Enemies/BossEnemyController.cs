@@ -2,12 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// BossEnemyController
-// Boss moveset:
-// 1) shoot 3 bullets per set, 3 sets
-// 2) can chase the player when in range (optional, configurable)
-// 3) auto-dash toward player with cooldown (new)
-// Boss always visually faces the GameObject tagged "Player".
 public class BossEnemyController : MonoBehaviour
 {
     private enum State
@@ -29,13 +23,12 @@ public class BossEnemyController : MonoBehaviour
     [Header("Core")]
     [SerializeField] private float groundCheckDistance = 1f;
     [SerializeField] private float wallCheckDistance = 0.5f;
-    [SerializeField] private float movementSpeed = 2f;      // kept for tuning / future use (unused now)
-    [SerializeField] private float maxHealth = 200f;
+    [SerializeField] private float movementSpeed = 2f;
+
+    // Now reference a BossStats component (attachable in inspector)
+    [SerializeField] private BossStats bossStats;
+
     [SerializeField] private float lastTouchDamageTime = 0f;
-    [SerializeField] private float touchDamageCooldown = 1f;
-    [SerializeField] private float touchDamage = 10f;
-    [SerializeField] private float touchDamageWidth = 1f;
-    [SerializeField] private float touchDamageHeight = 1f;
 
     [Header("Boss pattern (tune in inspector)")]
     [Tooltip("When true the boss performs its attack pattern")]
@@ -72,15 +65,13 @@ public class BossEnemyController : MonoBehaviour
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private LayerMask whatIsPlayer;
     [SerializeField] private GameObject hitParticle;
-    [SerializeField] private GameObject deathChunkParticle;
-    [SerializeField] private GameObject deathBloodParticle;
 
     private float currentHealth;
 
     private float[] attackDetails = new float[2];
 
-    // movement direction previously used for running — kept but unused
-    private int moveDirection = 1;
+    // movement direction — used for patrol and chasing logic
+    private int facingDirection = 1;
 
     private Vector2 movement;
     private Vector2 touchDamageBotLeft;
@@ -105,7 +96,7 @@ public class BossEnemyController : MonoBehaviour
     private float _lastDashTime = -999f;
     private int _dashDirection = 1;
 
-    // debug/stuck-detection fields (add near other private fields)
+    // debug/stuck-detection fields (kept but not used in this movement style)
     private Vector2 _prevRbPos;
     private int _stuckFrameCount = 0;
     private int _stuckFrameThreshold = 6;
@@ -133,6 +124,8 @@ public class BossEnemyController : MonoBehaviour
     private void OnDestroy()
     {
         UnregisterEnemyColliders();
+        // ensure UI unregister in case boss is destroyed unexpectedly
+        BossHealthBar.Instance?.UnregisterBoss();
     }
 
     private void RegisterEnemyColliders()
@@ -175,11 +168,30 @@ public class BossEnemyController : MonoBehaviour
 
         aliveAnim = alive.GetComponent<Animator>();
 
-        currentHealth = maxHealth;
+        // ensure bossStats is a component attached to the same GameObject (attach in inspector)
+        if (bossStats == null)
+        {
+            bossStats = GetComponent<BossStats>();
+            if (bossStats == null)
+            {
+                // auto-add so code can run, but prefer inspector assignment
+                bossStats = gameObject.AddComponent<BossStats>();
+                Debug.LogWarning("BossEnemyController: BossStats was not assigned. A BossStats component was auto-added — consider configuring it in the inspector.");
+            }
+        }
+
+        // initialize health via BossStats
+        bossStats.Initialize();
+
+        // register with BossHealthBar (UI will become visible)
+        BossHealthBar.Instance?.RegisterBoss(bossStats.maxHealth, bossStats.currentHealth);
 
         var playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null) playerTransform = playerObj.transform;
         else Debug.LogWarning("Player with tag 'Player' not found. Boss will not face player.");
+
+        // ensure facingDirection default
+        facingDirection = 1;
 
         SwitchState(State.Moving);
 
@@ -207,55 +219,12 @@ public class BossEnemyController : MonoBehaviour
         }
     }
 
-    // Replace FixedUpdate with this debug-friendly version
+    // FixedUpdate handles dash physics separately; chasing & patrol movement use Rigidbody2D.velocity like ChasingEnemyController.
     private void FixedUpdate()
     {
-        // If currently dashing, apply dash movement in FixedUpdate
         if (_isDashing)
         {
             ApplyDashMovement();
-            return;
-        }
-
-        // Apply chase movement (physics) in FixedUpdate for consistent physics behavior
-        if (currentState == State.Moving && canChase && _chaseTarget != null)
-        {
-            if (aliveRb != null)
-            {
-                Vector2 currentPos = aliveRb.position;
-                Vector2 targetPos = new Vector2(_chaseTarget.position.x, currentPos.y);
-                float step = chaseSpeed * Time.fixedDeltaTime;
-                Vector2 newPos = Vector2.MoveTowards(currentPos, targetPos, step);
-
-                aliveRb.MovePosition(newPos);
-
-                // stuck detection: if MovePosition didn't change position for several frames, nudge using velocity
-                float moved = Vector2.Distance(currentPos, newPos);
-                if (moved < 0.001f)
-                {
-                    _stuckFrameCount++;
-                    if (_stuckFrameCount >= _stuckFrameThreshold)
-                    {
-                        Debug.LogWarning($"Boss appears stuck. nudge velocity. rb.bodyType={aliveRb.bodyType} pos={currentPos} targetX={targetPos.x}");
-                        // nudge toward target so physics can resolve overlaps
-                        float dir = Mathf.Sign(targetPos.x - currentPos.x);
-                        aliveRb.velocity = new Vector2(dir * chaseSpeed, aliveRb.velocity.y);
-                        _stuckFrameCount = 0;
-                    }
-                }
-                else
-                {
-                    _stuckFrameCount = 0;
-                }
-
-                _prevRbPos = newPos;
-            }
-            else
-            {
-                // Transform fallback: horizontal only
-                Vector3 dir = (_chaseTarget.position.x >= transform.position.x) ? Vector3.right : Vector3.left;
-                transform.Translate(dir * chaseSpeed * Time.fixedDeltaTime, Space.World);
-            }
         }
     }
 
@@ -263,30 +232,97 @@ public class BossEnemyController : MonoBehaviour
 
     private void EnterMovingState()
     {
-        // Boss idle or ready to chase
+        // start ready to chase/patrol
+        _chaseTarget = null;
+        facingDirection = 1;
     }
 
     private void UpdateMovingState()
     {
-        // Keep touch-damage checks and optional idle animation hooks.
+        // ground/wall checks (used for simple patrol when not chasing)
+        if (groundCheck != null)
+            groundDetected = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, whatIsGround);
+        else
+            groundDetected = true;
+
+        if (wallCheck != null)
+            wallDetected = Physics2D.Raycast(wallCheck.position, transform.right, wallCheckDistance, whatIsGround);
+        else
+            wallDetected = false;
+
+        // Keep touch-damage checks
         CheckTouchDamage();
 
         // Chase detection (only when enabled)
         if (canChase && playerTransform != null)
         {
-            // Use overlap circle to find player within radius
             Collider2D playerHit = Physics2D.OverlapCircle(alive.transform.position, chaseRadius, whatIsPlayer);
             if (playerHit != null)
             {
-                // Set chase target (no stop distance - boss will keep pursuing)
+                // Set chase target
                 _chaseTarget = playerHit.transform;
-                // consider dashing if within trigger distance
-                float horizDist = Mathf.Abs(_chaseTarget.position.x - alive.transform.position.x);
-                TryStartAutoDash(horizDist);
             }
             else
             {
                 _chaseTarget = null;
+            }
+        }
+        else
+        {
+            _chaseTarget = null;
+        }
+
+        // If we have a chase target, behave like ChasingEnemyController: move toward player using velocity.
+        if (_chaseTarget != null)
+        {
+            // If target moved out of radius stop chasing
+            float dist = Vector2.Distance(alive.transform.position, _chaseTarget.position);
+            if (dist > chaseRadius)
+            {
+                _chaseTarget = null;
+                return;
+            }
+
+            float dir = Mathf.Sign(_chaseTarget.position.x - alive.transform.position.x);
+            facingDirection = dir >= 0 ? 1 : -1;
+
+            // Move horizontally toward player
+            if (aliveRb != null)
+            {
+                movement.Set(chaseSpeed * facingDirection, aliveRb.velocity.y);
+                aliveRb.velocity = movement;
+            }
+            else
+            {
+                // Transform fallback: horizontal only
+                Vector3 moveDir = (facingDirection == 1) ? Vector3.right : Vector3.left;
+                transform.Translate(moveDir * chaseSpeed * Time.deltaTime, Space.World);
+            }
+
+            // consider dashing if within trigger distance
+            float horizDist = Mathf.Abs(_chaseTarget.position.x - alive.transform.position.x);
+            TryStartAutoDash(horizDist);
+
+            // still allow touch damage while chasing (already called above)
+            return;
+        }
+
+        // Not chasing: simple patrol behaviour (if desired)
+        if (!groundDetected || wallDetected)
+        {
+            FlipForMovement();
+        }
+        else
+        {
+            if (aliveRb != null)
+            {
+                movement.Set(movementSpeed * facingDirection, aliveRb.velocity.y);
+                aliveRb.velocity = movement;
+            }
+            else
+            {
+                Vector3 dir = (facingDirection == 1) ? Vector3.right : Vector3.left;
+                transform.Translate(dir * movementSpeed * Time.deltaTime, Space.World);
             }
         }
 
@@ -325,8 +361,12 @@ public class BossEnemyController : MonoBehaviour
 
     private void EnterDeadState()
     {
-        if (deathChunkParticle) Instantiate(deathChunkParticle, alive.transform.position, deathChunkParticle.transform.rotation);
-        if (deathBloodParticle) Instantiate(deathBloodParticle, alive.transform.position, deathBloodParticle.transform.rotation);
+        if (bossStats.deathChunkParticle) Instantiate(bossStats.deathChunkParticle, alive.transform.position, bossStats.deathChunkParticle.transform.rotation);
+        if (bossStats.deathBloodParticle) Instantiate(bossStats.deathBloodParticle, alive.transform.position, bossStats.deathBloodParticle.transform.rotation);
+
+        // unregister UI (may hide if no other bosses registered)
+        BossHealthBar.Instance?.UnregisterBoss();
+
         Destroy(gameObject);
     }
 
@@ -338,11 +378,11 @@ public class BossEnemyController : MonoBehaviour
 
     private void Damage(float[] attackDetails)
     {
-        currentHealth -= attackDetails[0];
+        bool died = bossStats.ApplyDamage(attackDetails[0]);
 
         if (hitParticle) Instantiate(hitParticle, alive.transform.position, Quaternion.Euler(0.0f, 0.0f, Random.Range(0.0f, 360.0f)));
 
-        if (currentHealth > 0.0f)
+        if (!died)
             SwitchState(State.Moving);
         else
             SwitchState(State.Dead);
@@ -350,17 +390,17 @@ public class BossEnemyController : MonoBehaviour
 
     private void CheckTouchDamage()
     {
-        if (Time.time >= lastTouchDamageTime + touchDamageCooldown && touchDamageCheck != null)
+        if (Time.time >= lastTouchDamageTime + bossStats.touchDamageCooldown && touchDamageCheck != null)
         {
-            touchDamageBotLeft.Set(touchDamageCheck.position.x - (touchDamageWidth / 2), touchDamageCheck.position.y - (touchDamageHeight / 2));
-            touchDamageTopRight.Set(touchDamageCheck.position.x + (touchDamageWidth / 2), touchDamageCheck.position.y + (touchDamageHeight / 2));
+            touchDamageBotLeft.Set(touchDamageCheck.position.x - (bossStats.touchDamageWidth / 2), touchDamageCheck.position.y - (bossStats.touchDamageHeight / 2));
+            touchDamageTopRight.Set(touchDamageCheck.position.x + (bossStats.touchDamageWidth / 2), touchDamageCheck.position.y + (bossStats.touchDamageHeight / 2));
 
             Collider2D hit = Physics2D.OverlapArea(touchDamageBotLeft, touchDamageTopRight, whatIsPlayer);
 
             if (hit != null)
             {
                 lastTouchDamageTime = Time.time;
-                attackDetails[0] = touchDamage;
+                attackDetails[0] = bossStats.touchDamage;
                 attackDetails[1] = alive.transform.position.x;
                 hit.SendMessage("Damage", attackDetails);
             }
@@ -440,16 +480,40 @@ public class BossEnemyController : MonoBehaviour
     {
         if (touchDamageCheck != null)
         {
-            Vector2 botLeft = new Vector2(touchDamageCheck.position.x - (touchDamageWidth / 2), touchDamageCheck.position.y - (touchDamageHeight / 2));
-            Vector2 botRight = new Vector2(touchDamageCheck.position.x + (touchDamageWidth / 2), touchDamageCheck.position.y - (touchDamageHeight / 2));
-            Vector2 topRight = new Vector2(touchDamageCheck.position.x + (touchDamageWidth / 2), touchDamageCheck.position.y + (touchDamageHeight / 2));
-            Vector2 topLeft = new Vector2(touchDamageCheck.position.x - (touchDamageWidth / 2), touchDamageCheck.position.y + (touchDamageHeight / 2));
+            // use bossStats touch damage size values (was previously using undefined local names)
+            float width = 1f;
+            float height = 1f;
+            if (bossStats != null)
+            {
+                width = bossStats.touchDamageWidth;
+                height = bossStats.touchDamageHeight;
+            }
+
+            Vector2 botLeft = new Vector2(touchDamageCheck.position.x - (width / 2), touchDamageCheck.position.y - (height / 2));
+            Vector2 botRight = new Vector2(touchDamageCheck.position.x + (width / 2), touchDamageCheck.position.y - (height / 2));
+            Vector2 topRight = new Vector2(touchDamageCheck.position.x + (width / 2), touchDamageCheck.position.y + (height / 2));
+            Vector2 topLeft = new Vector2(touchDamageCheck.position.x - (width / 2), touchDamageCheck.position.y + (height / 2));
 
             Gizmos.DrawLine(botLeft, botRight);
             Gizmos.DrawLine(botRight, topRight);
             Gizmos.DrawLine(topRight, topLeft);
             Gizmos.DrawLine(topLeft, botLeft);
         }
+
+        // draw chase radius when chasing enabled
+        if (canChase)
+        {
+            if (alive != null)
+                Gizmos.DrawWireSphere(alive.transform.position, chaseRadius);
+            else
+                Gizmos.DrawWireSphere(transform.position, chaseRadius);
+        }
+
+        // draw ground/wall checks
+        if (groundCheck != null)
+            Gizmos.DrawLine(groundCheck.position, new Vector2(groundCheck.position.x, groundCheck.position.y - groundCheckDistance));
+        if (wallCheck != null)
+            Gizmos.DrawLine(wallCheck.position, new Vector2(wallCheck.position.x + wallCheckDistance, wallCheck.position.y));
     }
 
     // --- DASH HELPERS ---------------------------------------------------------
@@ -553,5 +617,11 @@ public class BossEnemyController : MonoBehaviour
                 break;
             }
         }
+    }
+
+    // Flip for movement only (visual facing is controlled separately by FacePlayerVisual)
+    private void FlipForMovement()
+    {
+        facingDirection *= -1;
     }
 }
