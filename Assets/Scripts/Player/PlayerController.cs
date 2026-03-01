@@ -48,9 +48,6 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
 
-    // track previous walking state to avoid repeated crossfades
-    private bool _prevWalkingState = false;
-
     public int amountOfJumps = 1;
 
     public float movementSpeed = 10.0f;
@@ -332,7 +329,6 @@ public class PlayerController : MonoBehaviour
         if (canNormalJump)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            anim.SetBool("isJumping", !isGrounded);
             amountOfJumpsLeft--;
             jumpTimer = 0;
             isAttemptingToJump = false;
@@ -352,8 +348,6 @@ public class PlayerController : MonoBehaviour
         if (!isGrounded && !isWallSliding && movementInputDirection == 0 && !knockback)
         {
             rb.velocity = new Vector2(rb.velocity.x * airDragMultiplier, rb.velocity.y);
-            anim.SetFloat("xVelocity", Mathf.Abs(rb.velocity.x));
-            anim.SetFloat("yVelocity", rb.velocity.y);
         }
         else if(canMove && !knockback)
         {
