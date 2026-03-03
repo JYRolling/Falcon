@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -52,19 +53,20 @@ public class Arrow : MonoBehaviour
 
         Collider2D col = collision.collider;
 
-        // Check for ground colliders including Tilemap/Composite and respect LayerMask
-        if (IsGroundCollider(col))
-        {
-            hasHit = true;
-            Destroy(gameObject);
-            return;
-        }
-
-        // Find enemy target (tries components first, then tag fallback)
+        // --- CHECK ENEMY FIRST ---
         GameObject enemyTarget = FindEnemyTarget(col);
         if (enemyTarget != null)
         {
             ApplyHitToEnemy(enemyTarget);
+            return;
+        }
+
+        // Then check for ground colliders including Tilemap/Composite and respect LayerMask
+        if (IsGroundCollider(col))
+        {
+            Debug.Log($"Arrow hit ground-like object '{col.gameObject.name}' (layer {col.gameObject.layer})");
+            hasHit = true;
+            Destroy(gameObject);
             return;
         }
 
@@ -89,39 +91,43 @@ public class Arrow : MonoBehaviour
     {
         if (hasHit) return;
 
-        // Check for ground colliders including Tilemap/Composite and respect LayerMask
-        if (IsGroundCollider(other))
-        {
-            hasHit = true;
-            Destroy(gameObject);
-            return;
-        }
-
+        // --- CHECK ENEMY FIRST ---
         GameObject enemyTarget = FindEnemyTarget(other);
         if (enemyTarget != null)
         {
             ApplyHitToEnemy(enemyTarget);
             return;
         }
+
+        // Check for ground colliders including Tilemap/Composite and respect LayerMask
+        if (IsGroundCollider(other))
+        {
+            Debug.Log($"Arrow trigger hit ground-like object '{other.gameObject.name}' (layer {other.gameObject.layer})");
+            hasHit = true;
+            Destroy(gameObject);
+            return;
+        }
     }
 
     // Returns true if the collider is considered ground (Tilemap, Composite, Box, or other) AND its layer is included in groundLayer
+    // All specific collider type checks replaced by generic Collider2D logic.
     private bool IsGroundCollider(Collider2D col)
     {
         if (col == null) return false;
+
+        // If this collider belongs to an enemy, do not treat as ground
+        if (col.gameObject.CompareTag("Enemy"))
+            return false;
 
         // First, quick LayerMask check
         int layer = col.gameObject.layer;
         if ((groundLayer.value & (1 << layer)) == 0)
             return false;
 
-        // Then check for common ground collider types or tilemap presence
-        if (col.GetComponent<BoxCollider2D>() != null) return true;
-        if (col.GetComponent<EdgeCollider2D>() != null) return true;
-        if (col.GetComponent<TilemapCollider2D>() != null) return true;
-        if (col.GetComponent<CompositeCollider2D>() != null) return true;
+        // If it has any Collider2D (the provided col qualifies) treat as ground.
+        if (col.GetComponent<Collider2D>() != null) return true;
 
-        // Tilemap component may be on the same GameObject or a parent
+        // Additionally check for Tilemap on the object or parent (keeps prior behavior)
         if (col.GetComponent<Tilemap>() != null || col.GetComponentInParent<Tilemap>() != null) return true;
 
         // Fallback: treat any Collider2D on a ground-layer as ground
@@ -129,26 +135,12 @@ public class Arrow : MonoBehaviour
     }
 
     // Tries to find a suitable enemy GameObject to send Damage to.
-    // Priority:
-    //  1) Known enemy controller components on parents (Basic/Chasing/AirChasing)
-    //  2) Walk up and return first GameObject with tag "Enemy"
+    // Now: only uses the "Enemy" tag — stops checking for specific enemy scripts.
     private GameObject FindEnemyTarget(Collider2D col)
     {
         if (col == null) return null;
 
-        // 1) component checks (explicit)
-        var basic = col.GetComponentInParent<BasicEnemyController>();
-        if (basic != null) return basic.gameObject;
-
-        var chasing = col.GetComponentInParent<ChasingEnemyController>();
-        if (chasing != null) return chasing.gameObject;
-
-        var air = col.GetComponentInParent<AirChasingEnemyController>();
-        if (air != null) return air.gameObject;
-
-        // add any other enemy controller types here...
-
-        // 2) tag fallback: walk up parent chain and return first GameObject with tag "Enemy"
+        // Walk up parent chain and return first GameObject with tag "Enemy"
         Transform t = col.transform;
         while (t != null)
         {
@@ -175,13 +167,117 @@ public class Arrow : MonoBehaviour
         attackDetails[0] = damage;
         attackDetails[1] = transform.position.x;
 
-        // Use SendMessage so the enemy script's private Damage method receives it.
-        enemyObject.SendMessage("Damage", attackDetails, SendMessageOptions.DontRequireReceiver);
+        Debug.Log($"Arrow attempting to apply {damage} damage to '{enemyObject.name}' (tag:{enemyObject.tag}, layer:{enemyObject.layer})");
+
+        bool damageInvoked = TryInvokeDamageOnHierarchy(enemyObject, attackDetails);
+
+        if (damageInvoked)
+            Debug.Log($"Arrow: damage delivered to '{enemyObject.name}'");
+        else
+            Debug.LogWarning($"Arrow: no damage method detected on '{enemyObject.name}' or its children/parents — no damage applied.");
 
         if (arrowType != null && arrowType.impactVFX != null)
             Instantiate(arrowType.impactVFX, transform.position, Quaternion.identity);
 
         Destroy(gameObject, 0.01f);
+    }
+
+    // Attempts to find and invoke a Damage method on the target's components (children and parents are searched).
+    // Supports signatures:
+    //   void Damage(float[])         <-- preferred (original project)
+    //   void Damage(float) or Damage(int)
+    //   void Damage()                <-- no-arg fallback
+    private bool TryInvokeDamageOnHierarchy(GameObject target, float[] details)
+    {
+        if (target == null) return false;
+
+        // Search target and all children first
+        var components = target.GetComponentsInChildren<MonoBehaviour>(true);
+        foreach (var comp in components)
+        {
+            if (comp == null) continue;
+            var mi = comp.GetType().GetMethod("Damage", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            if (mi == null) continue;
+
+            var ps = mi.GetParameters();
+            if (ps.Length == 1)
+            {
+                var pType = ps[0].ParameterType;
+                if (pType == typeof(float[]))
+                {
+                    mi.Invoke(comp, new object[] { details });
+                    return true;
+                }
+                if (pType == typeof(float) || pType == typeof(System.Single))
+                {
+                    mi.Invoke(comp, new object[] { details[0] });
+                    return true;
+                }
+                if (pType == typeof(int) || pType == typeof(System.Int32))
+                {
+                    mi.Invoke(comp, new object[] { (int)details[0] });
+                    return true;
+                }
+                if (pType == typeof(object))
+                {
+                    mi.Invoke(comp, new object[] { (object)details });
+                    return true;
+                }
+            }
+            else if (ps.Length == 0)
+            {
+                // no-arg Damage()
+                mi.Invoke(comp, null);
+                return true;
+            }
+        }
+
+        // If not found in children, search parents upward (GetComponentsInParent includes self; we've covered self — so skip)
+        var parent = target.transform.parent;
+        while (parent != null)
+        {
+            var parentComps = parent.GetComponents<MonoBehaviour>();
+            foreach (var comp in parentComps)
+            {
+                if (comp == null) continue;
+                var mi = comp.GetType().GetMethod("Damage", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+                if (mi == null) continue;
+
+                var ps = mi.GetParameters();
+                if (ps.Length == 1)
+                {
+                    var pType = ps[0].ParameterType;
+                    if (pType == typeof(float[]))
+                    {
+                        mi.Invoke(comp, new object[] { details });
+                        return true;
+                    }
+                    if (pType == typeof(float) || pType == typeof(System.Single))
+                    {
+                        mi.Invoke(comp, new object[] { details[0] });
+                        return true;
+                    }
+                    if (pType == typeof(int) || pType == typeof(System.Int32))
+                    {
+                        mi.Invoke(comp, new object[] { (int)details[0] });
+                        return true;
+                    }
+                    if (pType == typeof(object))
+                    {
+                        mi.Invoke(comp, new object[] { (object)details });
+                        return true;
+                    }
+                }
+                else if (ps.Length == 0)
+                {
+                    mi.Invoke(comp, null);
+                    return true;
+                }
+            }
+            parent = parent.parent;
+        }
+
+        return false;
     }
 
     // Public API to set the ArrowType at runtime (call before letting it move, e.g. right after Instantiate)
