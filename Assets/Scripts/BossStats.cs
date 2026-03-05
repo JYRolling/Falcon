@@ -36,15 +36,6 @@ public class BossStats : MonoBehaviour
     [SerializeField]
     public BossHealthBar bossHealthBar;
 
-#if UNITY_EDITOR
-    private void OnValidate()
-    {
-        // Editor-time reminder if the BossHealthBar is not assigned.
-        if (bossHealthBar == null)
-            Debug.LogError($"[BossStats] bossHealthBar not assigned on '{gameObject.name}'. Please assign a BossHealthBar in the inspector.");
-    }
-#endif
-
     /// <summary>
     /// Initialize runtime fields (call from controller Start).
     /// </summary>
