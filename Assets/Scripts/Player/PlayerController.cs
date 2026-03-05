@@ -194,6 +194,7 @@ public class PlayerController : MonoBehaviour
     {
         anim.SetBool("isWalking", isWalking);
         anim.SetBool("isGrounded", isGrounded);
+        Debug.Log("isGrounded" + isGrounded);
         anim.SetFloat("yVelocity", rb.velocity.y);
         anim.SetBool("isWallSliding", isWallSliding);
     }
