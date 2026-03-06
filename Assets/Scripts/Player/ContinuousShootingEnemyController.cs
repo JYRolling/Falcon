@@ -12,8 +12,8 @@ public class ContinuousShootingEnemyController : MonoBehaviour
         UseSpawnRotation,
         ForceLeft,
         ForceRight,
-        AlternatePerShot,
-        AlternatePerSpawnPoint
+        ForceUp,
+        ForceDown
     }
 
     [Header("Shooting")]
@@ -36,7 +36,6 @@ public class ContinuousShootingEnemyController : MonoBehaviour
 
     private Coroutine _shootRoutine;
     private bool _shooting;
-    private int _nextShotDirection = 1; // 1 => right, -1 => left (used for AlternatePerShot)
 
     private void OnEnable()
     {
@@ -135,13 +134,13 @@ public class ContinuousShootingEnemyController : MonoBehaviour
                             forceDir = true;
                             forcedDirection = Vector2.right;
                             break;
-                        case FireDirectionMode.AlternatePerShot:
+                        case FireDirectionMode.ForceUp:
                             forceDir = true;
-                            forcedDirection = (_nextShotDirection == 1) ? Vector2.right : Vector2.left;
+                            forcedDirection = Vector2.up;
                             break;
-                        case FireDirectionMode.AlternatePerSpawnPoint:
+                        case FireDirectionMode.ForceDown:
                             forceDir = true;
-                            forcedDirection = (i % 2 == 0) ? Vector2.right : Vector2.left;
+                            forcedDirection = Vector2.down;
                             break;
                     }
 
@@ -156,21 +155,38 @@ public class ContinuousShootingEnemyController : MonoBehaviour
                     // If BossBullet not found and we want to force direction, fall back to rotating the instantiated object.
                     if (!bulletsUseTheirOwnAimSetting)
                     {
-                        // no typed component, try to set rotation using spawn rotation (already applied),
-                        // or flip horizontally for left/right forcing:
-                        if (directionMode == FireDirectionMode.ForceLeft || (directionMode == FireDirectionMode.AlternatePerShot && _nextShotDirection == -1) || (directionMode == FireDirectionMode.AlternatePerSpawnPoint && i % 2 == 1))
+                        var t = b.transform;
+                        var e = t.eulerAngles;
+
+                        bool wantLeft = (directionMode == FireDirectionMode.ForceLeft);
+                        bool wantRight = (directionMode == FireDirectionMode.ForceRight);
+                        bool wantUp = (directionMode == FireDirectionMode.ForceUp);
+                        bool wantDown = (directionMode == FireDirectionMode.ForceDown);
+
+                        if (wantLeft && !wantUp && !wantDown)
                         {
-                            var t = b.transform;
-                            var e = t.eulerAngles;
+                            // Flip horizontally (keeps same z)
                             t.eulerAngles = new Vector3(e.x, 180f, e.z);
                         }
+                        else if (wantRight && !wantUp && !wantDown)
+                        {
+                            // Ensure no horizontal flip
+                            t.eulerAngles = new Vector3(e.x, 0f, e.z);
+                        }
+                        else if (wantUp && !wantLeft && !wantRight)
+                        {
+                            // Rotate to point up (z = 90)
+                            t.eulerAngles = new Vector3(e.x, e.y, 90f);
+                        }
+                        else if (wantDown && !wantLeft && !wantRight)
+                        {
+                            // Rotate to point down (z = 270)
+                            t.eulerAngles = new Vector3(e.x, e.y, 270f);
+                        }
+                        // If multiple flags are true or none matched, keep spawn rotation (do nothing)
                     }
                 }
             }
-
-            // toggle next-shot direction if using AlternatePerShot
-            if (directionMode == FireDirectionMode.AlternatePerShot)
-                _nextShotDirection *= -1;
 
             if (interval == Mathf.Infinity) yield break;
             if (interval <= 0f) yield return null;
