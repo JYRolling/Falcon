@@ -8,7 +8,7 @@ public class BossBullet : MonoBehaviour
 {
     [Header("Motion")]
     public float speed = 10f;
-    public bool aimAtPlayer = true;
+    public bool aimAtPlayer = true; // retained for compatibility but no longer causes bullets to home
     public Vector2 initialDirection = Vector2.right;
 
     [Header("Damage / life")]
@@ -23,7 +23,6 @@ public class BossBullet : MonoBehaviour
     public LayerMask destroyOnLayers;
 
     private Rigidbody2D _rb;
-    private Transform _player;
     private bool _dead = false;
 
     private void Awake()
@@ -35,31 +34,24 @@ public class BossBullet : MonoBehaviour
         // bullets should not be affected by gravity by default
         _rb.gravityScale = 0f;
 
-        var p = GameObject.FindGameObjectWithTag("Player");
-        if (p != null) _player = p.transform;
-
         Destroy(gameObject, lifeTime);
     }
 
     private void Start()
     {
+        // New behavior: always fire in the initial direction (or prefab/spawn rotation)
+        // The bullet will not chase the player. This ensures bullets travel straight until they hit something or time out.
         Vector2 dir;
 
-        if (aimAtPlayer && _player != null)
+        // If an explicit initialDirection is provided (non-zero), use it.
+        if (initialDirection != Vector2.zero)
         {
-            dir = ((Vector2)(_player.position - transform.position)).normalized;
+            dir = initialDirection.normalized;
         }
         else
         {
-            if (initialDirection != Vector2.zero)
-            {
-                Vector2 local = new Vector2(transform.right.x * initialDirection.x, transform.up.y * initialDirection.y);
-                dir = (local.sqrMagnitude > 0.001f) ? local.normalized : (Vector2)transform.right;
-            }
-            else
-            {
-                dir = (Vector2)transform.right;
-            }
+            // Use the bullet's local right vector as the firing direction (respects spawn rotation)
+            dir = transform.right;
         }
 
         _rb.velocity = dir * speed;
