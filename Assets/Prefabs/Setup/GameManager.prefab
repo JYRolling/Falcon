@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 4687148865835248288}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26.76, y: -0.46, z: 0}
+  m_LocalPosition: {x: -2.41, y: 6.79, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -77,5 +77,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnPoint: {fileID: 8724600228869616754}
-  player: {fileID: 6999723560801021349, guid: 05c7fbda332f68b4391e3d43d818f6c1, type: 3}
+  player: {fileID: 4123387611931252861, guid: 9542c4ea16f07d449b70df85f01ed65c, type: 3}
   respawnTime: 1
