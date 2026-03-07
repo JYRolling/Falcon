@@ -48,42 +48,50 @@ public class BossBullet : MonoBehaviour
 
     private void Start()
     {
-        Vector2 dir = Vector2.zero;
+        // Determine target position (explicit target takes precedence)
+        Vector2 targetPos = Vector2.zero; // initialize to avoid CS0165
+        bool haveTarget = false;
 
         if (_hasExplicitTarget)
         {
-            dir = _explicitTarget - (Vector2)transform.position;
-            if (dir.sqrMagnitude < 0.0001f) dir = transform.right;
-            else dir.Normalize();
-        }
-        else if (initialDirection != Vector2.zero && initialDirection.sqrMagnitude > 0.0001f)
-        {
-            dir = initialDirection.normalized;
+            targetPos = _explicitTarget;
+            haveTarget = true;
         }
         else if (aimAtPlayer)
         {
             var playerObj = GameObject.FindGameObjectWithTag("Player");
             if (playerObj != null)
             {
-                Vector2 toPlayer = (Vector2)playerObj.transform.position - (Vector2)transform.position;
-                if (toPlayer.sqrMagnitude < 0.0001f) dir = transform.right;
-                else dir = toPlayer.normalized;
+                targetPos = playerObj.transform.position;
+                haveTarget = true;
             }
-            else
-            {
+        }
+
+        Vector2 dir;
+
+        if (haveTarget)
+        {
+            dir = targetPos - (Vector2)transform.position;
+            if (dir.sqrMagnitude < 0.0001f)
                 dir = transform.right;
-            }
+            else
+                dir.Normalize();
+        }
+        else if (initialDirection != Vector2.zero && initialDirection.sqrMagnitude > 0.0001f)
+        {
+            dir = initialDirection.normalized;
         }
         else
         {
             dir = transform.right;
         }
 
+        // Set velocity toward the chosen target (single-shot, not homing)
         _rb.velocity = dir * speed;
 
-        // Align visual rotation so sprite faces movement direction (2D Z-rotation)
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, 0f, angle);
+        // Match the rotation logic used in your EnemyBulletScript (visual orientation)
+        float rot = Mathf.Atan2(-dir.y, -dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, rot + 90f);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
