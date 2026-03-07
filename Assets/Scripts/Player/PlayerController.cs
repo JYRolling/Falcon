@@ -326,7 +326,7 @@ public class PlayerController : MonoBehaviour
         if (!isGrounded && movementInputDirection == 0 && !knockback)
         {
             rb.velocity = new Vector2(rb.velocity.x * airDragMultiplier, rb.velocity.y);
-            anim.SetFloat("xVelocity", Mathf.Abs(rb.velocity.x));
+            //anim.SetFloat("xVelocity", Mathf.Abs(rb.velocity.x));
             anim.SetFloat("yVelocity", rb.velocity.y);
         }
         else if(canMove && !knockback)

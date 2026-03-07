@@ -14,6 +14,10 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float respawnTime;
 
+    // Optional: assign the HealthBar in the inspector to avoid runtime Find calls
+    [SerializeField]
+    private HealthBar healthBar;
+
     private float respawnTimeStart;
 
     private bool respawn;
@@ -67,10 +71,24 @@ public class GameManager : MonoBehaviour
                 var ps = playerTemp.GetComponent<PlayerStats>();
                 if (ps != null)
                 {
-                    var hb = FindObjectOfType<HealthBar>();
+                    // Prefer inspector-assigned HealthBar; otherwise try finding a HealthBar GameObject first,
+                    // then fall back to FindObjectOfType for maximum compatibility.
+                    HealthBar hb = healthBar;
+                    if (hb == null)
+                    {
+                        var hbGameObject = GameObject.Find("HealthBar");
+                        if (hbGameObject != null)
+                            hb = hbGameObject.GetComponent<HealthBar>();
+                    }
+                    if (hb == null)
+                    {
+                        hb = FindObjectOfType<HealthBar>();
+                    }
+
                     if (hb != null)
                     {
-                        ps.AssignHealthBar(hb);
+                        // assign on next frame to allow player's Start() to run
+                        StartCoroutine(AssignHealthBarNextFrame(playerTemp, hb));
                     }
                     else
                     {
@@ -102,5 +120,46 @@ public class GameManager : MonoBehaviour
 
         respawnPoint = newRespawnPoint;
         Debug.Log($"Respawn point updated to '{newRespawnPoint.name}' at {newRespawnPoint.position}");
+    }
+
+    private IEnumerator AssignHealthBarNextFrame(GameObject playerObj, HealthBar hb)
+    {
+        yield return null;
+
+        if (playerObj == null || hb == null)
+        {
+            Debug.LogWarning("AssignHealthBarNextFrame: missing playerObj or hb");
+            yield break;
+        }
+
+        // Walk up and enable all parent GameObjects so activeInHierarchy becomes true.
+        Transform t = hb.transform;
+        while (t != null)
+        {
+            if (!t.gameObject.activeSelf)
+                t.gameObject.SetActive(true);
+            t = t.parent;
+        }
+
+        // Ensure any CanvasGroup on root is visible
+        var rootCanvas = hb.GetComponentInParent<Canvas>();
+        if (rootCanvas != null)
+        {
+            var cg = rootCanvas.GetComponent<CanvasGroup>();
+            if (cg != null && cg.alpha <= 0f)
+                cg.alpha = 1f;
+        }
+
+        var ps = playerObj.GetComponent<PlayerStats>();
+        if (ps != null)
+        {
+            ps.AssignHealthBar(hb);
+            Canvas.ForceUpdateCanvases();
+            Debug.Log($"AssignHealthBarNextFrame: Assigned HealthBar '{hb.gameObject.name}' to player '{playerObj.name}' activeInHierarchy={hb.gameObject.activeInHierarchy}");
+        }
+        else
+        {
+            Debug.LogWarning("AssignHealthBarNextFrame: PlayerStats not found on spawned player.");
+        }
     }
 }

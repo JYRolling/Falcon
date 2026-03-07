@@ -79,3 +79,4 @@ MonoBehaviour:
   respawnPoint: {fileID: 8724600228869616754}
   player: {fileID: 6999723560801021349, guid: 05c7fbda332f68b4391e3d43d818f6c1, type: 3}
   respawnTime: 1
+  healthBar: {fileID: 2199656009705631411, guid: 6ad7dd446af4a744db2348bc8ab47cb0, type: 3}

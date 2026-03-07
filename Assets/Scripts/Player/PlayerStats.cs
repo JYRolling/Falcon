@@ -52,27 +52,37 @@ public class PlayerStats : MonoBehaviour
 
         if (healthBar != null)
         {
-            healthBar.SetMaxHealth((int)maxHealth);
-            healthBar.SetHealth((int)currentHealth);
+            // Use float API
+            healthBar.SetMaxHealth(maxHealth);
+            healthBar.SetHealth(currentHealth);
         }
     }
 
     // New: allow external assignment of the scene HealthBar after instantiation
     public void AssignHealthBar(HealthBar hb)
     {
-        if (hb == null) return;
+        if (hb == null)
+        {
+            Debug.LogWarning("[PlayerStats] AssignHealthBar called with null.");
+            return;
+        }
+
         healthBar = hb;
         currentHealth = Mathf.Clamp(currentHealth == 0 ? maxHealth : currentHealth, 0f, maxHealth);
-        healthBar.SetMaxHealth((int)maxHealth);
-        healthBar.SetHealth((int)currentHealth);
+
+        Debug.Log($"[PlayerStats] AssignHealthBar: assigning '{hb.gameObject.name}' to player '{gameObject.name}'. currentHealth={currentHealth}, maxHealth={maxHealth}");
+
+        healthBar.SetMaxHealth(maxHealth);
+        healthBar.SetHealth(currentHealth);
     }
 
     public void DecreaseHealth(float amount)
     {
         currentHealth -= amount;
+        currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
 
         if (healthBar != null)
-            healthBar.SetHealth((int)currentHealth);
+            healthBar.SetHealth(currentHealth);
         else
             Debug.LogWarning("[PlayerStats] Tried to update HealthBar but reference is null.");
 
@@ -84,8 +94,8 @@ public class PlayerStats : MonoBehaviour
 
     private void Die()
     {
-        Instantiate(deathChunkParticle, transform.position, deathChunkParticle.transform.rotation);
-        Instantiate(deathBloodParticle, transform.position, deathBloodParticle.transform.rotation);
+        if (deathChunkParticle) Instantiate(deathChunkParticle, transform.position, deathChunkParticle.transform.rotation);
+        if (deathBloodParticle) Instantiate(deathBloodParticle, transform.position, deathBloodParticle.transform.rotation);
         if (GM != null)
             GM.Respawn();
         else

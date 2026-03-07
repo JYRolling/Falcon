@@ -283,12 +283,6 @@ public class BossEnemyController : MonoBehaviour
                 transform.Translate(dir * movementSpeed * Time.deltaTime, Space.World);
             }
         }
-
-        // Optionally play idle animation here:
-        if (aliveAnim != null)
-        {
-            // aliveAnim.SetBool("Idle", true); // enable if you have an Idle param
-        }
     }
 
     private void ExitMovingState() { }
@@ -297,16 +291,12 @@ public class BossEnemyController : MonoBehaviour
 
     private void EnterAttackingState()
     {
-        // Stop any residual movement
-        if (aliveRb != null)
-            aliveRb.velocity = Vector2.zero;
-        if (aliveAnim != null)
-            aliveAnim.SetBool("Attacking", true);
+        
     }
 
     private void UpdateAttackingState()
     {
-        // Attacks are executed by the BossPatternLoop coroutine (DoShootVolley).
+        
     }
 
     private void ExitAttackingState() { }
@@ -416,9 +406,6 @@ public class BossEnemyController : MonoBehaviour
 
     private IEnumerator DoShootVolley()
     {
-        if (aliveAnim) aliveAnim.SetTrigger("Telegraph");
-        yield return new WaitForSeconds(0.25f);
-
         for (int s = 0; s < setsPerVolley; s++)
         {
             for (int b = 0; b < bulletsPerSet; b++)
@@ -431,7 +418,6 @@ public class BossEnemyController : MonoBehaviour
                         Instantiate(bulletPrefab, sp.position, sp.rotation);
                     }
                 }
-                if (aliveAnim) aliveAnim.SetTrigger("Shoot");
                 yield return new WaitForSeconds(timeBetweenBullets);
             }
             yield return new WaitForSeconds(timeBetweenSets);
