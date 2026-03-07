@@ -14,8 +14,7 @@ public class BossEnemyController : MonoBehaviour
 
     private State currentState;
 
-    // Prevent enemies colliding with each other by disabling Enemy-Enemy collisions once.
-    private static bool s_enemyCollisionsIgnored = false;
+    
 
     // track Collider2D for pairwise IgnoreCollision (works with Box/Circle/Composite/Tilemap etc.)
     private static List<Collider2D> s_enemyColliders = new List<Collider2D>();
@@ -105,65 +104,17 @@ public class BossEnemyController : MonoBehaviour
 
     // debug/stuck-detection fields (kept but not used in this movement style)
     private Vector2 _prevRbPos;
-    private int _stuckFrameCount = 0;
-    private int _stuckFrameThreshold = 6;
 
     private void Awake()
     {
-        // Run once: disable collisions between objects on the "Enemy" layer.
-        if (!s_enemyCollisionsIgnored)
-        {
-            int enemyLayer = LayerMask.NameToLayer("Enemy");
-            if (enemyLayer >= 0)
-            {
-                Physics2D.IgnoreLayerCollision(enemyLayer, enemyLayer, true);
-                s_enemyCollisionsIgnored = true;
-            }
-            else
-            {
-                Debug.LogWarning("Layer 'Enemy' not found. Create layer 'Enemy' and assign your enemy prefabs to it to disable enemy-enemy collisions.");
-            }
-        }
-
-        RegisterEnemyColliders();
+        
     }
 
     private void OnDestroy()
     {
-        UnregisterEnemyColliders();
-        // ensure UI unregister in case boss is destroyed unexpectedly
         BossHealthBar.Instance?.UnregisterBoss();
     }
 
-    private void RegisterEnemyColliders()
-    {
-        _localColliders.Clear();
-        var cols = GetComponentsInChildren<Collider2D>();
-        foreach (var c in cols)
-        {
-            if (c == null) continue;
-            _localColliders.Add(c);
-
-            foreach (var other in s_enemyColliders)
-            {
-                if (other != null)
-                    Physics2D.IgnoreCollision(c, other, true);
-            }
-
-            if (!s_enemyColliders.Contains(c))
-                s_enemyColliders.Add(c);
-        }
-    }
-
-    private void UnregisterEnemyColliders()
-    {
-        foreach (var c in _localColliders)
-        {
-            if (c != null)
-                s_enemyColliders.Remove(c);
-        }
-        _localColliders.Clear();
-    }
 
     private void Start()
     {
