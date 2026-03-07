@@ -1099,7 +1099,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: princenss  archer
+  m_text: princess  archer
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3f97e60c95b52e5408899d8ac3c5e37d, type: 2}
   m_sharedMaterial: {fileID: 1878263404531352935, guid: 3f97e60c95b52e5408899d8ac3c5e37d, type: 2}
