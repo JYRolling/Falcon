@@ -1,21 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
-// Simple continuous shooter enemy.
-// - Attach to an enemy GameObject.
-// - Assign a bullet prefab (e.g. existing `BossBullet`), one or more `bulletSpawnPoints` and set `fireRate` (bullets per second).
- // - The bullet prefab must handle collisions (the provided `BossBullet` already damages Player and disappears on Ground).
 public class ContinuousShootingEnemyController : MonoBehaviour
 {
-    private enum FireDirectionMode
-    {
-        UseSpawnRotation,
-        ForceLeft,
-        ForceRight,
-        ForceUp,
-        ForceDown
-    }
-
     [Header("Shooting")]
     [Tooltip("Prefab for the projectile. Prefer using the existing BossBullet prefab.")]
     [SerializeField] private GameObject bulletPrefab;
@@ -31,8 +18,8 @@ public class ContinuousShootingEnemyController : MonoBehaviour
     [SerializeField] private bool startOnAwake = true;
 
     [Header("Direction / Alternation")]
-    [Tooltip("Control how bullet direction is chosen.")]
-    [SerializeField] private FireDirectionMode directionMode = FireDirectionMode.UseSpawnRotation;
+    [Tooltip("Control how bullet direction is chosen. Uses TurretBullet.FireMode so you can pick cardinal directions, AimAtPlayer, InitialDirection or ExplicitTarget.")]
+    [SerializeField] private TurretBullet.FireMode directionMode = TurretBullet.FireMode.InitialDirection;
 
     private Coroutine _shootRoutine;
     private bool _shooting;
@@ -110,81 +97,82 @@ public class ContinuousShootingEnemyController : MonoBehaviour
 
                 GameObject b = Instantiate(bulletPrefab, sp.position, sp.rotation);
 
-                // If the bullet has a BossBullet component, configure its aiming/direction directly.
+                // Prefer TurretBullet: set its FireMode directly when present
+                var turret = b.GetComponent<TurretBullet>();
+                if (turret != null)
+                {
+                    // Apply chosen direction mode to turret bullet
+                    turret.fireMode = directionMode;
+                    continue;
+                }
+
+                // If the bullet has a BossBullet component, configure its aiming/direction.
                 var bossBullet = b.GetComponent<BossBullet>();
                 if (bossBullet != null)
                 {
-                    // Default behavior: let bullet use its own aim setting unless we override below.
-                    bossBullet.aimAtPlayer = bulletsUseTheirOwnAimSetting;
-
-                    bool forceDir = false;
-                    Vector2 forcedDirection = Vector2.right;
-
-                    switch (directionMode)
+                    // Respect bulletsUseTheirOwnAimSetting unless directionMode requests cardinal forcing.
+                    if (directionMode == TurretBullet.FireMode.AimAtPlayer)
                     {
-                        case FireDirectionMode.UseSpawnRotation:
-                            // do not force direction - keep spawn rotation or bullet's own behavior
-                            forceDir = false;
-                            break;
-                        case FireDirectionMode.ForceLeft:
-                            forceDir = true;
-                            forcedDirection = Vector2.left;
-                            break;
-                        case FireDirectionMode.ForceRight:
-                            forceDir = true;
-                            forcedDirection = Vector2.right;
-                            break;
-                        case FireDirectionMode.ForceUp:
-                            forceDir = true;
-                            forcedDirection = Vector2.up;
-                            break;
-                        case FireDirectionMode.ForceDown:
-                            forceDir = true;
-                            forcedDirection = Vector2.down;
-                            break;
+                        bossBullet.aimAtPlayer = true;
                     }
-
-                    if (forceDir)
+                    else if (directionMode == TurretBullet.FireMode.InitialDirection)
                     {
+                        bossBullet.aimAtPlayer = bulletsUseTheirOwnAimSetting;
+                        // leave initialDirection as-is (prefab)
+                    }
+                    else if (directionMode == TurretBullet.FireMode.ExplicitTarget)
+                    {
+                        // no explicit target available in continuous mode; fallback to AimAtPlayer
+                        bossBullet.aimAtPlayer = true;
+                    }
+                    else
+                    {
+                        // Force cardinal direction
                         bossBullet.aimAtPlayer = false;
-                        bossBullet.initialDirection = forcedDirection;
+                        switch (directionMode)
+                        {
+                            case TurretBullet.FireMode.Left:
+                                bossBullet.initialDirection = Vector2.left;
+                                break;
+                            case TurretBullet.FireMode.Right:
+                                bossBullet.initialDirection = Vector2.right;
+                                break;
+                            case TurretBullet.FireMode.Up:
+                                bossBullet.initialDirection = Vector2.up;
+                                break;
+                            case TurretBullet.FireMode.Down:
+                                bossBullet.initialDirection = Vector2.down;
+                                break;
+                        }
                     }
+
+                    continue;
                 }
-                else
+
+                // Otherwise (no known bullet component) apply old fallback:
+                if (!bulletsUseTheirOwnAimSetting)
                 {
-                    // If BossBullet not found and we want to force direction, fall back to rotating the instantiated object.
-                    if (!bulletsUseTheirOwnAimSetting)
+                    var t = b.transform;
+                    var e = t.eulerAngles;
+
+                    // NOTE: use the existing TurretBullet.FireMode values (Left/Right/Up/Down)
+                    if (directionMode == TurretBullet.FireMode.Left || directionMode == TurretBullet.FireMode.Left)
                     {
-                        var t = b.transform;
-                        var e = t.eulerAngles;
-
-                        bool wantLeft = (directionMode == FireDirectionMode.ForceLeft);
-                        bool wantRight = (directionMode == FireDirectionMode.ForceRight);
-                        bool wantUp = (directionMode == FireDirectionMode.ForceUp);
-                        bool wantDown = (directionMode == FireDirectionMode.ForceDown);
-
-                        if (wantLeft && !wantUp && !wantDown)
-                        {
-                            // Flip horizontally (keeps same z)
-                            t.eulerAngles = new Vector3(e.x, 180f, e.z);
-                        }
-                        else if (wantRight && !wantUp && !wantDown)
-                        {
-                            // Ensure no horizontal flip
-                            t.eulerAngles = new Vector3(e.x, 0f, e.z);
-                        }
-                        else if (wantUp && !wantLeft && !wantRight)
-                        {
-                            // Rotate to point up (z = 90)
-                            t.eulerAngles = new Vector3(e.x, e.y, 90f);
-                        }
-                        else if (wantDown && !wantLeft && !wantRight)
-                        {
-                            // Rotate to point down (z = 270)
-                            t.eulerAngles = new Vector3(e.x, e.y, 270f);
-                        }
-                        // If multiple flags are true or none matched, keep spawn rotation (do nothing)
+                        t.eulerAngles = new Vector3(e.x, 180f, e.z);
                     }
+                    else if (directionMode == TurretBullet.FireMode.Right || directionMode == TurretBullet.FireMode.Right)
+                    {
+                        t.eulerAngles = new Vector3(e.x, 0f, e.z);
+                    }
+                    else if (directionMode == TurretBullet.FireMode.Up)
+                    {
+                        t.eulerAngles = new Vector3(e.x, e.y, 90f);
+                    }
+                    else if (directionMode == TurretBullet.FireMode.Down)
+                    {
+                        t.eulerAngles = new Vector3(e.x, e.y, 270f);
+                    }
+                    // else UseSpawnRotation / AimAtPlayer / InitialDirection — leave spawn rotation
                 }
             }
 

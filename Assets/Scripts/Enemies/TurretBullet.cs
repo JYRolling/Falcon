@@ -1,14 +1,27 @@
 using System.Collections;
 using UnityEngine;
 
-// Simple 2D projectile for the boss.
+// Simple 2D projectile for turrets.
 // - Attach to the bullet prefab (requires Rigidbody2D and Collider2D).
-// - Recommended: set the bullet Collider2D IsTrigger = true and Rigidbody2D.gravityScale = 0.
 public class TurretBullet : MonoBehaviour
 {
+    public enum FireMode
+    {
+        Left,
+        Right,
+        Up,
+        Down,
+        AimAtPlayer,      // aim at player position at spawn time
+        InitialDirection, // use `initialDirection` (inspector)
+        ExplicitTarget    // use SetTargetPosition(worldPos) (takes precedence)
+    }
+
     [Header("Motion")]
     public float speed = 10f;
-    public bool aimAtPlayer = true; // retained for compatibility but no longer causes bullets to home
+    [Tooltip("Choose how the bullet determines its firing direction.")]
+    public FireMode fireMode = FireMode.InitialDirection;
+    [Tooltip("When true and FireMode == AimAtPlayer the bullet will aim at the player's current position at spawn time.")]
+    public bool aimAtPlayer = true;
     public Vector2 initialDirection = Vector2.right;
 
     [Header("Damage / life")]
@@ -25,6 +38,10 @@ public class TurretBullet : MonoBehaviour
     private Rigidbody2D _rb;
     private bool _dead = false;
 
+    // Optional externally-provided aiming target. If set via SetTargetPosition, it takes precedence when FireMode==ExplicitTarget.
+    private bool _hasExplicitTarget = false;
+    private Vector2 _explicitTarget;
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -37,24 +54,87 @@ public class TurretBullet : MonoBehaviour
         Destroy(gameObject, lifeTime);
     }
 
+    /// <summary>
+    /// Call immediately after Instantiate to force the bullet to aim at this world position.
+    /// Use when FireMode == ExplicitTarget.
+    /// </summary>
+    public void SetTargetPosition(Vector2 worldPosition)
+    {
+        _explicitTarget = worldPosition;
+        _hasExplicitTarget = true;
+    }
+
     private void Start()
     {
-        // New behavior: always fire in the initial direction (or prefab/spawn rotation)
-        // The bullet will not chase the player. This ensures bullets travel straight until they hit something or time out.
-        Vector2 dir;
+        Vector2 dir = Vector2.zero;
 
-        // If an explicit initialDirection is provided (non-zero), use it.
-        if (initialDirection != Vector2.zero)
+        switch (fireMode)
         {
-            dir = initialDirection.normalized;
+            case FireMode.Left:
+                dir = Vector2.left;
+                break;
+            case FireMode.Right:
+                dir = Vector2.right;
+                break;
+            case FireMode.Up:
+                dir = Vector2.up;
+                break;
+            case FireMode.Down:
+                dir = Vector2.down;
+                break;
+            case FireMode.ExplicitTarget:
+                if (_hasExplicitTarget)
+                {
+                    dir = _explicitTarget - (Vector2)transform.position;
+                    if (dir.sqrMagnitude < 0.0001f) dir = Vector2.right;
+                    else dir.Normalize();
+                }
+                else
+                {
+                    // Fallback to initialDirection if explicit target not provided
+                    Debug.LogWarning($"TurretBullet: FireMode is ExplicitTarget but no explicit target set for '{gameObject.name}'. Falling back.");
+                    fireMode = FireMode.InitialDirection;
+                }
+                break;
+            case FireMode.AimAtPlayer:
+                if (aimAtPlayer)
+                {
+                    var playerObj = GameObject.FindGameObjectWithTag("Player");
+                    if (playerObj != null)
+                    {
+                        dir = (Vector2)playerObj.transform.position - (Vector2)transform.position;
+                        if (dir.sqrMagnitude < 0.0001f) dir = Vector2.right;
+                        else dir.Normalize();
+                    }
+                    else
+                    {
+                        Debug.LogWarning("TurretBullet: Player not found while using AimAtPlayer. Falling back to InitialDirection.");
+                        fireMode = FireMode.InitialDirection;
+                    }
+                }
+                else
+                {
+                    fireMode = FireMode.InitialDirection;
+                }
+                break;
+            case FireMode.InitialDirection:
+            default:
+                if (initialDirection != Vector2.zero && initialDirection.sqrMagnitude > 0.0001f)
+                    dir = initialDirection.normalized;
+                else
+                    dir = transform.right; // final fallback
+                break;
         }
-        else
-        {
-            // Use the bullet's local right vector as the firing direction (respects spawn rotation)
+
+        // If dir still zero for some reason, ensure a fallback
+        if (dir == Vector2.zero)
             dir = transform.right;
-        }
 
         _rb.velocity = dir * speed;
+
+        // rotate sprite to face movement direction (2D Z-rotation)
+        float rot = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, rot - 90f);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -71,12 +151,9 @@ public class TurretBullet : MonoBehaviour
     {
         if (other == null || _dead) return;
 
-        // resolve layer indices (may be -1 if layer not defined)
         int playerLayer = LayerMask.NameToLayer("Player");
         int groundLayer = LayerMask.NameToLayer("Ground");
 
-        // Only act when collider's layer is Player or Ground.
-        // If those layers are not defined in project, fall back to tag check for Player.
         bool isPlayerLayer = (playerLayer >= 0 && other.layer == playerLayer);
         if (playerLayer < 0 && other.CompareTag("Player"))
             isPlayerLayer = true;
@@ -85,7 +162,7 @@ public class TurretBullet : MonoBehaviour
 
         if (isPlayerLayer)
         {
-            _dead = true; // prevent multiple triggers
+            _dead = true;
             var col = GetComponent<Collider2D>();
             if (col != null) col.enabled = false;
             var sprite = GetComponent<SpriteRenderer>();
@@ -117,8 +194,5 @@ public class TurretBullet : MonoBehaviour
             Destroy(gameObject, 0.01f);
             return;
         }
-
-        // Otherwise ignore the collision (do not destroy).
-        // This makes the bullet persist unless it hits Player or Ground layers.
     }
 }
