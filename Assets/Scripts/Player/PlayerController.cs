@@ -53,16 +53,16 @@ public class PlayerController : MonoBehaviour
     public float movementSpeed = 10.0f;
     public float jumpForce = 16.0f;
     public float groundCheckRadius;
-    private float wallCheckDistance;
-    private float wallSlideSpeed;
+    public float wallCheckDistance;
+    public float wallSlideSpeed;
     public float movementForceInAir;
     public float airDragMultiplier = 0.95f;
     public float variableJumpHeightMultiplier = 0.5f;
-    private float wallHopForce;
-    private float wallJumpForce;
+    public float wallHopForce;
+    public float wallJumpForce;
     public float jumpTimerSet = 0.15f;
     public float turnTimerSet = 0.1f;
-    private float wallJumpTimerSet = 0.5f;
+    public float wallJumpTimerSet = 0.5f;
     //public float ledgeClimbXOffset1 = 0f;
     //public float ledgeClimbYOffset1 = 0f;
     //public float ledgeClimbXOffset2 = 0f;
@@ -72,8 +72,8 @@ public class PlayerController : MonoBehaviour
     public float distanceBetweenImages;
     public float dashCoolDown;
 
-    private Vector2 wallHopDirection;
-    private Vector2 wallJumpDirection;
+    public Vector2 wallHopDirection;
+    public Vector2 wallJumpDirection;
 
     public Transform groundCheck;
     public Transform wallCheck;
