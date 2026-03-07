@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     // Optional: assign the HealthBar in the inspector to avoid runtime Find calls
     [SerializeField]
     private HealthBar healthBar;
+    public HealthBar PlayerHealthBar => healthBar;
 
     private float respawnTimeStart;
 
@@ -71,19 +72,7 @@ public class GameManager : MonoBehaviour
                 var ps = playerTemp.GetComponent<PlayerStats>();
                 if (ps != null)
                 {
-                    // Prefer inspector-assigned HealthBar; otherwise try finding a HealthBar GameObject first,
-                    // then fall back to FindObjectOfType for maximum compatibility.
-                    HealthBar hb = healthBar;
-                    if (hb == null)
-                    {
-                        var hbGameObject = GameObject.Find("HealthBar");
-                        if (hbGameObject != null)
-                            hb = hbGameObject.GetComponent<HealthBar>();
-                    }
-                    if (hb == null)
-                    {
-                        hb = FindObjectOfType<HealthBar>();
-                    }
+                    HealthBar hb = GetScenePlayerHealthBar();
 
                     if (hb != null)
                     {
@@ -132,6 +121,16 @@ public class GameManager : MonoBehaviour
             yield break;
         }
 
+        if (!IsValidPlayerHealthBar(hb))
+        {
+            hb = GetScenePlayerHealthBar();
+            if (hb == null)
+            {
+                Debug.LogWarning("AssignHealthBarNextFrame: no valid scene HealthBar found.");
+                yield break;
+            }
+        }
+
         // Walk up and enable all parent GameObjects so activeInHierarchy becomes true.
         Transform t = hb.transform;
         while (t != null)
@@ -154,12 +153,36 @@ public class GameManager : MonoBehaviour
         if (ps != null)
         {
             ps.AssignHealthBar(hb);
-            Canvas.ForceUpdateCanvases();
             Debug.Log($"AssignHealthBarNextFrame: Assigned HealthBar '{hb.gameObject.name}' to player '{playerObj.name}' activeInHierarchy={hb.gameObject.activeInHierarchy}");
         }
         else
         {
             Debug.LogWarning("AssignHealthBarNextFrame: PlayerStats not found on spawned player.");
         }
+    }
+
+    private bool IsValidPlayerHealthBar(HealthBar hb)
+    {
+        if (hb == null) return false;
+        if (hb is BossHealthBar) return false;
+        return hb.gameObject.scene.IsValid();
+    }
+
+    private HealthBar GetScenePlayerHealthBar()
+    {
+        if (IsValidPlayerHealthBar(healthBar))
+            return healthBar;
+
+        var bars = Object.FindObjectsByType<HealthBar>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (var hb in bars)
+        {
+            if (!IsValidPlayerHealthBar(hb))
+                continue;
+
+            healthBar = hb;
+            return hb;
+        }
+
+        return null;
     }
 }

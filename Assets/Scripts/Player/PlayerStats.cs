@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,12 +37,19 @@ public class PlayerStats : MonoBehaviour
             Debug.LogError("[PlayerStats] GameManager object not found in scene.");
         }
 
+        if (healthBar != null)
+        {
+            // Reject invalid references (boss bar or prefab asset reference).
+            if (healthBar is BossHealthBar || !healthBar.gameObject.scene.IsValid())
+                healthBar = null;
+        }
+
         if (healthBar == null)
         {
-            healthBar = FindObjectOfType<HealthBar>();
+            healthBar = FindPlayerHealthBarInScene();
             if (healthBar == null)
             {
-                Debug.LogError("[PlayerStats] HealthBar reference not assigned and no HealthBar found in scene.");
+                Debug.LogError("[PlayerStats] HealthBar reference not assigned and no non-boss HealthBar found in scene.");
             }
             else
             {
@@ -61,14 +68,15 @@ public class PlayerStats : MonoBehaviour
     // New: allow external assignment of the scene HealthBar after instantiation
     public void AssignHealthBar(HealthBar hb)
     {
-        if (hb == null)
+        if (hb == null || hb is BossHealthBar || !hb.gameObject.scene.IsValid())
         {
-            Debug.LogWarning("[PlayerStats] AssignHealthBar called with null.");
+            Debug.LogWarning("[PlayerStats] AssignHealthBar called with invalid HealthBar reference.");
             return;
         }
 
         healthBar = hb;
-        currentHealth = Mathf.Clamp(currentHealth == 0 ? maxHealth : currentHealth, 0f, maxHealth);
+        if (currentHealth <= 0f)
+            currentHealth = maxHealth;
 
         Debug.Log($"[PlayerStats] AssignHealthBar: assigning '{hb.gameObject.name}' to player '{gameObject.name}'. currentHealth={currentHealth}, maxHealth={maxHealth}");
 
@@ -101,5 +109,19 @@ public class PlayerStats : MonoBehaviour
         else
             Debug.LogError("[PlayerStats] Cannot respawn because GameManager reference is null.");
         Destroy(gameObject);
+    }
+
+    private static HealthBar FindPlayerHealthBarInScene()
+    {
+        var bars = Object.FindObjectsByType<HealthBar>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (var hb in bars)
+        {
+            if (hb == null) continue;
+            if (hb is BossHealthBar) continue;
+            if (!hb.gameObject.scene.IsValid()) continue;
+            return hb;
+        }
+
+        return null;
     }
 }
