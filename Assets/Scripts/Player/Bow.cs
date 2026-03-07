@@ -7,14 +7,14 @@ using TMPro;
 public class Bow : MonoBehaviour
 {
     // legacy single-arrow fallback
-    private GameObject arrow;
+    public GameObject arrow;
 
     // arrow prefabs (for cycling)
     public GameObject[] arrowPrefabs;
     int selectedArrowIndex = 0;
 
     // Optional: directly assign ArrowType ScriptableObjects for icons/data
-    private ArrowType[] arrowTypes;
+    public ArrowType[] arrowTypes;
 
     // UI: assign an Image on your Canvas to display the current arrow icon (legacy)
     [Header("UI")]
@@ -35,26 +35,21 @@ public class Bow : MonoBehaviour
 
     // Default shooting type used when none are assigned (assign a ShootingType asset in Inspector)
     [Tooltip("Optional default ShootingType to use when no shootingTypes are configured.")]
-    private ShootingType defaultShootingType;
+    public ShootingType defaultShootingType;
 
     // Backwards-compatible enum fallback
-    private ShootingStyle fallbackShootingStyle = ShootingStyle.Single;
+    public ShootingStyle fallbackShootingStyle = ShootingStyle.Single;
 
     // Multi-shot transforms (optional)
     [Header("Multi Shot Points (assign Transforms or leave empty to use shotPoint)")]
-    private Transform multiShotPoint1;
-    private Transform multiShotPoint2;
+    public Transform multiShotPoint1;
+    public Transform multiShotPoint2;
 
     public GameObject point;
     GameObject[] points;
     public int numberOfPoints;
     public float spaceBetweenPoints;
     Vector2 direction;
-
-    [Header("Anti-spam")]
-    [Tooltip("Seconds between allowed shots. Increase to prevent spam clicking.")]
-    public float shootCooldown = 0.25f;
-    private float _lastShootTime = -999f;
 
     private void OnEnable()
     {
@@ -158,18 +153,9 @@ public class Bow : MonoBehaviour
         direction = mousePosition - bowPosition;
         transform.right = direction;
 
-        // Enforce cooldown to prevent spam clicking
         if (Input.GetMouseButtonDown(0))
         {
-            if (Time.time >= _lastShootTime + shootCooldown)
-            {
-                Shoot();
-                _lastShootTime = Time.time;
-            }
-            else
-            {
-                // Optionally: provide feedback (sound/UI) for cooldown here
-            }
+            Shoot();
         }
 
         // Press F to cycle arrow types (legacy)
