@@ -48,21 +48,24 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
 
+    // track previous walking state to avoid repeated crossfades
+    private bool _prevWalkingState = false;
+
     public int amountOfJumps = 1;
 
     public float movementSpeed = 10.0f;
     public float jumpForce = 16.0f;
     public float groundCheckRadius;
-    public float wallCheckDistance;
-    public float wallSlideSpeed;
+    private float wallCheckDistance;
+    private float wallSlideSpeed;
     public float movementForceInAir;
     public float airDragMultiplier = 0.95f;
     public float variableJumpHeightMultiplier = 0.5f;
-    public float wallHopForce;
-    public float wallJumpForce;
+    private float wallHopForce;
+    private float wallJumpForce;
     public float jumpTimerSet = 0.15f;
     public float turnTimerSet = 0.1f;
-    public float wallJumpTimerSet = 0.5f;
+    private float wallJumpTimerSet = 0.5f;
     //public float ledgeClimbXOffset1 = 0f;
     //public float ledgeClimbYOffset1 = 0f;
     //public float ledgeClimbXOffset2 = 0f;
@@ -72,8 +75,8 @@ public class PlayerController : MonoBehaviour
     public float distanceBetweenImages;
     public float dashCoolDown;
 
-    public Vector2 wallHopDirection;
-    public Vector2 wallJumpDirection;
+    private Vector2 wallHopDirection;
+    private Vector2 wallJumpDirection;
 
     public Transform groundCheck;
     public Transform wallCheck;
@@ -329,6 +332,7 @@ public class PlayerController : MonoBehaviour
         if (canNormalJump)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            anim.SetBool("isJumping", !isGrounded);
             amountOfJumpsLeft--;
             jumpTimer = 0;
             isAttemptingToJump = false;
@@ -348,6 +352,8 @@ public class PlayerController : MonoBehaviour
         if (!isGrounded && !isWallSliding && movementInputDirection == 0 && !knockback)
         {
             rb.velocity = new Vector2(rb.velocity.x * airDragMultiplier, rb.velocity.y);
+            anim.SetFloat("xVelocity", Mathf.Abs(rb.velocity.x));
+            anim.SetFloat("yVelocity", rb.velocity.y);
         }
         else if(canMove && !knockback)
         {

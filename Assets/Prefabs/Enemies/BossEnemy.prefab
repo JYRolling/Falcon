@@ -184,6 +184,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8006260633284284431}
+  - component: {fileID: 8768467482845431533}
   - component: {fileID: 4828269630168783179}
   m_Layer: 10
   m_Name: BossEnemy
@@ -208,6 +209,27 @@ Transform:
   - {fileID: 1448666624181436247}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8768467482845431533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5017185110751606982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f8780b22aa3bce43b51700f1fdd5e28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1500
+  currentHealth: 0
+  touchDamage: 10
+  touchDamageCooldown: 1
+  touchDamageWidth: 2
+  touchDamageHeight: 2.5
+  deathChunkParticle: {fileID: 1962614393226834858, guid: 914644236e87d4d409304bcf9d8d3eb7, type: 3}
+  deathBloodParticle: {fileID: 5096148057906189823, guid: 8b6a10ca53360a94eb6e376bb2a49079, type: 3}
+  bossHealthBar: {fileID: 0}
 --- !u!114 &4828269630168783179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,13 +244,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundCheckDistance: 0.5
   wallCheckDistance: 0.1
-  movementSpeed: 4
-  maxHealth: 1500
+  movementSpeed: 8
+  bossStats: {fileID: 8768467482845431533}
   lastTouchDamageTime: 0
-  touchDamageCooldown: 0.2
-  touchDamage: 20
-  touchDamageWidth: 2.77
-  touchDamageHeight: 2.55
   isBoss: 1
   canChase: 1
   chaseRadius: 20
@@ -256,8 +274,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   hitParticle: {fileID: 6240072112886026631, guid: b422d378313ccbb4d8acb6196f1cdbbd, type: 3}
-  deathChunkParticle: {fileID: 1962614393226834858, guid: 914644236e87d4d409304bcf9d8d3eb7, type: 3}
-  deathBloodParticle: {fileID: 5096148057906189823, guid: 8b6a10ca53360a94eb6e376bb2a49079, type: 3}
+  sceneToLoadOnDefeat: End
+  sceneLoadDelay: 1
 --- !u!1 &5251117327365484032
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,7 +332,7 @@ Transform:
   m_GameObject: {fileID: 5657412989949626493}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.504, y: -0.666, z: 0}
+  m_LocalPosition: {x: 0.271, y: -0.396, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -345,7 +363,7 @@ Transform:
   m_GameObject: {fileID: 6473608593171949776}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.727, y: 0, z: 0}
+  m_LocalPosition: {x: 0.342, y: -0.221, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
