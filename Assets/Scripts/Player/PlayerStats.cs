@@ -53,7 +53,18 @@ public class PlayerStats : MonoBehaviour
         if (healthBar != null)
         {
             healthBar.SetMaxHealth((int)maxHealth);
+            healthBar.SetHealth((int)currentHealth);
         }
+    }
+
+    // New: allow external assignment of the scene HealthBar after instantiation
+    public void AssignHealthBar(HealthBar hb)
+    {
+        if (hb == null) return;
+        healthBar = hb;
+        currentHealth = Mathf.Clamp(currentHealth == 0 ? maxHealth : currentHealth, 0f, maxHealth);
+        healthBar.SetMaxHealth((int)maxHealth);
+        healthBar.SetHealth((int)currentHealth);
     }
 
     public void DecreaseHealth(float amount)
