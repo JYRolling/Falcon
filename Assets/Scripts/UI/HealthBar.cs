@@ -27,6 +27,13 @@ public class HealthBar : MonoBehaviour
             Debug.LogError("[HealthBar] Slider reference is missing on " + gameObject.name);
         if (fill == null)
             Debug.LogError("[HealthBar] Fill Image reference is missing on " + gameObject.name);
+
+        // ensure sensible slider defaults
+        if (slider != null)
+        {
+            slider.minValue = 0f;
+            slider.wholeNumbers = false;
+        }
     }
 
 #if UNITY_EDITOR
@@ -40,23 +47,46 @@ public class HealthBar : MonoBehaviour
     }
 #endif
 
-    public void SetMaxHealth(int health)
+    // Use floats so fractional health changes are visible
+    public void SetMaxHealth(float health)
     {
         if (slider == null || fill == null)
+        {
+            Debug.LogWarning($"[HealthBar] SetMaxHealth skipped because slider or fill is null on '{gameObject.name}'");
             return;
+        }
 
+        slider.minValue = 0f;
         slider.maxValue = health;
         slider.value = health;
 
-        fill.color = gradient.Evaluate(1f);
+        // Force layout/UI update to make certain Unity repaints the UI immediately
+        Canvas.ForceUpdateCanvases();
+        UnityEngine.UI.LayoutRebuilder.ForceRebuildLayoutImmediate(slider.GetComponent<RectTransform>());
+
+        if (gradient != null)
+            fill.color = gradient.Evaluate(1f);
+
+        Debug.Log($"[HealthBar] SetMaxHealth on '{gameObject.name}': min={slider.minValue} max={slider.maxValue} value={slider.value} fill={(fill!=null?fill.name:"null")} active={gameObject.activeInHierarchy}");
     }
 
-    public void SetHealth(int health)
+    public void SetHealth(float health)
     {
         if (slider == null || fill == null)
+        {
+            Debug.LogWarning($"[HealthBar] SetHealth skipped because slider or fill is null on '{gameObject.name}'");
             return;
+        }
 
-        slider.value = health;
-        fill.color = gradient.Evaluate(slider.normalizedValue);
+        slider.value = Mathf.Clamp(health, slider.minValue, slider.maxValue);
+
+        // Force layout/UI update to make certain Unity repaints the UI immediately
+        Canvas.ForceUpdateCanvases();
+        UnityEngine.UI.LayoutRebuilder.ForceRebuildLayoutImmediate(slider.GetComponent<RectTransform>());
+
+        if (gradient != null)
+            fill.color = gradient.Evaluate(slider.normalizedValue);
+
+        Debug.Log($"[HealthBar] SetHealth on '{gameObject.name}': value={slider.value} normalized={slider.normalizedValue} active={gameObject.activeInHierarchy}");
     }
 }
