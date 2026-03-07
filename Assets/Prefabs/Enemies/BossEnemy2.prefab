@@ -256,7 +256,7 @@ MonoBehaviour:
   dashTime: 0.25
   dashCooldown: 6
   dashTriggerDistance: 6
-  bulletPrefab: {fileID: 6893207421243802147, guid: a29c5ff3da9a19e4b912e5042db8a14f, type: 3}
+  bulletPrefab: {fileID: 6893207421243802147, guid: 1e9c13d9293a0a341a60d8e906386991, type: 3}
   bulletSpawnPoints:
   - {fileID: 6440610602611173307}
   bulletsPerSet: 3
@@ -264,6 +264,10 @@ MonoBehaviour:
   timeBetweenBullets: 0.15
   timeBetweenSets: 3
   timeBetweenVolleys: 3
+  continuousShooting: 0
+  triggerRange: 4
+  fireInterval: 2
+  bulletSpeed: 10
   groundCheck: {fileID: 8412950683029543036}
   wallCheck: {fileID: 8119100353311553616}
   touchDamageCheck: {fileID: 3280992652494893110}
