@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +10,7 @@ public class HealthBar : MonoBehaviour
     [SerializeField]
     private Image fill;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         // Try to auto-find a Slider if not assigned
         if (slider == null)
@@ -27,6 +25,13 @@ public class HealthBar : MonoBehaviour
             Debug.LogError("[HealthBar] Slider reference is missing on " + gameObject.name);
         if (fill == null)
             Debug.LogError("[HealthBar] Fill Image reference is missing on " + gameObject.name);
+
+        // ensure sensible slider defaults
+        if (slider != null)
+        {
+            slider.minValue = 0f;
+            slider.wholeNumbers = false;
+        }
     }
 
 #if UNITY_EDITOR
@@ -40,23 +45,59 @@ public class HealthBar : MonoBehaviour
     }
 #endif
 
-    public void SetMaxHealth(int health)
+    // Use floats so fractional health changes are visible
+    public void SetMaxHealth(float health)
     {
         if (slider == null || fill == null)
+        {
+            Debug.LogWarning($"[HealthBar] SetMaxHealth skipped because slider or fill is null on '{gameObject.name}'");
             return;
+        }
 
+        // Keep player health UI visible if it was disabled in scene/prefab overrides.
+        if (!gameObject.activeInHierarchy && !(this is BossHealthBar))
+        {
+            Transform t = transform;
+            while (t != null)
+            {
+                t.gameObject.SetActive(true);
+                t = t.parent;
+            }
+        }
+
+        slider.minValue = 0f;
         slider.maxValue = health;
         slider.value = health;
 
-        fill.color = gradient.Evaluate(1f);
+        if (gradient != null)
+            fill.color = gradient.Evaluate(1f);
+        else
+            fill.color = Color.green;
     }
 
-    public void SetHealth(int health)
+    public void SetHealth(float health)
     {
         if (slider == null || fill == null)
+        {
+            Debug.LogWarning($"[HealthBar] SetHealth skipped because slider or fill is null on '{gameObject.name}'");
             return;
+        }
 
-        slider.value = health;
-        fill.color = gradient.Evaluate(slider.normalizedValue);
+        if (!gameObject.activeInHierarchy && !(this is BossHealthBar))
+        {
+            Transform t = transform;
+            while (t != null)
+            {
+                t.gameObject.SetActive(true);
+                t = t.parent;
+            }
+        }
+
+        slider.value = Mathf.Clamp(health, slider.minValue, slider.maxValue);
+
+        if (gradient != null)
+            fill.color = gradient.Evaluate(slider.normalizedValue);
+        else
+            fill.color = Color.Lerp(Color.red, Color.green, slider.normalizedValue);
     }
 }

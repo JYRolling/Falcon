@@ -14,9 +14,6 @@ public class BossEnemyController : MonoBehaviour
 
     private State currentState;
 
-    // Prevent enemies colliding with each other by disabling Enemy-Enemy collisions once.
-    private static bool s_enemyCollisionsIgnored = false;
-
     // track Collider2D for pairwise IgnoreCollision (works with Box/Circle/Composite/Tilemap etc.)
     private static List<Collider2D> s_enemyColliders = new List<Collider2D>();
     private readonly List<Collider2D> _localColliders = new List<Collider2D>();
@@ -34,7 +31,6 @@ public class BossEnemyController : MonoBehaviour
     [Header("Boss pattern (tune in inspector)")]
     [Tooltip("When true the boss performs its attack pattern")]
     public bool isBoss = true;
-    // runDuration/runSpeed left in inspector for compatibility but not used
 
     [Header("Chase (optional)")]
     [Tooltip("When true the boss will chase the player when inside chaseRadius")]
@@ -58,6 +54,14 @@ public class BossEnemyController : MonoBehaviour
     [SerializeField] private float timeBetweenBullets = 0.15f;
     [SerializeField] private float timeBetweenSets = 0.6f;
     [SerializeField] private float timeBetweenVolleys = 1.0f; // pause after full volley
+
+    // --- continuous shooting (EnemyShooting-like) ---
+    [Tooltip("When true the boss will auto-shoot while the player is within triggerRange")]
+    [SerializeField] private bool continuousShooting = false;
+    [SerializeField] private float triggerRange = 4f;
+    [SerializeField] private float fireInterval = 2f;    // seconds between shots
+    [SerializeField] private float bulletSpeed = 10f;    // used if bullet prefab uses Rigidbody2D velocity
+    private float _shootTimer = 0f;
 
     [Header("Checks & FX")]
     [SerializeField] private Transform groundCheck;
@@ -105,64 +109,14 @@ public class BossEnemyController : MonoBehaviour
 
     // debug/stuck-detection fields (kept but not used in this movement style)
     private Vector2 _prevRbPos;
-    private int _stuckFrameCount = 0;
-    private int _stuckFrameThreshold = 6;
 
     private void Awake()
     {
-        // Run once: disable collisions between objects on the "Enemy" layer.
-        if (!s_enemyCollisionsIgnored)
-        {
-            int enemyLayer = LayerMask.NameToLayer("Enemy");
-            if (enemyLayer >= 0)
-            {
-                Physics2D.IgnoreLayerCollision(enemyLayer, enemyLayer, true);
-                s_enemyCollisionsIgnored = true;
-            }
-            else
-            {
-                Debug.LogWarning("Layer 'Enemy' not found. Create layer 'Enemy' and assign your enemy prefabs to it to disable enemy-enemy collisions.");
-            }
-        }
-
-        RegisterEnemyColliders();
     }
 
     private void OnDestroy()
     {
-        UnregisterEnemyColliders();
-        // ensure UI unregister in case boss is destroyed unexpectedly
         BossHealthBar.Instance?.UnregisterBoss();
-    }
-
-    private void RegisterEnemyColliders()
-    {
-        _localColliders.Clear();
-        var cols = GetComponentsInChildren<Collider2D>();
-        foreach (var c in cols)
-        {
-            if (c == null) continue;
-            _localColliders.Add(c);
-
-            foreach (var other in s_enemyColliders)
-            {
-                if (other != null)
-                    Physics2D.IgnoreCollision(c, other, true);
-            }
-
-            if (!s_enemyColliders.Contains(c))
-                s_enemyColliders.Add(c);
-        }
-    }
-
-    private void UnregisterEnemyColliders()
-    {
-        foreach (var c in _localColliders)
-        {
-            if (c != null)
-                s_enemyColliders.Remove(c);
-        }
-        _localColliders.Clear();
     }
 
     private void Start()
@@ -211,6 +165,11 @@ public class BossEnemyController : MonoBehaviour
     private void Update()
     {
         FacePlayerVisual();
+
+        // continuous shooting behavior:
+        // run only when enabled and boss is not currently performing volley attacks (attacking state)
+        if (continuousShooting && playerTransform != null && currentState == State.Moving)
+            HandleContinuousShooting();
 
         switch (currentState)
         {
@@ -332,12 +291,6 @@ public class BossEnemyController : MonoBehaviour
                 transform.Translate(dir * movementSpeed * Time.deltaTime, Space.World);
             }
         }
-
-        // Optionally play idle animation here:
-        if (aliveAnim != null)
-        {
-            // aliveAnim.SetBool("Idle", true); // enable if you have an Idle param
-        }
     }
 
     private void ExitMovingState() { }
@@ -346,16 +299,10 @@ public class BossEnemyController : MonoBehaviour
 
     private void EnterAttackingState()
     {
-        // Stop any residual movement
-        if (aliveRb != null)
-            aliveRb.velocity = Vector2.zero;
-        if (aliveAnim != null)
-            aliveAnim.SetBool("Attacking", true);
     }
 
     private void UpdateAttackingState()
     {
-        // Attacks are executed by the BossPatternLoop coroutine (DoShootVolley).
     }
 
     private void ExitAttackingState() { }
@@ -465,9 +412,6 @@ public class BossEnemyController : MonoBehaviour
 
     private IEnumerator DoShootVolley()
     {
-        if (aliveAnim) aliveAnim.SetTrigger("Telegraph");
-        yield return new WaitForSeconds(0.25f);
-
         for (int s = 0; s < setsPerVolley; s++)
         {
             for (int b = 0; b < bulletsPerSet; b++)
@@ -480,10 +424,74 @@ public class BossEnemyController : MonoBehaviour
                         Instantiate(bulletPrefab, sp.position, sp.rotation);
                     }
                 }
-                if (aliveAnim) aliveAnim.SetTrigger("Shoot");
                 yield return new WaitForSeconds(timeBetweenBullets);
             }
             yield return new WaitForSeconds(timeBetweenSets);
+        }
+    }
+
+    // Continuous shooting helpers
+    private void HandleContinuousShooting()
+    {
+        if (playerTransform == null) return;
+
+        float distance = Vector2.Distance(alive.transform.position, playerTransform.position);
+        if (distance <= triggerRange)
+        {
+            _shootTimer += Time.deltaTime;
+            if (_shootTimer >= fireInterval)
+            {
+                _shootTimer = 0f;
+                ShootAtPlayer();
+            }
+        }
+        else
+        {
+            // keep timer capped so when player re-enters it's predictable
+            _shootTimer = Mathf.Min(_shootTimer, fireInterval);
+        }
+    }
+
+    private void ShootAtPlayer()
+    {
+        if (bulletPrefab == null || bulletSpawnPoints == null || bulletSpawnPoints.Length == 0 || playerTransform == null)
+            return;
+
+        Vector2 targetPos = playerTransform.position;
+
+        for (int i = 0; i < bulletSpawnPoints.Length; i++)
+        {
+            Transform sp = bulletSpawnPoints[i];
+            if (sp == null) continue;
+
+            Vector2 spawnPos = sp.position;
+            Vector2 dir = (targetPos - spawnPos);
+            if (dir.sqrMagnitude < 0.0001f) dir = (facingDirection == 1) ? Vector2.right : Vector2.left;
+            dir.Normalize();
+
+            // rotation similar to your bullets
+            float rot = Mathf.Atan2(-dir.y, -dir.x) * Mathf.Rad2Deg;
+            Quaternion rotQuat = Quaternion.Euler(0f, 0f, rot + 90f);
+
+            GameObject go = Instantiate(bulletPrefab, spawnPos, rotQuat);
+            if (go == null) continue;
+
+            // If the prefab uses BossBullet (preferred) pass the explicit target
+            var bossBullet = go.GetComponent<BossBullet>();
+            if (bossBullet != null)
+            {
+                bossBullet.SetTargetPosition(targetPos);
+                // optionally override speed if you want
+                bossBullet.speed = bulletSpeed;
+                continue;
+            }
+
+            // Otherwise try to set Rigidbody2D velocity
+            var rb = go.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.velocity = dir * bulletSpeed;
+            }
         }
     }
 
