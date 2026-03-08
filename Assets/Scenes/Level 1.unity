@@ -17986,11 +17986,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4114592898598269434, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.84
       objectReference: {fileID: 0}
     - target: {fileID: 4114592898598269434, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6249765597400850102, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
       propertyPath: m_Color.b
@@ -18044,13 +18044,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 8075949323384336758, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
-      propertyPath: m_AnchorMax.x
+    - target: {fileID: 7347213971761101093, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8075949323384336758, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8075949323384336758, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
