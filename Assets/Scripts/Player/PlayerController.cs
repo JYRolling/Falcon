@@ -26,23 +26,30 @@ public class PlayerController : MonoBehaviour
     private bool isTouchingWall;
     private bool isWallSliding;
     private bool canNormalJump;
-
+    private bool canWallJump; // will remain false to disable wall-jump
     private bool isAttemptingToJump;
     private bool checkJumpMultiplier;
     private bool canMove;
     private bool canFlip;
     private bool hasWallJumped;
-
+    //private bool isTouchingLedge;
+    //private bool canClimbLedge = false;
+    //private bool ledgeDetected;
     private bool isDashing;
     private bool knockback;
 
     [SerializeField]
     private Vector2 knockbackSpeed;
 
+    //private Vector2 ledgePosBot;
+    //private Vector2 ledgePos1;
+    //private Vector2 ledgePos2;
+
     private Rigidbody2D rb;
     private Animator anim;
 
     // track previous walking state to avoid repeated crossfades
+    private bool _prevWalkingState = false;
 
     public int amountOfJumps = 1;
 
@@ -58,7 +65,11 @@ public class PlayerController : MonoBehaviour
     private float wallJumpForce;
     public float jumpTimerSet = 0.15f;
     public float turnTimerSet = 0.1f;
-
+    private float wallJumpTimerSet = 0.5f;
+    //public float ledgeClimbXOffset1 = 0f;
+    //public float ledgeClimbYOffset1 = 0f;
+    //public float ledgeClimbXOffset2 = 0f;
+    //public float ledgeClimbYOffset2 = 0f;
     public float dashTime;
     public float dashSpeed;
     public float distanceBetweenImages;
@@ -69,6 +80,7 @@ public class PlayerController : MonoBehaviour
 
     public Transform groundCheck;
     public Transform wallCheck;
+    //public Transform ledgeCheck;
 
     public LayerMask whatIsGround;
 
@@ -80,6 +92,9 @@ public class PlayerController : MonoBehaviour
         amountOfJumpsLeft = amountOfJumps;
         wallHopDirection.Normalize();
         wallJumpDirection.Normalize();
+
+        // Ensure wall-jump is disabled at runtime
+        canWallJump = false;
     }
 
     // Update is called once per frame
@@ -89,7 +104,9 @@ public class PlayerController : MonoBehaviour
         CheckMovementDirection();
         UpdateAnimations();
         CheckIfCanJump();
+        CheckIfWallSliding();
         CheckJump();
+        //CheckLedgeClimb();
         CheckDash();
         CheckKnockback();
     }
@@ -98,6 +115,12 @@ public class PlayerController : MonoBehaviour
     {
         ApplyMovement();
         CheckSurroundings();
+    }
+
+    private void CheckIfWallSliding()
+    {
+        // Wall sliding disabled: always false.
+        isWallSliding = false;
     }
 
     public bool GetDashStatus()
@@ -134,6 +157,8 @@ public class PlayerController : MonoBehaviour
             amountOfJumpsLeft = amountOfJumps;
         }
 
+        // Disable wall-jump: do not enable canWallJump when touching wall.
+        // keep checkJumpMultiplier behavior for non-wall cases as before.
         if(amountOfJumpsLeft <= 0)
         {
             canNormalJump = false;
@@ -170,6 +195,7 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("isWalking", isWalking);
         anim.SetBool("isGrounded", isGrounded);
         anim.SetFloat("yVelocity", rb.velocity.y);
+        anim.SetBool("isWallSliding", isWallSliding);
     }
 
     private void CheckInput()
@@ -323,10 +349,10 @@ public class PlayerController : MonoBehaviour
     private void ApplyMovement()
     {
 
-        if (!isGrounded && movementInputDirection == 0 && !knockback)
+        if (!isGrounded && !isWallSliding && movementInputDirection == 0 && !knockback)
         {
             rb.velocity = new Vector2(rb.velocity.x * airDragMultiplier, rb.velocity.y);
-            //anim.SetFloat("xVelocity", Mathf.Abs(rb.velocity.x));
+            anim.SetFloat("xVelocity", Mathf.Abs(rb.velocity.x));
             anim.SetFloat("yVelocity", rb.velocity.y);
         }
         else if(canMove && !knockback)
@@ -347,7 +373,7 @@ public class PlayerController : MonoBehaviour
 
     private void Flip()
     {
-        if (canFlip && !knockback)
+        if (!isWallSliding && canFlip && !knockback)
         {
             facingDirection *= -1;
             isFacingRight = !isFacingRight;

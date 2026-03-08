@@ -43,12 +43,16 @@ public class BossStats : MonoBehaviour
     {
         currentHealth = maxHealth;
 
-        // Require bossHealthBar to be assigned in inspector ï¿½ no auto-find fallback.
+        // Require bossHealthBar to be assigned in inspector — no auto-find fallback.
         if (bossHealthBar == null)
         {
             Debug.LogError($"[BossStats] BossHealthBar reference not assigned on '{gameObject.name}'. Assign a BossHealthBar in the inspector. No runtime fallback will be used.");
         }
-        // BossEnemyController.RegisterBoss() is responsible for initializing and showing the boss UI.
+        else
+        {
+            bossHealthBar.SetMaxHealth((int)maxHealth);
+            bossHealthBar.SetHealth((int)currentHealth);
+        }
     }
 
     /// <summary>
@@ -59,8 +63,12 @@ public class BossStats : MonoBehaviour
     {
         currentHealth -= amount;
 
-        // Update through singleton pathway only to avoid double updates.
+        // Update BossHealthBar (primary)
         BossHealthBar.Instance?.UpdateHealth(currentHealth);
+
+        // Fallback: update assigned BossHealthBar only if provided (no auto-find).
+        if (bossHealthBar != null)
+            bossHealthBar.SetHealth((int)currentHealth);
 
         return currentHealth <= 0f;
     }

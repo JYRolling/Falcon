@@ -15,10 +15,8 @@ public class BossHealthBar : HealthBar
     private int _registeredBossCount = 0;
     private int _currentMaxHealth = 1;
 
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
-
         if (Instance != null && Instance != this)
         {
             Debug.LogWarning("Multiple BossHealthBar instances found. Destroying duplicate.");

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1210733025381739507}
   - component: {fileID: 4542643773953507065}
   m_Layer: 0
-  m_Name: TurretBullet
+  m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 50
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.7239121, g: 0.47450984, b: 1, a: 0.6745098}
+  m_Color: {r: 0.5882353, g: 1, b: 0.4764151, a: 0.6745098}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -134,11 +134,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  aimAtPlayer: 0
+  aimAtPlayer: 1
   initialDirection: {x: 1, y: 0}
   damage: 10
   lifeTime: 5
   hitParticle: {fileID: 6240072112886026631, guid: b422d378313ccbb4d8acb6196f1cdbbd, type: 3}
   destroyOnLayers:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 1
