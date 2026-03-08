@@ -8,8 +8,7 @@ public class BossBullet : MonoBehaviour
 {
     [Header("Motion")]
     public float speed = 10f;
-    [Tooltip("When true the bullet will aim at the player's current position at spawn time (or use SetTargetPosition).")]
-    public bool aimAtPlayer = true;
+    public bool aimAtPlayer = true; // retained for compatibility but no longer causes bullets to home
     public Vector2 initialDirection = Vector2.right;
 
     [Header("Damage / life")]
@@ -19,14 +18,12 @@ public class BossBullet : MonoBehaviour
     [Header("Optional FX")]
     public GameObject hitParticle;
 
+    // Optional: which layers should destroy the bullet on contact (e.g. Ground, Default).
+    // Leave empty (all bits 0) to fall back to default behaviour (destroy on non-enemy collisions).
     public LayerMask destroyOnLayers;
 
     private Rigidbody2D _rb;
     private bool _dead = false;
-
-    // Optional externally-provided aiming target. If set via SetTargetPosition, it takes precedence as a fixed target.
-    private bool _hasExplicitTarget = false;
-    private Vector2 _explicitTarget;
 
     private void Awake()
     {
@@ -40,58 +37,24 @@ public class BossBullet : MonoBehaviour
         Destroy(gameObject, lifeTime);
     }
 
-    public void SetTargetPosition(Vector2 worldPosition)
-    {
-        _explicitTarget = worldPosition;
-        _hasExplicitTarget = true;
-    }
-
     private void Start()
     {
-        // Determine target position (explicit target takes precedence)
-        Vector2 targetPos = Vector2.zero; // initialize to avoid CS0165
-        bool haveTarget = false;
-
-        if (_hasExplicitTarget)
-        {
-            targetPos = _explicitTarget;
-            haveTarget = true;
-        }
-        else if (aimAtPlayer)
-        {
-            var playerObj = GameObject.FindGameObjectWithTag("Player");
-            if (playerObj != null)
-            {
-                targetPos = playerObj.transform.position;
-                haveTarget = true;
-            }
-        }
-
+        // New behavior: always fire in the initial direction (or prefab/spawn rotation)
+        // The bullet will not chase the player. This ensures bullets travel straight until they hit something or time out.
         Vector2 dir;
 
-        if (haveTarget)
-        {
-            dir = targetPos - (Vector2)transform.position;
-            if (dir.sqrMagnitude < 0.0001f)
-                dir = transform.right;
-            else
-                dir.Normalize();
-        }
-        else if (initialDirection != Vector2.zero && initialDirection.sqrMagnitude > 0.0001f)
+        // If an explicit initialDirection is provided (non-zero), use it.
+        if (initialDirection != Vector2.zero)
         {
             dir = initialDirection.normalized;
         }
         else
         {
+            // Use the bullet's local right vector as the firing direction (respects spawn rotation)
             dir = transform.right;
         }
 
-        // Set velocity toward the chosen target (single-shot, not homing)
         _rb.velocity = dir * speed;
-
-        // Match the rotation logic used in your EnemyBulletScript (visual orientation)
-        float rot = Mathf.Atan2(-dir.y, -dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, 0f, rot + 90f);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -112,7 +75,8 @@ public class BossBullet : MonoBehaviour
         int playerLayer = LayerMask.NameToLayer("Player");
         int groundLayer = LayerMask.NameToLayer("Ground");
 
-
+        // Only act when collider's layer is Player or Ground.
+        // If those layers are not defined in project, fall back to tag check for Player.
         bool isPlayerLayer = (playerLayer >= 0 && other.layer == playerLayer);
         if (playerLayer < 0 && other.CompareTag("Player"))
             isPlayerLayer = true;
@@ -153,5 +117,8 @@ public class BossBullet : MonoBehaviour
             Destroy(gameObject, 0.01f);
             return;
         }
+
+        // Otherwise ignore the collision (do not destroy).
+        // This makes the bullet persist unless it hits Player or Ground layers.
     }
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7207921803695373913}
   - component: {fileID: 7280530248014636791}
   - component: {fileID: 1210733025381739507}
-  - component: {fileID: -59502400767298715}
+  - component: {fileID: 4542643773953507065}
   m_Layer: 0
   m_Name: BossBullet
   m_TagString: Untagged
@@ -121,7 +121,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.99999994, y: 0.99999994}
   m_Direction: 0
---- !u!114 &-59502400767298715
+--- !u!114 &4542643773953507065
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,13 +130,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6893207421243802147}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a15cb0458934c5046acd4713b7ca4c8b, type: 3}
+  m_Script: {fileID: 11500000, guid: ef9ea3ba61c97d34f93ff9af341aace6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
   aimAtPlayer: 1
-  homing: 1
-  turnSpeed: 1
   initialDirection: {x: 1, y: 0}
   damage: 10
   lifeTime: 5
