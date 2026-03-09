@@ -361,6 +361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 209834965}
+  jumpBufferTime: 0.12
   runSpeed: 40
 --- !u!1 &471794258
 GameObject:
