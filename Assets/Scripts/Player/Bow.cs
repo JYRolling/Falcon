@@ -56,6 +56,9 @@ public class Bow : MonoBehaviour
     public float shootCooldown = 0.25f;
     private float _lastShootTime = -999f;
 
+    // Set true by CrossbowController (or any weapon override) to block bow from shooting.
+    [HideInInspector] public bool ShootingOverridden = false;
+
     private void OnEnable()
     {
         // Resolve UI when the object becomes active (covers instantiation/respawn)
@@ -158,8 +161,8 @@ public class Bow : MonoBehaviour
         direction = mousePosition - bowPosition;
         transform.right = direction;
 
-        // Enforce cooldown to prevent spam clicking
-        if (Input.GetMouseButtonDown(0))
+        // Enforce cooldown to prevent spam clicking; skip when another weapon has priority
+        if (Input.GetMouseButtonDown(0) && !ShootingOverridden)
         {
             if (Time.time >= _lastShootTime + shootCooldown)
             {
