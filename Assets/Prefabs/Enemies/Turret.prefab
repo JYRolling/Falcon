@@ -101,7 +101,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6893207421243802147, guid: e284470ff03437d46b56002cc88a9476, type: 3}
   bulletSpawnPoints:
   - {fileID: 3905374604156519911}
-  - {fileID: 3905374604156519911}
   fireRate: 1
   initialDelay: 0
   bulletsUseTheirOwnAimSetting: 1
