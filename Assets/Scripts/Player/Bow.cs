@@ -226,7 +226,7 @@ public class Bow : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("[Bow] fallbackShootingStyle is Multi but no ShootingType is assigned — using single-shot fallback values.");
+                Debug.LogWarning("[Bow] fallbackShootingStyle is Multi but no ShootingType is assigned ï¿½ using single-shot fallback values.");
             }
         }
 
@@ -379,7 +379,7 @@ public class Bow : MonoBehaviour
             }
         }
 
-        // 1) Prefer ArrowType[] assigned in the inspector (legacy) — use icon first
+        // 1) Prefer ArrowType[] assigned in the inspector (legacy) ï¿½ use icon first
         if (arrowTypes != null && arrowTypes.Length > 0)
         {
             selectedArrowIndex = Mathf.Clamp(selectedArrowIndex, 0, arrowTypes.Length - 1);
@@ -545,5 +545,57 @@ public class Bow : MonoBehaviour
             return defaultShootingType;
 
         return null;
+    }
+
+    public bool UnlockShootingType(ShootingType newType, bool equipImmediately)
+    {
+        if (newType == null)
+            return false;
+
+        int existingIndex = FindShootingTypeIndex(newType);
+        if (existingIndex >= 0)
+        {
+            if (equipImmediately)
+                selectedShootingTypeIndex = existingIndex;
+
+            RefreshTypeUI();
+            return false;
+        }
+
+        int oldLen = shootingTypes != null ? shootingTypes.Length : 0;
+        ShootingType[] next = new ShootingType[oldLen + 1];
+
+        for (int i = 0; i < oldLen; i++)
+            next[i] = shootingTypes[i];
+
+        next[oldLen] = newType;
+        shootingTypes = next;
+
+        if (equipImmediately)
+            selectedShootingTypeIndex = oldLen;
+
+        RefreshTypeUI();
+        return true;
+    }
+
+    private int FindShootingTypeIndex(ShootingType type)
+    {
+        if (type == null || shootingTypes == null)
+            return -1;
+
+        for (int i = 0; i < shootingTypes.Length; i++)
+        {
+            if (shootingTypes[i] == type)
+                return i;
+        }
+
+        return -1;
+    }
+
+    private void RefreshTypeUI()
+    {
+        UpdateShootingTypeIcon();
+        UpdateShootTypeIcon();
+        UpdateNameTexts();
     }
 }

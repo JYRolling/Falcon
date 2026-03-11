@@ -76,7 +76,7 @@ public class BossEnemyController : MonoBehaviour
 
     private float[] attackDetails = new float[2];
 
-    // movement direction — used for patrol and chasing logic
+    // movement direction ï¿½ used for patrol and chasing logic
     private int facingDirection = 1;
 
     private Vector2 movement;
@@ -134,7 +134,7 @@ public class BossEnemyController : MonoBehaviour
             {
                 // auto-add so code can run, but prefer inspector assignment
                 bossStats = gameObject.AddComponent<BossStats>();
-                Debug.LogWarning("BossEnemyController: BossStats was not assigned. A BossStats component was auto-added — consider configuring it in the inspector.");
+                Debug.LogWarning("BossEnemyController: BossStats was not assigned. A BossStats component was auto-added ï¿½ consider configuring it in the inspector.");
             }
         }
 
@@ -305,6 +305,8 @@ public class BossEnemyController : MonoBehaviour
 
     private void EnterDeadState()
     {
+        GetComponent<EnemyWeaponDrop>()?.DropNow();
+
         if (bossStats.deathChunkParticle) Instantiate(bossStats.deathChunkParticle, alive.transform.position, bossStats.deathChunkParticle.transform.rotation);
         if (bossStats.deathBloodParticle) Instantiate(bossStats.deathBloodParticle, alive.transform.position, bossStats.deathBloodParticle.transform.rotation);
 
@@ -538,7 +540,7 @@ public class BossEnemyController : MonoBehaviour
             int otherLayer = collision.gameObject.layer;
             if ((whatIsGround.value & (1 << otherLayer)) == 0) return;
 
-            // Inspect contact normals — stop dash if we hit roughly horizontally (a wall)
+            // Inspect contact normals ï¿½ stop dash if we hit roughly horizontally (a wall)
             foreach (ContactPoint2D contact in collision.contacts)
             {
                 if (Mathf.Abs(contact.normal.x) > 0.5f)
