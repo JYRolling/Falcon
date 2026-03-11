@@ -1,10 +1,10 @@
 using UnityEngine;
 
-// Attach to bow/shooting-type weapon pickup prefabs dropped by enemies.
-// Player can collect this to unlock/equip a ShootingType.
-public class WeaponPickup : MonoBehaviour
+// Attach to melee weapon pickup prefabs dropped by enemies.
+// Player can collect this to unlock/equip a MeleeWeapon.
+public class MeleeWeaponPickup : MonoBehaviour
 {
-    [SerializeField] private ShootingType shootingTypeToUnlock;
+    [SerializeField] private MeleeWeapon meleeWeaponToUnlock;
     [SerializeField] private bool equipImmediately = true;
     [SerializeField] private bool destroyOnPickup = true;
 
@@ -17,9 +17,9 @@ public class WeaponPickup : MonoBehaviour
         if (weaponManager == null)
             return;
 
-        bool added = weaponManager.UnlockShootingType(shootingTypeToUnlock, equipImmediately);
+        bool added = weaponManager.UnlockMeleeWeapon(meleeWeaponToUnlock, equipImmediately);
         if (added)
-            Debug.Log($"[WeaponPickup] Unlocked shooting type: {shootingTypeToUnlock.displayName}");
+            Debug.Log($"[MeleeWeaponPickup] Unlocked melee weapon: {meleeWeaponToUnlock.displayName}");
 
         if (destroyOnPickup)
             Destroy(gameObject);
