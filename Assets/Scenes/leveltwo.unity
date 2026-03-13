@@ -174,6 +174,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (77)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -489,6 +493,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (56)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -514,6 +522,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
   m_PrefabInstance: {fileID: 35421880}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &48088548 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+  m_PrefabInstance: {fileID: 581289137}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &49102674
 PrefabInstance:
@@ -633,6 +646,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (78)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -721,6 +738,87 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4994157300945197892, guid: 0bdc97c2dca2e2449872b341723b984a, type: 3}
   m_PrefabInstance: {fileID: 58516853}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &68501406
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 872136415}
+    m_Modifications:
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 39.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -124.67567
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -17.59048
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.07485631
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_Name
+      value: Spike (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
 --- !u!1001 &68556557
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -772,6 +870,10 @@ PrefabInstance:
     - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Name
       value: Spike (35)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
@@ -1115,6 +1217,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (50)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -1255,6 +1361,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (61)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -1394,6 +1504,10 @@ PrefabInstance:
     - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Name
       value: Spike (73)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
@@ -1663,6 +1777,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (69)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -1895,6 +2013,87 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4236532206846467875, guid: 028289e55ce85c34f996bd23e5a1dcbe, type: 3}
   m_PrefabInstance: {fileID: 239033935}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &247718282
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 872136415}
+    m_Modifications:
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 109
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -50.975662
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -46.990482
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.07485631
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_Name
+      value: Spike (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
 --- !u!1001 &249378064
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1967,11 +2166,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -209.23
+      value: -204.04
       objectReference: {fileID: 0}
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.3286705
+      value: -7.8600006
       objectReference: {fileID: 0}
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2008,6 +2207,10 @@ PrefabInstance:
     - target: {fileID: 6576363707996454570, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_Name
       value: Turret (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9031987378804462854, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
+      propertyPath: fireRate
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 9031987378804462854, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: directionMode
@@ -2270,6 +2473,10 @@ PrefabInstance:
     - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Name
       value: Spike (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
@@ -2633,6 +2840,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (57)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -2710,6 +2921,10 @@ PrefabInstance:
     - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Name
       value: Spike (41)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
@@ -2933,6 +3148,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (42)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -3011,6 +3230,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (81)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -3088,6 +3311,10 @@ PrefabInstance:
     - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Name
       value: Spike (47)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
@@ -3191,7 +3418,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -22.568672
+      value: -12.7
       objectReference: {fileID: 0}
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3295,6 +3522,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (39)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -3372,6 +3603,10 @@ PrefabInstance:
     - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Name
       value: Spike (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
@@ -3451,6 +3686,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (52)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -3528,6 +3767,10 @@ PrefabInstance:
     - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Name
       value: Spike (63)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
@@ -4723,6 +4966,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (71)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -4912,6 +5159,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (27)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -4989,6 +5240,10 @@ PrefabInstance:
     - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Name
       value: Spike (75)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
@@ -5068,6 +5323,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (40)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -5146,6 +5405,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (68)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -5223,6 +5486,10 @@ PrefabInstance:
     - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Name
       value: Spike (48)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
@@ -5498,6 +5765,87 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4236532206846467875, guid: 028289e55ce85c34f996bd23e5a1dcbe, type: 3}
   m_PrefabInstance: {fileID: 577739962}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &581289137
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 872136415}
+    m_Modifications:
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -173.47566
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -48.79048
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.07485631
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_Name
+      value: Spike (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
 --- !u!1001 &582314590
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5884,6 +6232,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -5920,11 +6272,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -201.4
+      value: -192.62
       objectReference: {fileID: 0}
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.3286705
+      value: -7.8600006
       objectReference: {fileID: 0}
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5964,7 +6316,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9031987378804462854, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: fireRate
-      value: 1.5
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 9031987378804462854, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: directionMode
@@ -6035,6 +6387,10 @@ PrefabInstance:
     - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Name
       value: Spike (38)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
@@ -6179,6 +6535,10 @@ PrefabInstance:
     - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Name
       value: Spike (55)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
@@ -6382,6 +6742,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (72)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -6480,11 +6844,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -205.4
+      value: -198.2
       objectReference: {fileID: 0}
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.3286705
+      value: -7.8600006
       objectReference: {fileID: 0}
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6524,7 +6888,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9031987378804462854, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: fireRate
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9031987378804462854, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: directionMode
@@ -6797,6 +7161,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -6874,6 +7242,10 @@ PrefabInstance:
     - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Name
       value: Spike (60)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
@@ -7081,6 +7453,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -7158,6 +7534,10 @@ PrefabInstance:
     - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Name
       value: Spike (33)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
@@ -7315,6 +7695,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -7403,6 +7787,41 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4236532206846467875, guid: 028289e55ce85c34f996bd23e5a1dcbe, type: 3}
   m_PrefabInstance: {fileID: 854674643}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &872136414
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 872136415}
+  m_Layer: 0
+  m_Name: void
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &872136415
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872136414}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 230.77567, y: 34.29048, z: -0.07485631}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 48088548}
+  - {fileID: 1824426981}
+  - {fileID: 1613908768}
+  - {fileID: 1307993329}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &896327300
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7479,7 +7898,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -22.468672
+      value: -12.6
       objectReference: {fileID: 0}
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7711,6 +8130,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (74)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -7871,11 +8294,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -221.31
+      value: -219.6
       objectReference: {fileID: 0}
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.3286705
+      value: -7.8600006
       objectReference: {fileID: 0}
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7912,6 +8335,10 @@ PrefabInstance:
     - target: {fileID: 6576363707996454570, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_Name
       value: Turret (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9031987378804462854, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
+      propertyPath: fireRate
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 9031987378804462854, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: directionMode
@@ -7982,6 +8409,10 @@ PrefabInstance:
     - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Name
       value: Spike (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
@@ -8061,6 +8492,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (53)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -8139,6 +8574,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (46)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -8165,6 +8604,87 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
   m_PrefabInstance: {fileID: 1011548325}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1015566190
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 872136415}
+    m_Modifications:
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 62.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 74.32434
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 23.709518
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.07485631
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_Name
+      value: Spike (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
 --- !u!1001 &1022493575
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8279,6 +8799,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -8356,6 +8880,10 @@ PrefabInstance:
     - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Name
       value: Spike (80)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
@@ -8501,6 +9029,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -8579,6 +9111,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -8656,6 +9192,10 @@ PrefabInstance:
     - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Name
       value: Spike (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
@@ -8883,6 +9423,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -9064,6 +9608,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (59)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -9142,6 +9690,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (76)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -9178,11 +9730,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -237.33
+      value: -239.62
       objectReference: {fileID: 0}
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.3286705
+      value: -7.8600006
       objectReference: {fileID: 0}
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9222,7 +9774,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9031987378804462854, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: fireRate
-      value: 1.5
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 9031987378804462854, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: directionMode
@@ -21147,11 +21699,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -241.34
+      value: -243.9
       objectReference: {fileID: 0}
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.3286705
+      value: -7.8600006
       objectReference: {fileID: 0}
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.z
@@ -21191,7 +21743,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9031987378804462854, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: fireRate
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9031987378804462854, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: directionMode
@@ -21449,6 +22001,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -21526,6 +22082,10 @@ PrefabInstance:
     - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Name
       value: Spike (66)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
@@ -21775,6 +22335,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -21981,6 +22545,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (64)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -22058,6 +22626,10 @@ PrefabInstance:
     - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Name
       value: Spike (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
@@ -22157,11 +22729,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -233.14
+      value: -234.41
       objectReference: {fileID: 0}
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.3286705
+      value: -7.8600006
       objectReference: {fileID: 0}
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.z
@@ -22198,6 +22770,10 @@ PrefabInstance:
     - target: {fileID: 6576363707996454570, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_Name
       value: Turret (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9031987378804462854, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
+      propertyPath: fireRate
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 9031987378804462854, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: directionMode
@@ -22316,6 +22892,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -22341,6 +22921,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
   m_PrefabInstance: {fileID: 1307483258}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1307993329 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+  m_PrefabInstance: {fileID: 247718282}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1328219901
 GameObject:
@@ -22555,6 +23140,10 @@ PrefabInstance:
     - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Name
       value: Spike (32)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
@@ -22777,6 +23366,10 @@ PrefabInstance:
     - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Name
       value: Spike (79)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
@@ -23135,6 +23728,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -23171,11 +23768,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -217.43
+      value: -214.67
       objectReference: {fileID: 0}
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.3286705
+      value: -7.8600006
       objectReference: {fileID: 0}
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.z
@@ -23215,7 +23812,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9031987378804462854, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: fireRate
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9031987378804462854, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: directionMode
@@ -23286,6 +23883,10 @@ PrefabInstance:
     - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Name
       value: Spike (67)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
@@ -23426,6 +24027,10 @@ PrefabInstance:
     - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Name
       value: Spike (62)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
@@ -23571,6 +24176,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (65)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -23711,6 +24320,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -23788,6 +24401,10 @@ PrefabInstance:
     - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Name
       value: Spike (49)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
@@ -24476,6 +25093,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4994157300945197892, guid: 0bdc97c2dca2e2449872b341723b984a, type: 3}
   m_PrefabInstance: {fileID: 1587921686}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1613908768 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+  m_PrefabInstance: {fileID: 1015566190}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1624573422
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24666,6 +25288,10 @@ PrefabInstance:
     - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Name
       value: Spike (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
@@ -24967,11 +25593,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -225.32
+      value: -224.85
       objectReference: {fileID: 0}
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.3286705
+      value: -7.8600006
       objectReference: {fileID: 0}
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.z
@@ -25011,7 +25637,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9031987378804462854, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: fireRate
-      value: 1.5
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 9031987378804462854, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: directionMode
@@ -25082,6 +25708,10 @@ PrefabInstance:
     - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Name
       value: Spike (30)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
@@ -25161,6 +25791,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (31)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -25238,6 +25872,10 @@ PrefabInstance:
     - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Name
       value: Spike (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
@@ -25317,6 +25955,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (37)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -25395,6 +26037,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (70)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -25472,6 +26118,10 @@ PrefabInstance:
     - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Name
       value: Spike (36)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
@@ -25691,6 +26341,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (54)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -25769,6 +26423,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -25846,6 +26504,10 @@ PrefabInstance:
     - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Name
       value: Spike (45)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
@@ -25951,6 +26613,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5584874957289784173, guid: 4afbaed182037d64c8c35e5d93e3d044, type: 3}
   m_PrefabInstance: {fileID: 1795735273}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1824426981 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+  m_PrefabInstance: {fileID: 68501406}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1828319425
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25961,11 +26628,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -213.27
+      value: -209.8
       objectReference: {fileID: 0}
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.3286705
+      value: -7.8600006
       objectReference: {fileID: 0}
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.z
@@ -26005,7 +26672,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9031987378804462854, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: fireRate
-      value: 1.5
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 9031987378804462854, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: directionMode
@@ -26233,11 +26900,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -197.31
+      value: -187.69
       objectReference: {fileID: 0}
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.3286705
+      value: -7.8600006
       objectReference: {fileID: 0}
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.z
@@ -26274,6 +26941,10 @@ PrefabInstance:
     - target: {fileID: 6576363707996454570, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_Name
       value: Turret (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9031987378804462854, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
+      propertyPath: fireRate
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 9031987378804462854, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: directionMode
@@ -26410,6 +27081,10 @@ PrefabInstance:
     - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Name
       value: Spike (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
@@ -26555,6 +27230,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -26632,6 +27311,10 @@ PrefabInstance:
     - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Name
       value: Spike (58)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
@@ -26711,6 +27394,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (44)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -26788,6 +27475,10 @@ PrefabInstance:
     - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Name
       value: Spike (43)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
@@ -26928,6 +27619,10 @@ PrefabInstance:
     - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Name
       value: Spike (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
@@ -27213,6 +27908,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (28)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -27492,6 +28191,10 @@ PrefabInstance:
     - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Name
       value: Spike (51)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
@@ -28619,6 +29322,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -28914,6 +29621,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -28991,6 +29702,10 @@ PrefabInstance:
     - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Name
       value: Spike (82)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
@@ -29070,6 +29785,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -29147,6 +29866,10 @@ PrefabInstance:
     - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Name
       value: Spike (29)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
@@ -29262,11 +29985,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -245.52
+      value: -248.62
       objectReference: {fileID: 0}
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.3286705
+      value: -7.86
       objectReference: {fileID: 0}
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.z
@@ -29305,6 +30028,10 @@ PrefabInstance:
       value: Turret (3)
       objectReference: {fileID: 0}
     - target: {fileID: 9031987378804462854, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
+      propertyPath: fireRate
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9031987378804462854, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: directionMode
       value: 3
       objectReference: {fileID: 0}
@@ -29332,11 +30059,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -229.15
+      value: -228.91
       objectReference: {fileID: 0}
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.3286705
+      value: -7.8600006
       objectReference: {fileID: 0}
     - target: {fileID: 101716098983591338, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: m_LocalPosition.z
@@ -29376,7 +30103,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9031987378804462854, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: fireRate
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9031987378804462854, guid: 373ab4d8b34f04d47abfa9a160fb0697, type: 3}
       propertyPath: directionMode
@@ -29447,6 +30174,10 @@ PrefabInstance:
     - target: {fileID: 2759198348194465052, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Name
       value: Spike (34)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
+      propertyPath: touchDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
@@ -32053,3 +32784,4 @@ SceneRoots:
   - {fileID: 489544966}
   - {fileID: 2051356603}
   - {fileID: 1111131246}
+  - {fileID: 872136415}
