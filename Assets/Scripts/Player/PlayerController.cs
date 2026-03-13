@@ -78,6 +78,8 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         amountOfJumpsLeft = amountOfJumps;
+        canMove = true;
+        canFlip = true;
         wallHopDirection.Normalize();
         wallJumpDirection.Normalize();
     }

@@ -276,6 +276,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4994157300945197892}
   - component: {fileID: 1918753980708302951}
+  - component: {fileID: 4418308715715231928}
   m_Layer: 10
   m_Name: Enemy
   m_TagString: Enemy
@@ -334,3 +335,21 @@ MonoBehaviour:
   hitParticle: {fileID: 6240072112886026631, guid: b422d378313ccbb4d8acb6196f1cdbbd, type: 3}
   deathChunkParticle: {fileID: 1962614393226834858, guid: 914644236e87d4d409304bcf9d8d3eb7, type: 3}
   deathBloodParticle: {fileID: 5096148057906189823, guid: 8b6a10ca53360a94eb6e376bb2a49079, type: 3}
+--- !u!114 &4418308715715231928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8426724655607775949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53bc2ce10371470490757ad0f9af2f53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropChance: 0.35
+  possibleDrops:
+  - prefab: {fileID: 0}
+    weight: 0
+  dropPoint: {fileID: 0}
+  randomOffset: {x: 0.25, y: 0.1}

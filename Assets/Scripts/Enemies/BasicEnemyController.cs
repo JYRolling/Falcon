@@ -215,6 +215,7 @@ public class BasicEnemyController : MonoBehaviour
 
     private void EnterDeadState()
     {
+        GetComponent<EnemyWeaponDrop>()?.DropNow();
         Instantiate(deathChunkParticle, alive.transform.position, deathChunkParticle.transform.rotation);
         Instantiate(deathBloodParticle, alive.transform.position, deathBloodParticle.transform.rotation);
         Destroy(gameObject);
