@@ -60,7 +60,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 50
   m_Sprite: {fileID: 1564846485, guid: 667b04213a619a740aca068a369c0321, type: 3}
-  m_Color: {r: 0.105882354, g: 0.4117647, b: 0.9490196, a: 1}
+  m_Color: {r: 0.2216981, g: 0.6194109, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -256,7 +256,7 @@ MonoBehaviour:
   dashTime: 0.25
   dashCooldown: 6
   dashTriggerDistance: 6
-  bulletPrefab: {fileID: 6893207421243802147, guid: a29c5ff3da9a19e4b912e5042db8a14f, type: 3}
+  bulletPrefab: {fileID: 6893207421243802147, guid: 1e9c13d9293a0a341a60d8e906386991, type: 3}
   bulletSpawnPoints:
   - {fileID: 6440610602611173307}
   bulletsPerSet: 3
@@ -264,6 +264,10 @@ MonoBehaviour:
   timeBetweenBullets: 0.15
   timeBetweenSets: 3
   timeBetweenVolleys: 3
+  continuousShooting: 0
+  triggerRange: 4
+  fireInterval: 2
+  bulletSpeed: 10
   groundCheck: {fileID: 8412950683029543036}
   wallCheck: {fileID: 8119100353311553616}
   touchDamageCheck: {fileID: 3280992652494893110}
@@ -274,7 +278,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   hitParticle: {fileID: 6240072112886026631, guid: b422d378313ccbb4d8acb6196f1cdbbd, type: 3}
-  sceneToLoadOnDefeat: levelone
+  sceneToLoadOnDefeat: Level 1
   sceneLoadDelay: 1
 --- !u!1 &5251117327365484032
 GameObject:

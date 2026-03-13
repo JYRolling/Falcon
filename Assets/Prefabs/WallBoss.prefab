@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6316736280274504756}
   - component: {fileID: 3139278592289188915}
-  - component: {fileID: -7574976260443528443}
+  - component: {fileID: 461081978487630592}
   m_Layer: 0
   m_Name: WallBoss
   m_TagString: Untagged
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &-7574976260443528443
+--- !u!61 &461081978487630592
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
