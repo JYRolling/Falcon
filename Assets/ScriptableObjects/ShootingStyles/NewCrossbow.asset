@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe92311a1ad86144afc5697f2e3203e, type: 3}
+  m_Name: NewCrossbow
+  m_EditorClassIdentifier: 
+  displayName: Crossbow
+  icon: {fileID: 21300000, guid: 3c8cacf42123ef24ca4dbf7673c505b4, type: 3}
+  fireRate: 5
+  bulletSpeed: 18
+  boltPrefab: {fileID: 5532093577241812150, guid: 491747f74ec6be94da0fef8fa5f364ec, type: 3}
+  ammoPerPickup: 30
+  maxAmmo: 60
+  damage: 5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  fireSFX: {fileID: 0}
+  pickupSFX: {fileID: 0}
+  muzzleFlashPrefab: {fileID: 0}

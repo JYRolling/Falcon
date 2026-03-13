@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +10,7 @@ public class HealthBar : MonoBehaviour
     [SerializeField]
     private Image fill;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         // Try to auto-find a Slider if not assigned
         if (slider == null)
@@ -56,18 +54,25 @@ public class HealthBar : MonoBehaviour
             return;
         }
 
+        // Keep player health UI visible if it was disabled in scene/prefab overrides.
+        if (!gameObject.activeInHierarchy && !(this is BossHealthBar))
+        {
+            Transform t = transform;
+            while (t != null)
+            {
+                t.gameObject.SetActive(true);
+                t = t.parent;
+            }
+        }
+
         slider.minValue = 0f;
         slider.maxValue = health;
         slider.value = health;
 
-        // Force layout/UI update to make certain Unity repaints the UI immediately
-        Canvas.ForceUpdateCanvases();
-        UnityEngine.UI.LayoutRebuilder.ForceRebuildLayoutImmediate(slider.GetComponent<RectTransform>());
-
         if (gradient != null)
             fill.color = gradient.Evaluate(1f);
-
-        Debug.Log($"[HealthBar] SetMaxHealth on '{gameObject.name}': min={slider.minValue} max={slider.maxValue} value={slider.value} fill={(fill!=null?fill.name:"null")} active={gameObject.activeInHierarchy}");
+        else
+            fill.color = Color.green;
     }
 
     public void SetHealth(float health)
@@ -78,15 +83,21 @@ public class HealthBar : MonoBehaviour
             return;
         }
 
-        slider.value = Mathf.Clamp(health, slider.minValue, slider.maxValue);
+        if (!gameObject.activeInHierarchy && !(this is BossHealthBar))
+        {
+            Transform t = transform;
+            while (t != null)
+            {
+                t.gameObject.SetActive(true);
+                t = t.parent;
+            }
+        }
 
-        // Force layout/UI update to make certain Unity repaints the UI immediately
-        Canvas.ForceUpdateCanvases();
-        UnityEngine.UI.LayoutRebuilder.ForceRebuildLayoutImmediate(slider.GetComponent<RectTransform>());
+        slider.value = Mathf.Clamp(health, slider.minValue, slider.maxValue);
 
         if (gradient != null)
             fill.color = gradient.Evaluate(slider.normalizedValue);
-
-        Debug.Log($"[HealthBar] SetHealth on '{gameObject.name}': value={slider.value} normalized={slider.normalizedValue} active={gameObject.activeInHierarchy}");
+        else
+            fill.color = Color.Lerp(Color.red, Color.green, slider.normalizedValue);
     }
 }

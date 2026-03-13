@@ -105,6 +105,8 @@ public class CombatDummyController : MonoBehaviour
 
     private void Die()
     {
+        GetComponent<EnemyWeaponDrop>()?.DropNow();
+
         aliveGO.SetActive(false);
         brokenTopGO.SetActive(true);
         brokenBotGO.SetActive(true);
