@@ -51,6 +51,14 @@ public class Bow : MonoBehaviour
     public float spaceBetweenPoints;
     Vector2 direction;
 
+    [Header("Aim")]
+    [Tooltip("Clamp bow aim angle relative to parent rotation.")]
+    public bool clampAimAngle = false;
+    [Tooltip("Minimum local aim angle in degrees.")]
+    public float minAimAngle = -70f;
+    [Tooltip("Maximum local aim angle in degrees.")]
+    public float maxAimAngle = 70f;
+
     [Header("Anti-spam")]
     [Tooltip("Seconds between allowed shots. Increase to prevent spam clicking.")]
     public float shootCooldown = 0.25f;
@@ -156,10 +164,7 @@ public class Bow : MonoBehaviour
 
     void Update()
     {
-        Vector2 bowPosition = transform.position;
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        direction = mousePosition - bowPosition;
-        transform.right = direction;
+        UpdateAimDirection();
 
         // Enforce cooldown to prevent spam clicking; skip when another weapon has priority
         if (Input.GetMouseButtonDown(0) && !ShootingOverridden)
@@ -191,6 +196,45 @@ public class Bow : MonoBehaviour
         {
             points[i].transform.position = PointPosition(i * spaceBetweenPoints);
         }
+    }
+
+    void UpdateAimDirection()
+    {
+        if (Camera.main == null) return;
+
+        Vector2 bowPosition = transform.position;
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        direction = mousePosition - bowPosition;
+
+        if (direction.sqrMagnitude <= 0.0001f)
+            return;
+
+        float worldAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        if (clampAimAngle)
+        {
+            Vector2 baseDirection = transform.parent != null ? (Vector2)transform.parent.right : Vector2.right;
+            float baseAngle = Mathf.Atan2(baseDirection.y, baseDirection.x) * Mathf.Rad2Deg;
+            float localAngle = Mathf.DeltaAngle(baseAngle, worldAngle);
+            localAngle = Mathf.Clamp(localAngle, minAimAngle, maxAimAngle);
+            worldAngle = baseAngle + localAngle;
+        }
+
+        // Force left-facing pose to use Y=180 (instead of Euler showing X=-180).
+        Vector2 facingDir = transform.parent != null ? (Vector2)transform.parent.right : Vector2.right;
+        bool facingLeft = facingDir.x < 0f;
+
+        if (facingLeft)
+        {
+            transform.rotation = Quaternion.Euler(0f, 180f, 180f - worldAngle);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(0f, 0f, worldAngle);
+        }
+
+        float rad = worldAngle * Mathf.Deg2Rad;
+        direction = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
     }
 
     void Shoot()

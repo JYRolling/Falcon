@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4392797609882530461}
   - component: {fileID: 1047720933097930487}
   - component: {fileID: 2595374015728732141}
-  - component: {fileID: 4406936813314621545}
+  - component: {fileID: 2881271816160348358}
   m_Layer: 0
   m_Name: CrossBow
   m_TagString: Untagged
@@ -153,7 +153,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4406936813314621545
+--- !u!114 &2881271816160348358
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,13 +162,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1223759963762507096}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95251f2e1bce60e44af3a842dffd7c4d, type: 3}
+  m_Script: {fileID: 11500000, guid: e8d9854fb3ca48ae9a0b380411f3151b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crossbowData: {fileID: 0}
-  ammoOverride: 0
+  shootingTypeToUnlock: {fileID: 11400000, guid: 152214f9b842e3e47b4b492541324155, type: 2}
+  equipImmediately: 1
   destroyOnPickup: 1
-  pickupEffectPrefab: {fileID: 0}
 --- !u!1 &1505075256541511331
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,7 +241,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3c8cacf42123ef24ca4dbf7673c505b4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 650f745f02fcdb84ab6d117ac9ae0adb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
