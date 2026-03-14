@@ -5379,6 +5379,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pause canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6044211263513714616, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.57703936
+      objectReference: {fileID: 0}
+    - target: {fileID: 6044211263513714616, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.0101953
+      objectReference: {fileID: 0}
+    - target: {fileID: 6044211263513714616, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3.2276056
+      objectReference: {fileID: 0}
+    - target: {fileID: 6044211263513714616, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 392
+      objectReference: {fileID: 0}
     - target: {fileID: 8684782866218170112, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
       propertyPath: m_Pivot.x
       value: 0
