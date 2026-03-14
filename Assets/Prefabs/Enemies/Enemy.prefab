@@ -318,7 +318,7 @@ MonoBehaviour:
   maxHealth: 100
   knockbackDuration: 0.1
   lastTouchDamageTime: 0
-  touchDamageCooldown: 0.2
+  touchDamageCooldown: 1
   touchDamage: 10
   touchDamageWidth: 1
   touchDamageHeight: 2
@@ -347,9 +347,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53bc2ce10371470490757ad0f9af2f53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropChance: 0.35
+  dropChance: 0.2
   possibleDrops:
-  - prefab: {fileID: 0}
-    weight: 0
+  - prefab: {fileID: 3151577822987934068, guid: ec322599de946294296d8a960cce563e, type: 3}
+    weight: 1
   dropPoint: {fileID: 0}
   randomOffset: {x: 0.25, y: 0.1}
