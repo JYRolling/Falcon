@@ -601,6 +601,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MovingPlatform
       objectReference: {fileID: 0}
+    - target: {fileID: 9157407111208395760, guid: 9bd4cbc794737074b85a4e22539d748e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -677,10 +681,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6999723560801021349, guid: 05c7fbda332f68b4391e3d43d818f6c1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1970943209}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05c7fbda332f68b4391e3d43d818f6c1, type: 3}
 --- !u!1 &471794258
 GameObject:
@@ -1035,7 +1036,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2575648638996446506, guid: 3bec0443c4596714ca1b9f7047d0f606, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.69
+      value: -8.04
       objectReference: {fileID: 0}
     - target: {fileID: 2575648638996446506, guid: 3bec0443c4596714ca1b9f7047d0f606, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1075,7 +1076,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2595374015728732141, guid: 3bec0443c4596714ca1b9f7047d0f606, type: 3}
       propertyPath: m_BodyType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4392797609882530461, guid: 3bec0443c4596714ca1b9f7047d0f606, type: 3}
       propertyPath: m_IsTrigger
@@ -2037,25 +2038,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 855618267606342645, guid: 54f9f613ef193ab43b96d4304be5b993, type: 3}
   m_PrefabInstance: {fileID: 8653546600998183203}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1970943199 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6999723560801021349, guid: 05c7fbda332f68b4391e3d43d818f6c1, type: 3}
-  m_PrefabInstance: {fileID: 465477553}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1970943209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1970943199}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9f4c6a7b2d5e3f1a8c0d7e4f2a5b8c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bowl: {fileID: 0}
-  meleeWeaponVisualParent: {fileID: 0}
 --- !u!1 &2113919442
 GameObject:
   m_ObjectHideFlags: 0
@@ -2113,7 +2095,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2575648638996446506, guid: 3bec0443c4596714ca1b9f7047d0f606, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.12
+      value: -3.33
       objectReference: {fileID: 0}
     - target: {fileID: 2575648638996446506, guid: 3bec0443c4596714ca1b9f7047d0f606, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2159,6 +2141,14 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4406936813314621545, guid: 3bec0443c4596714ca1b9f7047d0f606, type: 3}
+      propertyPath: crossbowData
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9082883241386871979, guid: 3bec0443c4596714ca1b9f7047d0f606, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 10d7de4deecbc684b94f1f769c7e493b, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2176,13 +2166,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: SwordPickup
       objectReference: {fileID: 0}
+    - target: {fileID: 1293339862137123842, guid: 54f9f613ef193ab43b96d4304be5b993, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1293339862137123842, guid: 54f9f613ef193ab43b96d4304be5b993, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.68
+      objectReference: {fileID: 0}
     - target: {fileID: 2650556306527793986, guid: 54f9f613ef193ab43b96d4304be5b993, type: 3}
       propertyPath: m_BodyType
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4343607420693604733, guid: 54f9f613ef193ab43b96d4304be5b993, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.84
+      value: -16.75
       objectReference: {fileID: 0}
     - target: {fileID: 4343607420693604733, guid: 54f9f613ef193ab43b96d4304be5b993, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2224,7 +2222,8 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 10d7de4deecbc684b94f1f769c7e493b, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7266960588547915674, guid: 54f9f613ef193ab43b96d4304be5b993, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
