@@ -379,6 +379,9 @@ MonoBehaviour:
   point: {fileID: 4155587531777718160, guid: 725040c6f08463c44948c45cc90279e9, type: 3}
   numberOfPoints: 50
   spaceBetweenPoints: 0.025
+  clampAimAngle: 1
+  minAimAngle: -70
+  maxAimAngle: 70
   shootCooldown: 0.25
   ShootingOverridden: 0
 --- !u!1 &6944156197364082430
@@ -682,6 +685,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6a207bfaf99b84bb53eae51a22d594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponIconImage: {fileID: 0}
+  ammoCountText: {fileID: 0}
   ammoText: {fileID: 0}
 --- !u!1 &7027389780524856748
 GameObject:

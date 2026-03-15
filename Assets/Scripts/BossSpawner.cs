@@ -41,6 +41,8 @@ public class BossSpawner : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log($"{nameof(BossSpawner)}: OnTriggerEnter2D by '{other?.gameObject?.name}' (tag='{other?.gameObject?.tag}')");
+
         if (_hasSpawned && spawnOnce) return;
 
         if (other != null && other.CompareTag(triggerTag))
@@ -56,9 +58,21 @@ public class BossSpawner : MonoBehaviour
         {
             Vector3 pos = bossSpawnPoint != null ? bossSpawnPoint.position : transform.position;
             Quaternion rot = bossSpawnPoint != null ? bossSpawnPoint.rotation : Quaternion.identity;
-            var bossInstance = Instantiate(bossPrefab, pos, rot);
+            GameObject bossInstance = Instantiate(bossPrefab, pos, rot);
             // Optional: make spawned boss children of a container for organization (uncomment and set a parent transform if desired)
             // bossInstance.transform.SetParent(someParentTransform, worldPositionStays: true);
+
+            // Diagnostic: ensure expected controller is present
+            var jb = bossInstance.GetComponentInChildren<JumpingBomberEnemyController>();
+            if (jb == null)
+            {
+                Debug.LogWarning($"Spawned boss '{bossPrefab.name}' at {pos} does NOT contain JumpingBomberEnemyController. Check prefab components.");
+            }
+            else
+            {
+                Debug.Log($"Spawned boss '{bossPrefab.name}' at {pos} and found JumpingBomberEnemyController.");
+            }
+
             Debug.Log($"Spawned boss '{bossPrefab.name}' at {pos}");
         }
         else
