@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0756182e9f276694c9978a17fa029e4c
+guid: 704a399230c1d304b90de42b8a082d1d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,232 +97,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 2tile_0
+      name: UiArcher_0
       rect:
         serializedVersion: 2
-        x: 100
-        y: 726
-        width: 202
-        height: 197
+        x: 5
+        y: 402
+        width: 150
+        height: 102
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08fdd8460c504f545bb7e4bc06e010d4
-      internalID: 434639249
+      spriteID: 8b07e519371379741b39e422bab3db2e
+      internalID: -1693541331
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2tile_1
+      name: UiArcher_1
       rect:
         serializedVersion: 2
-        x: 350
-        y: 724
-        width: 200
-        height: 199
+        x: 210
+        y: 305
+        width: 150
+        height: 149
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cbfc64d68d674fd45938c6fcb52b604b
-      internalID: -1054796986
+      spriteID: 13ddb09cebe9ea5499825c0b846c07d2
+      internalID: -1615469010
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2tile_2
+      name: UiArcher_2
       rect:
         serializedVersion: 2
-        x: 600
-        y: 824
-        width: 200
-        height: 100
+        x: 22
+        y: 290
+        width: 106
+        height: 86
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 465843a5b90f8784c8630a996b354049
-      internalID: 251661877
+      spriteID: 80d5c160d95091f4e81ac26b755c56e5
+      internalID: 1868288932
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2tile_3
-      rect:
-        serializedVersion: 2
-        x: 100
-        y: 425
-        width: 200
-        height: 198
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6c6c1b7ddb91c35408dbd7167f6d097f
-      internalID: 240993628
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 2tile_4
-      rect:
-        serializedVersion: 2
-        x: 350
-        y: 424
-        width: 200
-        height: 200
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: eb346f6d5d27c2249b243a736faddd86
-      internalID: -915441952
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 2tile_5
+      name: UiArcher_3
       rect:
         serializedVersion: 2
         x: 27
-        y: 368
-        width: 199
-        height: 32
+        y: 113
+        width: 162
+        height: 149
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 44933e4177339234b89fd10e967a1061
-      internalID: 1046232917
+      spriteID: 27621869de7222443972050b867cf6a1
+      internalID: -45583712
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2tile_6
+      name: UiArcher_4
       rect:
         serializedVersion: 2
-        x: 457
-        y: 278
-        width: 200
-        height: 119
+        x: 231
+        y: 183
+        width: 178
+        height: 22
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a963037d3eedca34fb59d9ba3917d15f
-      internalID: 1254594505
+      spriteID: 9add97d82d253bb4195fdd0e2ed09679
+      internalID: -743654816
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2tile_7
+      name: UiArcher_5
       rect:
         serializedVersion: 2
-        x: 28
-        y: 276
-        width: 401
-        height: 54
+        x: 233
+        y: 112
+        width: 185
+        height: 26
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63994b1420afe1e4f9520b98bd8b8d97
-      internalID: -754299476
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 2tile_8
-      rect:
-        serializedVersion: 2
-        x: 24
-        y: 172
-        width: 202
-        height: 51
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7b978caef2ccb7749980bb512d46d989
-      internalID: 1122525691
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 2tile_9
-      rect:
-        serializedVersion: 2
-        x: 499
-        y: 18
-        width: 401
-        height: 201
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 93b7f5f1f2da96b4d9bfd86018ce275e
-      internalID: 2099792594
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 2tile_10
-      rect:
-        serializedVersion: 2
-        x: 27
-        y: 73
-        width: 402
-        height: 50
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d8ed648413d5f7744a8f9e76d766b36f
-      internalID: -680570607
+      spriteID: 0b10ea979abdc5c40a532dfe5324ba9c
+      internalID: -323581228
       vertices: []
       indices: 
       edges: []
@@ -338,17 +233,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      2tile_0: 434639249
-      2tile_1: -1054796986
-      2tile_10: -680570607
-      2tile_2: 251661877
-      2tile_3: 240993628
-      2tile_4: -915441952
-      2tile_5: 1046232917
-      2tile_6: 1254594505
-      2tile_7: -754299476
-      2tile_8: 1122525691
-      2tile_9: 2099792594
+      UiArcher_0: -1693541331
+      UiArcher_1: -1615469010
+      UiArcher_2: 1868288932
+      UiArcher_3: -45583712
+      UiArcher_4: -743654816
+      UiArcher_5: -323581228
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
