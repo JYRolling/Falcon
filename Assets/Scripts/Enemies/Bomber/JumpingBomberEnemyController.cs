@@ -125,7 +125,44 @@ public class JumpingBomberEnemyController : MonoBehaviour
             BossHealthBar.Instance?.RegisterBoss(bossStats.maxHealth, bossStats.currentHealth);
         }
 
-        // sanity checks
+        // Try to auto-find scene points named "A" / "B" (common variants).
+        if (pointA == null)
+        {
+            var foundA = FindClosestNamed("A", "PointA", "pointA");
+            if (foundA != null)
+            {
+                pointA = foundA;
+                Debug.Log($"{nameof(JumpingBomberEnemyController)}: Assigned pointA from scene object '{pointA.name}' at {pointA.position}.");
+            }
+            else
+            {
+                Debug.LogWarning($"{nameof(JumpingBomberEnemyController)}: pointA was null on '{gameObject.name}'. Creating local PointA at spawn position.");
+                var goA = new GameObject("PointA");
+                goA.transform.SetParent(transform, worldPositionStays: true);
+                goA.transform.position = transform.position;
+                pointA = goA.transform;
+            }
+        }
+
+        if (pointB == null)
+        {
+            var foundB = FindClosestNamed("B", "PointB", "pointB");
+            if (foundB != null)
+            {
+                pointB = foundB;
+                Debug.Log($"{nameof(JumpingBomberEnemyController)}: Assigned pointB from scene object '{pointB.name}' at {pointB.position}.");
+            }
+            else
+            {
+                Debug.LogWarning($"{nameof(JumpingBomberEnemyController)}: pointB was null on '{gameObject.name}'. Creating local PointB to the right of spawn.");
+                var goB = new GameObject("PointB");
+                goB.transform.SetParent(transform, worldPositionStays: true);
+                goB.transform.position = transform.position + Vector3.right * 2f;
+                pointB = goB.transform;
+            }
+        }
+
+        // sanity checks (kept for compatibility)
         if (pointA == null || pointB == null)
             Debug.LogWarning($"{nameof(JumpingBomberEnemyController)}: pointA/pointB not both assigned.");
 
@@ -134,6 +171,31 @@ public class JumpingBomberEnemyController : MonoBehaviour
 
         if (startOnAwake)
             StartPatternWithDelay(initialDelay);
+    }
+
+    // Helper: find the closest active Transform whose name matches any of the provided names.
+    private Transform FindClosestNamed(params string[] names)
+    {
+        float bestDist = float.MaxValue;
+        Transform best = null;
+        var all = GameObject.FindObjectsOfType<Transform>();
+        foreach (var t in all)
+        {
+            if (!t.gameObject.activeInHierarchy) continue;
+            foreach (var n in names)
+            {
+                if (t.name == n)
+                {
+                    float d = Vector3.Distance(transform.position, t.position);
+                    if (d < bestDist)
+                    {
+                        bestDist = d;
+                        best = t;
+                    }
+                }
+            }
+        }
+        return best;
     }
 
     private void Update()
@@ -183,7 +245,20 @@ public class JumpingBomberEnemyController : MonoBehaviour
     {
         float t = 0f;
         // position snapping at start to avoid visual pop
-        transform.position = startPos;
+        // Only snap when we are already close to the configured startPos.
+        // If the spawn location differs (e.g. BossSpawner placed it somewhere else),
+        // start the jump from current position to avoid an immediate teleport.
+        float snapDistanceThreshold = 0.5f;
+        if (Vector3.Distance(transform.position, startPos) <= snapDistanceThreshold)
+        {
+            transform.position = startPos;
+        }
+        else
+        {
+            Debug.Log($"JumpingBomberEnemyController: Not snapping to startPos {startPos} (current {transform.position}); starting jump from current position.");
+            // Use current position as the logical start so interpolation is smooth
+            startPos = transform.position;
+        }
 
         // set jumping animation
         SetAnimatorBool("IsJumping", true);
