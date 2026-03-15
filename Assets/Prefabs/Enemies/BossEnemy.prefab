@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f8780b22aa3bce43b51700f1fdd5e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1500
+  maxHealth: 300
   currentHealth: 0
   touchDamage: 10
   touchDamageCooldown: 1
@@ -278,7 +278,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   hitParticle: {fileID: 6240072112886026631, guid: b422d378313ccbb4d8acb6196f1cdbbd, type: 3}
-  sceneToLoadOnDefeat: Level 1
+  sceneToLoadOnDefeat: StageSelect
   sceneLoadDelay: 1
 --- !u!1 &5251117327365484032
 GameObject:
