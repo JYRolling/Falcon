@@ -13,6 +13,12 @@ using UnityEngine.UI;
 //   - Pick up same crossbow again      -> ammo is added (up to maxAmmo)
 public class CrossbowController : MonoBehaviour
 {
+    private enum WeaponSlot
+    {
+        Bow = 1,
+        Crossbow = 2
+    }
+
     [Header("Ammo UI (optional)")]
     [Tooltip("Optional: icon image for the equipped crossbow. Auto-found if named 'CrossbowWeaponIcon'.")]
     [SerializeField] private Image weaponIconImage;
@@ -28,6 +34,7 @@ public class CrossbowController : MonoBehaviour
     private int currentAmmo;
     private float nextFireTime;
     private bool isEquipped;
+    private WeaponSlot activeSlot = WeaponSlot.Bow;
 
     private Bow bowComponent;
     private AudioSource audioSource;
@@ -40,6 +47,7 @@ public class CrossbowController : MonoBehaviour
     public bool IsEquipped => isEquipped;
     public int CurrentAmmo => currentAmmo;
     public CrossbowData CurrentData => currentData;
+    public bool IsCrossbowSelected => activeSlot == WeaponSlot.Crossbow;
 
     private void Awake()
     {
@@ -78,7 +86,9 @@ public class CrossbowController : MonoBehaviour
 
     private void Update()
     {
-        if (!isEquipped) return;
+        HandleWeaponSwitchInput();
+
+        if (!isEquipped || activeSlot != WeaponSlot.Crossbow) return;
 
         if (Input.GetMouseButton(0) && Time.time >= nextFireTime)
             Fire();
@@ -109,9 +119,8 @@ public class CrossbowController : MonoBehaviour
         isEquipped = true;
         nextFireTime = 0f;
 
-        // Block Bow from firing while crossbow is active (Bow still rotates/aims)
-        if (bowComponent != null)
-            bowComponent.ShootingOverridden = true;
+        // Auto-switch to crossbow on pickup; player can press 1 to return to bow.
+        SwitchToCrossbow();
 
         if (data.pickupSFX != null)
             audioSource.PlayOneShot(data.pickupSFX);
@@ -185,15 +194,46 @@ public class CrossbowController : MonoBehaviour
 
     private void Deplete()
     {
+        SwitchToBow();
         isEquipped = false;
         currentData = null;
 
-        // Give shooting back to the Bow
+        UpdateAmmoUI();
+        OnDepleted?.Invoke();
+    }
+
+    private void HandleWeaponSwitchInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            SwitchToBow();
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+            SwitchToCrossbow();
+    }
+
+    private void SwitchToBow()
+    {
+        activeSlot = WeaponSlot.Bow;
+
         if (bowComponent != null)
             bowComponent.ShootingOverridden = false;
 
         UpdateAmmoUI();
-        OnDepleted?.Invoke();
+    }
+
+    private bool SwitchToCrossbow()
+    {
+        // Can only select crossbow if we currently own one with ammo.
+        if (!isEquipped || currentData == null || currentAmmo <= 0)
+            return false;
+
+        activeSlot = WeaponSlot.Crossbow;
+
+        if (bowComponent != null)
+            bowComponent.ShootingOverridden = true;
+
+        UpdateAmmoUI();
+        return true;
     }
 
     private Vector3 GetFirePosition()
@@ -222,7 +262,9 @@ public class CrossbowController : MonoBehaviour
 
     private void UpdateAmmoUI()
     {
-        if (isEquipped && currentData != null)
+        bool showCrossbowUI = isEquipped && currentData != null && activeSlot == WeaponSlot.Crossbow;
+
+        if (showCrossbowUI)
         {
             if (weaponIconImage != null)
             {
