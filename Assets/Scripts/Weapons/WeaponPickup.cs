@@ -13,11 +13,11 @@ public class WeaponPickup : MonoBehaviour
         if (other == null)
             return;
 
-        PlayerWeaponManager weaponManager = FindWeaponManager(other.transform);
-        if (weaponManager == null)
+        Bow bow = FindBow(other.transform);
+        if (bow == null)
             return;
 
-        bool added = weaponManager.UnlockShootingType(shootingTypeToUnlock, equipImmediately);
+        bool added = bow.UnlockShootingType(shootingTypeToUnlock, equipImmediately);
         if (added)
             Debug.Log($"[WeaponPickup] Unlocked shooting type: {shootingTypeToUnlock.displayName}");
 
@@ -25,30 +25,18 @@ public class WeaponPickup : MonoBehaviour
             Destroy(gameObject);
     }
 
-    private PlayerWeaponManager FindWeaponManager(Transform hitTransform)
+    private Bow FindBow(Transform hitTransform)
     {
         if (hitTransform == null)
             return null;
 
-        PlayerWeaponManager manager = hitTransform.GetComponent<PlayerWeaponManager>();
-        if (manager != null)
-            return manager;
-
-        manager = hitTransform.GetComponentInChildren<PlayerWeaponManager>();
-        if (manager != null)
-            return manager;
+        Bow bow = hitTransform.GetComponentInChildren<Bow>();
+        if (bow != null)
+            return bow;
 
         Transform root = hitTransform.root;
         if (root != null)
-        {
-            manager = root.GetComponent<PlayerWeaponManager>();
-            if (manager != null)
-                return manager;
-
-            manager = root.GetComponentInChildren<PlayerWeaponManager>();
-            if (manager != null)
-                return manager;
-        }
+            return root.GetComponentInChildren<Bow>();
 
         return null;
     }
