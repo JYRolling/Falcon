@@ -349,7 +349,7 @@ MonoBehaviour:
   maxHealth: 100
   knockbackDuration: 0.1
   lastTouchDamageTime: 0
-  touchDamageCooldown: 1
+  touchDamageCooldown: 0.2
   touchDamage: 10
   touchDamageWidth: 1
   touchDamageHeight: 2

@@ -19,10 +19,6 @@ public class PlayerStats : MonoBehaviour
     [SerializeField]
     public HealthBar healthBar;
 
-    // Invulnerability flag (not serialized by default; you can serialize for testing)
-    [SerializeField]
-    private bool isInvulnerable = false;
-
     private void Start()
     {
         currentHealth = maxHealth;
@@ -90,13 +86,6 @@ public class PlayerStats : MonoBehaviour
 
     public void DecreaseHealth(float amount)
     {
-        // Respect invulnerability
-        if (isInvulnerable)
-        {
-            Debug.Log("[PlayerStats] Player is invulnerable — damage ignored.");
-            return;
-        }
-
         currentHealth -= amount;
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
 
@@ -120,23 +109,6 @@ public class PlayerStats : MonoBehaviour
         else
             Debug.LogError("[PlayerStats] Cannot respawn because GameManager reference is null.");
         Destroy(gameObject);
-    }
-
-    // Invulnerability API
-    public void SetInvulnerable(bool value)
-    {
-        isInvulnerable = value;
-        Debug.Log($"[PlayerStats] Invulnerability set to {isInvulnerable} on '{gameObject.name}'");
-    }
-
-    public void ToggleInvulnerability()
-    {
-        SetInvulnerable(!isInvulnerable);
-    }
-
-    public bool IsInvulnerable()
-    {
-        return isInvulnerable;
     }
 
     private static HealthBar FindPlayerHealthBarInScene()

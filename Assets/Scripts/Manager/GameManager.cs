@@ -19,19 +19,11 @@ public class GameManager : MonoBehaviour
     private HealthBar healthBar;
     public HealthBar PlayerHealthBar => healthBar;
 
-    // Teleport target for F1. If null, falls back to respawnPoint.
-    [Header("Debug / Teleport")]
-    [Tooltip("Optional target to teleport the Player to when pressing F1. If null uses Respawn Point.")]
-    [SerializeField] private Transform teleportTarget;
-
     private float respawnTimeStart;
 
     private bool respawn;
 
     private CinemachineVirtualCamera CVC;
-
-    // Track current active player instance in scene (may be a spawned prefab)
-    private GameObject currentPlayer;
 
     private void Awake()
     {
@@ -52,20 +44,12 @@ public class GameManager : MonoBehaviour
             CVC = camObj.GetComponent<CinemachineVirtualCamera>();
         else
             Debug.LogWarning("GameManager: 'Player Camera' GameObject not found in scene.");
-
-        // Try to find the active player in scene at start
-        currentPlayer = GameObject.FindGameObjectWithTag("Player");
-        if (currentPlayer == null)
-            Debug.Log("GameManager: No active Player found at Start. Will set when player is spawned.");
     }
 
     private void Update()
     {
         CheckRespawn();
-        CheckTeleportInput();
-        CheckInvulnerabilityInput();
     }
-
     public void Respawn()
     {
         respawnTimeStart = Time.time;
@@ -79,9 +63,6 @@ public class GameManager : MonoBehaviour
             if (player != null && respawnPoint != null)
             {
                 var playerTemp = Instantiate(player, respawnPoint.position, respawnPoint.rotation);
-
-                // remember current player instance
-                currentPlayer = playerTemp;
 
                 // Ensure Cinemachine follows new player
                 if (CVC != null)
@@ -203,97 +184,5 @@ public class GameManager : MonoBehaviour
         }
 
         return null;
-    }
-
-    // Teleport helpers
-
-    // Called when F1 is pressed
-    private void CheckTeleportInput()
-    {
-        if (Input.GetKeyDown(KeyCode.F1))
-        {
-            Transform target = teleportTarget != null ? teleportTarget : respawnPoint;
-            if (target == null)
-            {
-                Debug.LogWarning("GameManager: No teleport target or respawnPoint assigned.");
-                return;
-            }
-
-            TeleportPlayerTo(target.position);
-        }
-    }
-
-    // Teleport current active player to a world position (safe for Rigidbody2D).
-    public void TeleportPlayerTo(Vector3 worldPosition)
-    {
-        // Ensure we have a reference to the active player
-        if (currentPlayer == null)
-            currentPlayer = GameObject.FindGameObjectWithTag("Player");
-
-        if (currentPlayer == null)
-        {
-            Debug.LogWarning("GameManager.TeleportPlayerTo: No active player found to teleport.");
-            return;
-        }
-
-        // If player uses Rigidbody2D, move it safely and clear velocity
-        var rb2d = currentPlayer.GetComponent<Rigidbody2D>();
-        if (rb2d != null)
-        {
-            rb2d.velocity = Vector2.zero;
-            rb2d.angularVelocity = 0f;
-            rb2d.position = worldPosition;
-            // Also set transform to match
-            currentPlayer.transform.position = worldPosition;
-        }
-        else
-        {
-            // Fallback: set transform directly
-            currentPlayer.transform.position = worldPosition;
-        }
-
-        // If using Cinemachine, ensure camera target remains correct (m_Follow normally unchanged)
-        if (CVC != null)
-            CVC.m_Follow = currentPlayer.transform;
-
-        Debug.Log($"GameManager: Teleported player '{currentPlayer.name}' to {worldPosition}");
-    }
-
-    // Optional: expose teleport to a Transform
-    public void TeleportPlayerTo(Transform target)
-    {
-        if (target == null)
-        {
-            Debug.LogWarning("TeleportPlayerTo called with null target.");
-            return;
-        }
-        TeleportPlayerTo(target.position);
-    }
-
-    // Invulnerability input (F5)
-    private void CheckInvulnerabilityInput()
-    {
-        if (Input.GetKeyDown(KeyCode.F5))
-        {
-            // Ensure we have a reference to the active player
-            if (currentPlayer == null)
-                currentPlayer = GameObject.FindGameObjectWithTag("Player");
-
-            if (currentPlayer == null)
-            {
-                Debug.LogWarning("GameManager: No active Player found to toggle invulnerability.");
-                return;
-            }
-
-            var ps = currentPlayer.GetComponent<PlayerStats>();
-            if (ps == null)
-            {
-                Debug.LogWarning("GameManager: PlayerStats component not found on current player.");
-                return;
-            }
-
-            ps.ToggleInvulnerability();
-            Debug.Log($"GameManager: Toggled invulnerability on player '{currentPlayer.name}' -> {ps.IsInvulnerable()}");
-        }
     }
 }

@@ -5665,7 +5665,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0.5, y: 0.5, z: 0}
+  m_ChunkCullingBounds: {x: 0.49, y: 0.49, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -17892,6 +17892,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1108563063358165536, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
+      propertyPath: m_Color.b
+      value: 0.18369527
+      objectReference: {fileID: 0}
+    - target: {fileID: 1108563063358165536, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
+      propertyPath: m_Color.g
+      value: 0.9056604
+      objectReference: {fileID: 0}
+    - target: {fileID: 1108563063358165536, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
+      propertyPath: m_Color.r
+      value: 0.763048
+      objectReference: {fileID: 0}
     - target: {fileID: 2276945258510010487, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -17979,6 +17991,54 @@ PrefabInstance:
     - target: {fileID: 4114592898598269434, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6249765597400850102, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
+      propertyPath: m_Color.b
+      value: 0.4138483
+      objectReference: {fileID: 0}
+    - target: {fileID: 6249765597400850102, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
+      propertyPath: m_Color.g
+      value: 0.74928254
+      objectReference: {fileID: 0}
+    - target: {fileID: 6249765597400850102, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
+      propertyPath: m_Color.r
+      value: 0.9433962
+      objectReference: {fileID: 0}
+    - target: {fileID: 6632265263848155227, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
+      propertyPath: gradient.key0.b
+      value: 0.10866857
+      objectReference: {fileID: 0}
+    - target: {fileID: 6632265263848155227, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
+      propertyPath: gradient.key0.g
+      value: 0.10866857
+      objectReference: {fileID: 0}
+    - target: {fileID: 6632265263848155227, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
+      propertyPath: gradient.key0.r
+      value: 0.6981132
+      objectReference: {fileID: 0}
+    - target: {fileID: 6632265263848155227, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
+      propertyPath: gradient.key1.b
+      value: 0.25943398
+      objectReference: {fileID: 0}
+    - target: {fileID: 6632265263848155227, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
+      propertyPath: gradient.key1.g
+      value: 0.86547595
+      objectReference: {fileID: 0}
+    - target: {fileID: 6632265263848155227, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
+      propertyPath: gradient.key1.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6632265263848155227, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
+      propertyPath: gradient.key2.b
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 6632265263848155227, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
+      propertyPath: gradient.key2.g
+      value: 0.9058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 6632265263848155227, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
+      propertyPath: gradient.key2.r
+      value: 0.76470596
       objectReference: {fileID: 0}
     - target: {fileID: 7347213971761101093, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
       propertyPath: m_Name
@@ -22510,7 +22570,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -4
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0.5, y: 0.5, z: 0}
+  m_ChunkCullingBounds: {x: 0.49, y: 0.49, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -37406,7 +37466,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0.5, y: 0.5, z: 0}
+  m_ChunkCullingBounds: {x: 0.5, y: 0.495, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -41831,10 +41891,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pause canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 6943870878307270949, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8684782866218170112, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -42542,7 +42598,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0.5, y: 0.5, z: 0}
+  m_ChunkCullingBounds: {x: 0.49, y: 0.49, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -48257,7 +48313,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0.5, y: 0.5, z: 0}
+  m_ChunkCullingBounds: {x: 0.5, y: 0.495, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -64961,7 +65017,6 @@ MonoBehaviour:
   player: {fileID: 6999723560801021349, guid: 05c7fbda332f68b4391e3d43d818f6c1, type: 3}
   respawnTime: 1
   healthBar: {fileID: 0}
-  teleportTarget: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

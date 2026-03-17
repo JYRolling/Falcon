@@ -17,6 +17,6 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 3c8cacf42123ef24ca4dbf7673c505b4, type: 3}
   arrowPrefab: {fileID: 0}
   arrowType: {fileID: 0}
-  projectileCount: 3
+  projectileCount: 1
   spreadAngle: 15
   launchForceMultiplier: 1
