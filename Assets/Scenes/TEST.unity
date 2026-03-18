@@ -622,14 +622,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 497551780272525971, guid: 05c7fbda332f68b4391e3d43d818f6c1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 792795656409616609, guid: 05c7fbda332f68b4391e3d43d818f6c1, type: 3}
-      propertyPath: clampAimAngle
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4738613970221817403, guid: 05c7fbda332f68b4391e3d43d818f6c1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.71
@@ -670,41 +662,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6121716634600163888, guid: 05c7fbda332f68b4391e3d43d818f6c1, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6121716634600163888, guid: 05c7fbda332f68b4391e3d43d818f6c1, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6121716634600163888, guid: 05c7fbda332f68b4391e3d43d818f6c1, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6121716634600163888, guid: 05c7fbda332f68b4391e3d43d818f6c1, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6121716634600163888, guid: 05c7fbda332f68b4391e3d43d818f6c1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6486228800734393033, guid: 05c7fbda332f68b4391e3d43d818f6c1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6999723560801021349, guid: 05c7fbda332f68b4391e3d43d818f6c1, type: 3}
       propertyPath: m_Name
       value: Player (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7027389780524856748, guid: 05c7fbda332f68b4391e3d43d818f6c1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8076592247300661801, guid: 05c7fbda332f68b4391e3d43d818f6c1, type: 3}
-      propertyPath: ammoText
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1539,8 +1499,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d31b4227e781b1c4ca304b5da7b86aed, type: 2}
-  m_sharedMaterial: {fileID: -2836717166861911099, guid: d31b4227e781b1c4ca304b5da7b86aed, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1647,6 +1607,7 @@ MonoBehaviour:
   player: {fileID: 6999723560801021349, guid: 05c7fbda332f68b4391e3d43d818f6c1, type: 3}
   respawnTime: 1
   healthBar: {fileID: 0}
+  teleportTarget: {fileID: 0}
 --- !u!4 &1243679596
 Transform:
   m_ObjectHideFlags: 0
