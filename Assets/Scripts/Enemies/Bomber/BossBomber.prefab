@@ -59,9 +59,9 @@ MonoBehaviour:
   bombSpeedMultiplier: 1.8
   startOnAwake: 1
   initialDelay: 0.25
-  maxHealth: 2000
+  maxHealth: 600
   deathParticle: {fileID: 1962614393226834858, guid: 914644236e87d4d409304bcf9d8d3eb7, type: 3}
-  sceneToLoadOnDefeat: 
+  sceneToLoadOnDefeat: StageSelect
   sceneLoadDelay: 1
   bossStats: {fileID: 5894288882147142752}
   animator: {fileID: 0}
@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f8780b22aa3bce43b51700f1fdd5e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 2000
+  maxHealth: 600
   currentHealth: 0
   touchDamage: 10
   touchDamageCooldown: 3
