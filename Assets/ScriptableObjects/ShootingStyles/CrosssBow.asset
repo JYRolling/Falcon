@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e0fc23ae8129b4458c5b720b370c3fe, type: 3}
-  m_Name: Bow
+  m_Name: CrosssBow
   m_EditorClassIdentifier: 
-  displayName: Bow
+  displayName: CrossBow
   shootingStyle: 0
   icon: {fileID: 21300000, guid: 3c8cacf42123ef24ca4dbf7673c505b4, type: 3}
   arrowPrefab: {fileID: 0}
-  arrowType: {fileID: 11400000, guid: 78af5f3213135724e92db1e5be70d54a, type: 2}
+  arrowType: {fileID: 0}
   projectileCount: 1
   spreadAngle: 15
   launchForceMultiplier: 1

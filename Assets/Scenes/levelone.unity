@@ -10528,10 +10528,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pause canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 6943870878307270949, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8684782866218170112, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -13105,7 +13101,6 @@ MonoBehaviour:
   respawnPoint: {fileID: 8724600227467389686}
   player: {fileID: 6999723560801021349, guid: 05c7fbda332f68b4391e3d43d818f6c1, type: 3}
   respawnTime: 1
-  healthBar: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
