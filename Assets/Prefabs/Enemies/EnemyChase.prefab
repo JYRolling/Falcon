@@ -353,7 +353,7 @@ MonoBehaviour:
   touchDamage: 10
   touchDamageWidth: 1
   touchDamageHeight: 2
-  isChasingPlayer: 0
+  isChasingPlayer: 1
   chaseRadius: 4
   chaseSpeed: 3.5
   chaseRadiusObject: {fileID: 529573067655013599}
