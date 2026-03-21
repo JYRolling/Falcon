@@ -64,7 +64,7 @@ MonoBehaviour:
   sceneToLoadOnDefeat: StageSelect
   sceneLoadDelay: 1
   bossStats: {fileID: 5894288882147142752}
-  animator: {fileID: 0}
+  animator: {fileID: 8561823395387115924}
   touchDamageCheck: {fileID: 9093524575634392071}
   whatIsPlayer:
     serializedVersion: 2
@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 5205971206176819855}
   - component: {fileID: 1872571039407475095}
   - component: {fileID: 6198396454896457793}
+  - component: {fileID: 8561823395387115924}
   m_Layer: 10
   m_Name: Alive
   m_TagString: Enemy
@@ -275,6 +276,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!95 &8561823395387115924
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6724456921199547414}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3fb989b61918c6d40bc419f14cd4cc42, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &9180708579152912484
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,15 +4,21 @@ using TMPro;
 using UnityEngine.UI;
 
 // Attach to the Player root GameObject.
-// Handles continuous fire crossbow pickup, ammo depletion, and optional ammo UI.
+// Handles continuous fire pickup weapons, ammo depletion, and optional ammo UI.
 //
 // Metal Slug style:
 //   - Pick up CrossbowPickup in world  -> Equip() is called with ammo count
 //   - Hold Mouse0 while equipped       -> fires at fireRate shots/second
 //   - Ammo hits 0                      -> weapon removed, Bow restored automatically
-//   - Pick up same crossbow again      -> ammo is added (up to maxAmmo)
+//   - Pick up same special weapon again -> ammo is added (up to maxAmmo)
 public class CrossbowController : MonoBehaviour
 {
+    private enum WeaponSlot
+    {
+        Normal = 1,
+        Pickup = 2
+    }
+
     [Header("Ammo UI (optional)")]
     [Tooltip("Optional: icon image for the equipped crossbow. Auto-found if named 'CrossbowWeaponIcon'.")]
     [SerializeField] private Image weaponIconImage;
@@ -23,11 +29,19 @@ public class CrossbowController : MonoBehaviour
     [Tooltip("Legacy fallback text. If this is assigned, it shows '<name>  <ammo>'. Auto-found if named 'CrossbowAmmoText'.")]
     [SerializeField] private TMP_Text ammoText;
 
+    [Header("UI Highlight")]
+    [Tooltip("Color used when pickup weapon slot (2) is active.")]
+    [SerializeField] private Color activeUIColor = Color.white;
+
+    [Tooltip("Color used when pickup weapon exists but slot 1 is currently active.")]
+    [SerializeField] private Color inactiveUIColor = new Color(1f, 1f, 1f, 0.45f);
+
     // Runtime state
     private CrossbowData currentData;
     private int currentAmmo;
     private float nextFireTime;
     private bool isEquipped;
+    private WeaponSlot activeSlot = WeaponSlot.Normal;
 
     private Bow bowComponent;
     private AudioSource audioSource;
@@ -40,6 +54,7 @@ public class CrossbowController : MonoBehaviour
     public bool IsEquipped => isEquipped;
     public int CurrentAmmo => currentAmmo;
     public CrossbowData CurrentData => currentData;
+    public bool IsPickupWeaponSelected => activeSlot == WeaponSlot.Pickup;
 
     private void Awake()
     {
@@ -78,7 +93,10 @@ public class CrossbowController : MonoBehaviour
 
     private void Update()
     {
-        if (!isEquipped) return;
+        HandleWeaponSwitchInput();
+
+        if (!isEquipped || activeSlot != WeaponSlot.Pickup)
+            return;
 
         if (Input.GetMouseButton(0) && Time.time >= nextFireTime)
             Fire();
@@ -109,9 +127,8 @@ public class CrossbowController : MonoBehaviour
         isEquipped = true;
         nextFireTime = 0f;
 
-        // Block Bow from firing while crossbow is active (Bow still rotates/aims)
-        if (bowComponent != null)
-            bowComponent.ShootingOverridden = true;
+        // Auto select pickup weapon when collected (Metal Slug style).
+        SelectPickupWeapon();
 
         if (data.pickupSFX != null)
             audioSource.PlayOneShot(data.pickupSFX);
@@ -149,21 +166,32 @@ public class CrossbowController : MonoBehaviour
         Vector2 aimDir = GetAimDirection();
         float angle = Mathf.Atan2(aimDir.y, aimDir.x) * Mathf.Rad2Deg;
 
-        GameObject boltGO = Instantiate(currentData.boltPrefab, spawnPos, Quaternion.Euler(0f, 0f, angle));
+        GameObject projectileGO = Instantiate(currentData.boltPrefab, spawnPos, Quaternion.Euler(0f, 0f, angle));
 
-        var bolt = boltGO.GetComponent<CrossbowBolt>();
+        var bolt = projectileGO.GetComponent<CrossbowBolt>();
         if (bolt != null)
         {
             bolt.Init(currentData.damage, aimDir * currentData.bulletSpeed, currentData.groundLayer);
         }
         else
         {
-            // Fallback: drive Rigidbody2D directly if no CrossbowBolt component
-            var boltRb = boltGO.GetComponent<Rigidbody2D>();
-            if (boltRb != null)
+            var arrow = projectileGO.GetComponent<Arrow>();
+            if (arrow != null)
             {
-                boltRb.gravityScale = 0f;
-                boltRb.velocity = aimDir * currentData.bulletSpeed;
+                if (currentData.projectileArrowType != null)
+                    arrow.SetType(currentData.projectileArrowType);
+                else
+                    arrow.WhatisGround(currentData.groundLayer);
+            }
+
+            // Fallback: drive Rigidbody2D directly if no CrossbowBolt component
+            var projectileRb = projectileGO.GetComponent<Rigidbody2D>();
+            if (projectileRb != null)
+            {
+                if (arrow == null)
+                    projectileRb.gravityScale = 0f;
+
+                projectileRb.velocity = aimDir * currentData.bulletSpeed;
             }
         }
 
@@ -185,15 +213,49 @@ public class CrossbowController : MonoBehaviour
 
     private void Deplete()
     {
+        SelectNormalWeapon();
         isEquipped = false;
         currentData = null;
 
-        // Give shooting back to the Bow
+        UpdateAmmoUI();
+        OnDepleted?.Invoke();
+    }
+
+    private void HandleWeaponSwitchInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            SelectNormalWeapon();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))
+        {
+            SelectPickupWeapon();
+        }
+    }
+
+    private void SelectNormalWeapon()
+    {
+        activeSlot = WeaponSlot.Normal;
+
         if (bowComponent != null)
             bowComponent.ShootingOverridden = false;
 
         UpdateAmmoUI();
-        OnDepleted?.Invoke();
+    }
+
+    private bool SelectPickupWeapon()
+    {
+        if (!isEquipped || currentData == null || currentAmmo <= 0)
+            return false;
+
+        activeSlot = WeaponSlot.Pickup;
+
+        if (bowComponent != null)
+            bowComponent.ShootingOverridden = true;
+
+        UpdateAmmoUI();
+        return true;
     }
 
     private Vector3 GetFirePosition()
@@ -222,18 +284,23 @@ public class CrossbowController : MonoBehaviour
 
     private void UpdateAmmoUI()
     {
-        if (isEquipped && currentData != null)
+        bool hasPickupWeapon = isEquipped && currentData != null;
+        bool isPickupActive = activeSlot == WeaponSlot.Pickup;
+
+        if (hasPickupWeapon)
         {
             if (weaponIconImage != null)
             {
                 weaponIconImage.sprite = currentData.icon;
                 weaponIconImage.enabled = currentData.icon != null;
+                ApplyImageHighlight(weaponIconImage, isPickupActive);
             }
 
             if (ammoCountText != null)
             {
                 ammoCountText.text = currentAmmo.ToString();
                 ammoCountText.enabled = true;
+                ApplyTextHighlight(ammoCountText, isPickupActive);
             }
 
             // Legacy fallback text support
@@ -241,6 +308,7 @@ public class CrossbowController : MonoBehaviour
             {
                 ammoText.text = $"{currentData.displayName}  {currentAmmo}";
                 ammoText.enabled = true;
+                ApplyTextHighlight(ammoText, isPickupActive);
             }
         }
         else
@@ -263,5 +331,17 @@ public class CrossbowController : MonoBehaviour
                 ammoText.enabled = false;
             }
         }
+    }
+
+    private void ApplyImageHighlight(Image image, bool isActive)
+    {
+        if (image == null) return;
+        image.color = isActive ? activeUIColor : inactiveUIColor;
+    }
+
+    private void ApplyTextHighlight(TMP_Text text, bool isActive)
+    {
+        if (text == null) return;
+        text.color = isActive ? activeUIColor : inactiveUIColor;
     }
 }

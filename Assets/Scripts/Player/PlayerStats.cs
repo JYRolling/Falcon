@@ -111,6 +111,20 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
+    public void IncreaseHealth(float amount)
+    {
+        if (amount <= 0f)
+            return;
+
+        currentHealth += amount;
+        currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
+
+        if (healthBar != null)
+            healthBar.SetHealth(currentHealth);
+        else
+            Debug.LogWarning("[PlayerStats] Tried to update HealthBar but reference is null.");
+    }
+
     private void Die()
     {
         if (deathChunkParticle) Instantiate(deathChunkParticle, transform.position, deathChunkParticle.transform.rotation);

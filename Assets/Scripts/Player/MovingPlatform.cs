@@ -8,6 +8,8 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField] float distanceToStop = 5f;
 
     [SerializeField] bool isMovingUp = true;
+    [SerializeField] bool moveHorizontally = false;
+    [SerializeField] bool isMovingRight = true;
 
     Vector3 startPosition;
     Vector3 endPosition;
@@ -15,25 +17,54 @@ public class MovingPlatform : MonoBehaviour
     void Start()
     {
         startPosition = transform.position;
-        endPosition = transform.position + Vector3.up * distanceToStop;
+        if (moveHorizontally)
+        {
+            endPosition = transform.position + Vector3.right * distanceToStop;
+        }
+        else
+        {
+            endPosition = transform.position + Vector3.up * distanceToStop;
+        }
     }
 
     void Update()
     {
-        if (isMovingUp)
+        if (moveHorizontally)
         {
-            transform.Translate(Vector3.up * moveSpeed * Time.deltaTime);
-            if (Vector3.Distance(transform.position, endPosition) < 0.1f)
+            if (isMovingRight)
             {
-                isMovingUp = false;
+                transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+                if (Vector3.Distance(transform.position, endPosition) < 0.1f)
+                {
+                    isMovingRight = false;
+                }
+            }
+            else
+            {
+                transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
+                if (Vector3.Distance(transform.position, startPosition) < 0.1f)
+                {
+                    isMovingRight = true;
+                }
             }
         }
         else
         {
-            transform.Translate(Vector3.down * moveSpeed * Time.deltaTime);
-            if (Vector3.Distance(transform.position, startPosition) < 0.1f)
+            if (isMovingUp)
             {
-                isMovingUp = true;
+                transform.Translate(Vector3.up * moveSpeed * Time.deltaTime);
+                if (Vector3.Distance(transform.position, endPosition) < 0.1f)
+                {
+                    isMovingUp = false;
+                }
+            }
+            else
+            {
+                transform.Translate(Vector3.down * moveSpeed * Time.deltaTime);
+                if (Vector3.Distance(transform.position, startPosition) < 0.1f)
+                {
+                    isMovingUp = true;
+                }
             }
         }
     }
