@@ -10919,49 +10919,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 754652953255021144, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 754652953255021144, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 754652953255021144, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1185617306298582278, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
       propertyPath: m_Name
       value: Pause canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 2316743234169211792, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2316743234169211792, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2316743234169211792, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7801207190433928493, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7801207190433928493, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8044887491530635332, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8044887491530635332, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8684782866218170112, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
       propertyPath: m_Pivot.x
@@ -11414,8 +11374,8 @@ SceneRoots:
   - {fileID: 1005939062}
   - {fileID: 1690820499073664843}
   - {fileID: 69560308}
-  - {fileID: 1465297314}
   - {fileID: 1176880034}
   - {fileID: 653147810}
   - {fileID: 4672259350879334208}
+  - {fileID: 1465297314}
   - {fileID: 1359092398}
