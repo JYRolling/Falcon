@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cfe92311a1ad86144afc5697f2e3203e, type: 3}
-  m_Name: ExplosiveBowData
+  m_Name: Frost Bow
   m_EditorClassIdentifier: 
-  displayName: Explosive Bow
-  icon: {fileID: 21300000, guid: 72b8bf38269c3d948aee1d4ffd70539e, type: 3}
+  displayName: Frost Bow
+  icon: {fileID: 21300000, guid: 7fef51de681c5494285e430a2654e883, type: 3}
   fireRate: 2
   bulletSpeed: 18
-  boltPrefab: {fileID: 5532093577241812150, guid: de2e469e1c4ca6544ab4c7daa576e97f, type: 3}
-  projectileArrowType: {fileID: 11400000, guid: 1005ccd93b6c6a542b0a080d946ea505, type: 2}
-  ammoPerPickup: 5
-  maxAmmo: 10
+  boltPrefab: {fileID: 5532093577241812150, guid: edc9adeb8f11f8444933b798cdcffe61, type: 3}
+  projectileArrowType: {fileID: 11400000, guid: c207f3c8bd4501c47839f218f3362f96, type: 2}
+  ammoPerPickup: 15
+  maxAmmo: 30
   damage: 5
   groundLayer:
     serializedVersion: 2
