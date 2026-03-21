@@ -4,13 +4,13 @@ using TMPro;
 using UnityEngine.UI;
 
 // Attach to the Player root GameObject.
-// Handles continuous fire crossbow pickup, ammo depletion, and optional ammo UI.
+// Handles continuous fire pickup weapons, ammo depletion, and optional ammo UI.
 //
 // Metal Slug style:
 //   - Pick up CrossbowPickup in world  -> Equip() is called with ammo count
 //   - Hold Mouse0 while equipped       -> fires at fireRate shots/second
 //   - Ammo hits 0                      -> weapon removed, Bow restored automatically
-//   - Pick up same crossbow again      -> ammo is added (up to maxAmmo)
+//   - Pick up same special weapon again -> ammo is added (up to maxAmmo)
 public class CrossbowController : MonoBehaviour
 {
     private enum WeaponSlot
@@ -166,21 +166,32 @@ public class CrossbowController : MonoBehaviour
         Vector2 aimDir = GetAimDirection();
         float angle = Mathf.Atan2(aimDir.y, aimDir.x) * Mathf.Rad2Deg;
 
-        GameObject boltGO = Instantiate(currentData.boltPrefab, spawnPos, Quaternion.Euler(0f, 0f, angle));
+        GameObject projectileGO = Instantiate(currentData.boltPrefab, spawnPos, Quaternion.Euler(0f, 0f, angle));
 
-        var bolt = boltGO.GetComponent<CrossbowBolt>();
+        var bolt = projectileGO.GetComponent<CrossbowBolt>();
         if (bolt != null)
         {
             bolt.Init(currentData.damage, aimDir * currentData.bulletSpeed, currentData.groundLayer);
         }
         else
         {
-            // Fallback: drive Rigidbody2D directly if no CrossbowBolt component
-            var boltRb = boltGO.GetComponent<Rigidbody2D>();
-            if (boltRb != null)
+            var arrow = projectileGO.GetComponent<Arrow>();
+            if (arrow != null)
             {
-                boltRb.gravityScale = 0f;
-                boltRb.velocity = aimDir * currentData.bulletSpeed;
+                if (currentData.projectileArrowType != null)
+                    arrow.SetType(currentData.projectileArrowType);
+                else
+                    arrow.WhatisGround(currentData.groundLayer);
+            }
+
+            // Fallback: drive Rigidbody2D directly if no CrossbowBolt component
+            var projectileRb = projectileGO.GetComponent<Rigidbody2D>();
+            if (projectileRb != null)
+            {
+                if (arrow == null)
+                    projectileRb.gravityScale = 0f;
+
+                projectileRb.velocity = aimDir * currentData.bulletSpeed;
             }
         }
 
