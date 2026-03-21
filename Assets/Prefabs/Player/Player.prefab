@@ -340,7 +340,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6486228800734393033}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.591, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -689,6 +689,8 @@ MonoBehaviour:
   weaponIconImage: {fileID: 0}
   ammoCountText: {fileID: 0}
   ammoText: {fileID: 0}
+  activeUIColor: {r: 1, g: 1, b: 1, a: 1}
+  inactiveUIColor: {r: 1, g: 1, b: 1, a: 0.45}
 --- !u!1 &7027389780524856748
 GameObject:
   m_ObjectHideFlags: 0

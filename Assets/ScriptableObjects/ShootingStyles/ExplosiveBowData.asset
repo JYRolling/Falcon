@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe92311a1ad86144afc5697f2e3203e, type: 3}
+  m_Name: ExplosiveBowData
+  m_EditorClassIdentifier: 
+  displayName: Explosive Bow
+  icon: {fileID: 21300000, guid: 72b8bf38269c3d948aee1d4ffd70539e, type: 3}
+  fireRate: 2
+  bulletSpeed: 18
+  boltPrefab: {fileID: 5532093577241812150, guid: de2e469e1c4ca6544ab4c7daa576e97f, type: 3}
+  projectileArrowType: {fileID: 11400000, guid: 1005ccd93b6c6a542b0a080d946ea505, type: 2}
+  ammoPerPickup: 99
+  maxAmmo: 99
+  damage: 5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  fireSFX: {fileID: 0}
+  pickupSFX: {fileID: 0}
+  muzzleFlashPrefab: {fileID: 0}

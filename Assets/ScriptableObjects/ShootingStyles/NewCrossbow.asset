@@ -16,7 +16,8 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 3c8cacf42123ef24ca4dbf7673c505b4, type: 3}
   fireRate: 5
   bulletSpeed: 18
-  boltPrefab: {fileID: 5532093577241812150, guid: 491747f74ec6be94da0fef8fa5f364ec, type: 3}
+  boltPrefab: {fileID: 5532093577241812150, guid: 3c66a315653425c44aae7478f43fbcf3, type: 3}
+  projectileArrowType: {fileID: 11400000, guid: 78af5f3213135724e92db1e5be70d54a, type: 2}
   ammoPerPickup: 30
   maxAmmo: 60
   damage: 5
