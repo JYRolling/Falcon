@@ -1,6 +1,7 @@
 using UnityEngine;
 
-// ScriptableObject holding all stats for a crossbow weapon.
+// ScriptableObject holding all stats for a pickup weapon.
+// Can be used for crossbow, explosive bow, or other temporary special weapons.
 // Create via: Right-click in Project > Weapons > Crossbow
 [CreateAssetMenu(menuName = "Weapons/Crossbow", fileName = "NewCrossbow")]
 public class CrossbowData : ScriptableObject
@@ -16,6 +17,9 @@ public class CrossbowData : ScriptableObject
     public float bulletSpeed = 18f;
     [Tooltip("Prefab spawned as a projectile when firing.")]
     public GameObject boltPrefab;
+
+    [Tooltip("Optional ArrowType applied when the projectile prefab uses the Arrow script.")]
+    public ArrowType projectileArrowType;
 
     [Header("Ammo")]
     [Tooltip("Ammo given to the player when this pickup is collected.")]

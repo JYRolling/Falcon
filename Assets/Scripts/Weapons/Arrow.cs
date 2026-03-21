@@ -18,6 +18,19 @@ public class Arrow : MonoBehaviour
     [Header("Data")]
     public ArrowType arrowType;
 
+    private void OnDrawGizmos()
+    {
+        if (arrowType == null || !arrowType.isExplosive || !arrowType.showExplosionRadiusGizmo)
+            return;
+
+        float radius = Mathf.Max(0f, arrowType.explosionRadius);
+        if (radius <= 0f)
+            return;
+
+        Gizmos.color = arrowType.explosionGizmoColor;
+        Gizmos.DrawWireSphere(transform.position, radius);
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -104,6 +117,10 @@ public class Arrow : MonoBehaviour
         {
             Debug.Log($"Arrow trigger hit ground-like object '{other.gameObject.name}' (layer {other.gameObject.layer})");
             hasHit = true;
+
+            if (arrowType != null && arrowType.isExplosive)
+                ExplodeAt(transform.position);
+
             Destroy(gameObject);
             return;
         }
@@ -135,7 +152,7 @@ public class Arrow : MonoBehaviour
     }
 
     // Tries to find a suitable enemy GameObject to send Damage to.
-    // Now: only uses the "Enemy" tag — stops checking for specific enemy scripts.
+    // Now: only uses the "Enemy" tag ï¿½ stops checking for specific enemy scripts.
     private GameObject FindEnemyTarget(Collider2D col)
     {
         if (col == null) return null;
@@ -174,12 +191,48 @@ public class Arrow : MonoBehaviour
         if (damageInvoked)
             Debug.Log($"Arrow: damage delivered to '{enemyObject.name}'");
         else
-            Debug.LogWarning($"Arrow: no damage method detected on '{enemyObject.name}' or its children/parents — no damage applied.");
+            Debug.LogWarning($"Arrow: no damage method detected on '{enemyObject.name}' or its children/parents ï¿½ no damage applied.");
+
+        if (arrowType != null && arrowType.isExplosive)
+            ExplodeAt(transform.position);
 
         if (arrowType != null && arrowType.impactVFX != null)
             Instantiate(arrowType.impactVFX, transform.position, Quaternion.identity);
 
         Destroy(gameObject, 0.01f);
+    }
+
+    private void ExplodeAt(Vector2 center)
+    {
+        if (arrowType == null || !arrowType.isExplosive)
+            return;
+
+        float radius = Mathf.Max(0f, arrowType.explosionRadius);
+        float explosionDamage = damage * Mathf.Max(0f, arrowType.explosionDamageMultiplier);
+
+        if (radius <= 0f || explosionDamage <= 0f)
+            return;
+
+        if (arrowType.explosionVFX != null)
+            Instantiate(arrowType.explosionVFX, center, Quaternion.identity);
+
+        Collider2D[] hits = Physics2D.OverlapCircleAll(center, radius);
+        for (int i = 0; i < hits.Length; i++)
+        {
+            Collider2D col = hits[i];
+            if (col == null)
+                continue;
+
+            GameObject enemyTarget = FindEnemyTarget(col);
+            if (enemyTarget == null)
+                continue;
+
+            float[] attackDetails = new float[2];
+            attackDetails[0] = explosionDamage;
+            attackDetails[1] = center.x;
+
+            TryInvokeDamageOnHierarchy(enemyTarget, attackDetails);
+        }
     }
 
     // Attempts to find and invoke a Damage method on the target's components (children and parents are searched).
@@ -232,7 +285,7 @@ public class Arrow : MonoBehaviour
             }
         }
 
-        // If not found in children, search parents upward (GetComponentsInParent includes self; we've covered self — so skip)
+        // If not found in children, search parents upward (GetComponentsInParent includes self; we've covered self ï¿½ so skip)
         var parent = target.transform.parent;
         while (parent != null)
         {
