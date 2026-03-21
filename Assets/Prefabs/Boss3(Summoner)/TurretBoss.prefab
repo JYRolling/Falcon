@@ -59,8 +59,8 @@ MonoBehaviour:
   spreadCount: 3
   spreadConeAngle: 30
   roundsPerShoot: 3
-  timeBetweenRounds: 0.25
-  bulletSpeed: 10
+  timeBetweenRounds: 2
+  bulletSpeed: 5
   bulletSpeedMultiplier: 1
   startOnAwake: 1
   initialDelay: 0.2
@@ -68,7 +68,7 @@ MonoBehaviour:
   deathParticle: {fileID: 3959963481427979852, guid: 0bf0b4f693052f14496d1f846eaafe6f, type: 3}
   sceneToLoadOnDefeat: 
   sceneLoadDelay: 1
-  _currentLocalHealth: 400
+  _currentLocalHealth: 600
 --- !u!114 &5468886479353494239
 MonoBehaviour:
   m_ObjectHideFlags: 0

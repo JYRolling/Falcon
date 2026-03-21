@@ -1,10 +1,11 @@
 using UnityEngine;
 
-// Spawns a boss and an optional wall when a trigger is entered.
+// Spawns a boss and optional additional prefabs when a trigger is entered.
 // Usage:
 // - Add this script to a GameObject that has a Collider2D set to "Is Trigger".
 // - Assign `bossPrefab` and `bossSpawnPoint` (create an empty GameObject where the boss should appear).
-// - Optionally assign `wallPrefab` and `wallSpawnPoint`.
+// - Optionally assign `wallPrefab`/`wallSpawnPoint` (legacy) or configure the single
+//   `additionalPrefab` + `additionalSpawnPoint` pair below.
 // - The trigger will react to GameObjects with tag "Player" by default.
 [RequireComponent(typeof(Collider2D))]
 public class BossSpawner : MonoBehaviour
@@ -12,14 +13,20 @@ public class BossSpawner : MonoBehaviour
     [Header("Prefabs")]
     [Tooltip("Boss prefab to instantiate (should include BossEnemyController)")]
     [SerializeField] private GameObject bossPrefab;
-    [Tooltip("Optional wall prefab to instantiate when spawn occurs")]
+    [Tooltip("Optional wall prefab to instantiate when spawn occurs (legacy field)")]
     [SerializeField] private GameObject wallPrefab;
+    [Tooltip("Optional single additional prefab to spawn alongside the boss (non-array)")]
+    [SerializeField] private GameObject additionalPrefab;
 
     [Header("Spawn Points")]
     [Tooltip("Empty GameObject marking where the boss will spawn")]
     [SerializeField] private Transform bossSpawnPoint;
     [Tooltip("Optional empty GameObject marking where the wall will spawn (falls back to spawner position)")]
     [SerializeField] private Transform wallSpawnPoint;
+    [Tooltip("Optional empty GameObject marking where the additional prefab will spawn (falls back to spawner position)")]
+    [SerializeField] private Transform additionalSpawnPoint;
+    [Tooltip("If true additional prefab uses spawnPoint.rotation, otherwise Quaternion.identity")]
+    [SerializeField] private bool additionalUseSpawnPointRotation = true;
 
     [Header("Trigger")]
     [Tooltip("Tag required for the entering collider to trigger the spawn")]
@@ -54,15 +61,14 @@ public class BossSpawner : MonoBehaviour
 
     private void Spawn()
     {
+        // Spawn boss (if assigned)
         if (bossPrefab != null)
         {
             Vector3 pos = bossSpawnPoint != null ? bossSpawnPoint.position : transform.position;
             Quaternion rot = bossSpawnPoint != null ? bossSpawnPoint.rotation : Quaternion.identity;
             GameObject bossInstance = Instantiate(bossPrefab, pos, rot);
-            // Optional: make spawned boss children of a container for organization (uncomment and set a parent transform if desired)
-            // bossInstance.transform.SetParent(someParentTransform, worldPositionStays: true);
 
-            // Diagnostic: ensure expected controller is present
+            // Diagnostic: ensure expected controller is present (legacy check kept)
             var jb = bossInstance.GetComponentInChildren<JumpingBomberEnemyController>();
             if (jb == null)
             {
@@ -80,12 +86,25 @@ public class BossSpawner : MonoBehaviour
             Debug.LogWarning($"{nameof(BossSpawner)}: bossPrefab is not assigned on '{gameObject.name}'.");
         }
 
+        // Legacy single wall spawn (kept for backwards compatibility)
         if (wallPrefab != null)
         {
             Vector3 wpos = wallSpawnPoint != null ? wallSpawnPoint.position : transform.position;
             Quaternion wrot = wallSpawnPoint != null ? wallSpawnPoint.rotation : Quaternion.identity;
             Instantiate(wallPrefab, wpos, wrot);
             Debug.Log($"Spawned wall '{wallPrefab.name}' at {wpos}");
+        }
+
+        // New: single additional prefab + spawnPoint (non-array)
+        if (additionalPrefab != null)
+        {
+            Vector3 aPos = additionalSpawnPoint != null ? additionalSpawnPoint.position : transform.position;
+            Quaternion aRot = Quaternion.identity;
+            if (additionalUseSpawnPointRotation && additionalSpawnPoint != null)
+                aRot = additionalSpawnPoint.rotation;
+
+            Instantiate(additionalPrefab, aPos, aRot);
+            Debug.Log($"Spawned additional prefab '{additionalPrefab.name}' at {aPos}");
         }
     }
 
@@ -101,5 +120,13 @@ public class BossSpawner : MonoBehaviour
         Gizmos.color = Color.yellow;
         if (wallSpawnPoint != null)
             Gizmos.DrawWireCube(wallSpawnPoint.position, Vector3.one * 0.5f);
+
+        // draw single additional spawn point
+        if (additionalPrefab != null)
+        {
+            Gizmos.color = Color.cyan;
+            Vector3 p = additionalSpawnPoint != null ? additionalSpawnPoint.position : transform.position;
+            Gizmos.DrawWireCube(p, Vector3.one * 0.4f);
+        }
     }
 }
