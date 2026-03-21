@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
     private float movementInputDirection;
     private float jumpTimer;
     private float turnTimer;
@@ -72,6 +71,13 @@ public class PlayerController : MonoBehaviour
 
     public LayerMask whatIsGround;
 
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -109,6 +115,7 @@ public class PlayerController : MonoBehaviour
 
     public void Knockback(int direction)
     {
+        audioManager.PlaySFX(audioManager.damage);
         knockback = true;
         knockbackStartTime = Time.time;
         rb.velocity = new Vector2(knockbackSpeed.x * direction, knockbackSpeed.y);
@@ -229,6 +236,7 @@ public class PlayerController : MonoBehaviour
 
     private void AttemptToDash()
     {
+        audioManager.PlaySFX(audioManager.dash);
         isDashing = true;
         dashTimeLeft = dashTime;
         lastDash = Time.time;
@@ -309,6 +317,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             anim.SetBool("isJumping", !isGrounded);
+            audioManager.PlaySFX(audioManager.jump1);
             amountOfJumpsLeft--;
             jumpTimer = 0;
             isAttemptingToJump = false;

@@ -10,6 +10,7 @@ TagManager:
   - Ground
   - Bomb
   - Drops
+  - Audio
   layers:
   - Default
   - TransparentFX
