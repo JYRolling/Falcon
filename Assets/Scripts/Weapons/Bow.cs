@@ -67,6 +67,8 @@ public class Bow : MonoBehaviour
     // Set true by CrossbowController (or any weapon override) to block bow from shooting.
     [HideInInspector] public bool ShootingOverridden = false;
 
+    AudioManager audioManager;
+
     private void OnEnable()
     {
         // Resolve UI when the object becomes active (covers instantiation/respawn)
@@ -74,6 +76,11 @@ public class Bow : MonoBehaviour
         UpdateShootTypeIcon();
         UpdateShootingTypeIcon();
         UpdateNameTexts();
+    }
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     private void Start()
@@ -239,6 +246,7 @@ public class Bow : MonoBehaviour
 
     void Shoot()
     {
+        audioManager.PlaySFX(audioManager.shoot3);
         // prefer shooting-type provided arrow prefab; otherwise use selected arrow prefab/fallback arrow
         ShootingType currentType = GetCurrentShootingType();
         GameObject prefab = currentType != null && currentType.arrowPrefab != null ? currentType.arrowPrefab : GetSelectedArrowPrefab();
