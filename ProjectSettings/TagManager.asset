@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Ground
   - Bomb
+  - Drops
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - Arrow
   - Enemy
   - Bomb
-  - 
+  - Drops
   - 
   - 
   - 
