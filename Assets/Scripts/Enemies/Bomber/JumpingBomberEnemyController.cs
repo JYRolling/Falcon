@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using Falcon.Utils;
 
 /// <summary>
 /// Enemy that repeatedly:
@@ -597,19 +598,5 @@ public class JumpingBomberEnemyController : MonoBehaviour
             return;
         }
         animator.SetBool(param, value);
-    }
-}
-
-/// <summary>
-/// Extension helper for Animator to check parameter existence (non-reflection fallback).
-/// </summary>
-public static class AnimatorExtensions
-{
-    public static bool HasParameter(this Animator animator, string paramName)
-    {
-        if (animator == null) return false;
-        foreach (var p in animator.parameters)
-            if (p.name == paramName) return true;
-        return false;
     }
 }
