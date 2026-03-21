@@ -66,7 +66,7 @@ MonoBehaviour:
   initialDelay: 0.2
   bossStats: {fileID: 5468886479353494239}
   deathParticle: {fileID: 3959963481427979852, guid: 0bf0b4f693052f14496d1f846eaafe6f, type: 3}
-  sceneToLoadOnDefeat: 
+  sceneToLoadOnDefeat: StageSelect
   sceneLoadDelay: 1
   _currentLocalHealth: 600
 --- !u!114 &5468886479353494239

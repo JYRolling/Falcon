@@ -273,7 +273,7 @@ MonoBehaviour:
   initialDelay: 0.5
   maxHealth: 600
   deathParticle: {fileID: 3959963481427979852, guid: 0bf0b4f693052f14496d1f846eaafe6f, type: 3}
-  sceneToLoadOnDefeat: 
+  sceneToLoadOnDefeat: StageSelect
   sceneLoadDelay: 1
   bossStats: {fileID: 7204509075514504578}
   animator: {fileID: 0}
