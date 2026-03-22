@@ -56,6 +56,8 @@ MonoBehaviour:
   playerTransform: {fileID: 0}
   maxHealth: 800
   bossStats: {fileID: 9002824969777092676}
+  sceneToLoadOnDefeat: StageSelect
+  sceneLoadDelay: 1
   touchDamageCheck: {fileID: 1314727540989040373}
   whatIsPlayer:
     serializedVersion: 2
