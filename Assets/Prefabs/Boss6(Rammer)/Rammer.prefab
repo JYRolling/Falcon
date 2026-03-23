@@ -51,16 +51,18 @@ MonoBehaviour:
     m_Bits: 64
   wallCheck: {fileID: 4795366395313224546}
   wallCheckDistance: 1
-  dashSpeed: 12
-  waitTimeAfterHit: 1
+  dashSpeed: 15
+  waitTimeAfterHit: 0.5
   playerTransform: {fileID: 0}
   maxHealth: 800
   bossStats: {fileID: 9002824969777092676}
+  sceneToLoadOnDefeat: StageSelect
+  sceneLoadDelay: 1
   touchDamageCheck: {fileID: 1314727540989040373}
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 128
-  touchDamage: 10
+  touchDamage: 20
   touchDamageCooldown: 1
   touchDamageWidth: 1
   touchDamageHeight: 1

@@ -48,10 +48,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patrolPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2509306117527083008, guid: 2530dbf2249caf04da5cc810e5cea2fa, type: 3}
+  - {fileID: 4997235617298800742, guid: 0133ca4481d521e46a3b6bc645b3a177, type: 3}
+  - {fileID: 1507873191278670462, guid: ea2cfe7a0b64d954f95a3274d6e6871d, type: 3}
+  - {fileID: 3470225660686108783, guid: 639f9689d7840654e8e169d9f7bac004, type: 3}
   moveSpeed: 8
   pauseOnPoint: 4
   bulletPrefab: {fileID: 6893207421243802147, guid: 55ca2cba644943d4293397d1d3ff8f88, type: 3}
@@ -59,16 +59,16 @@ MonoBehaviour:
   spreadCount: 3
   spreadConeAngle: 30
   roundsPerShoot: 3
-  timeBetweenRounds: 0.25
-  bulletSpeed: 10
+  timeBetweenRounds: 2
+  bulletSpeed: 5
   bulletSpeedMultiplier: 1
   startOnAwake: 1
   initialDelay: 0.2
   bossStats: {fileID: 5468886479353494239}
   deathParticle: {fileID: 3959963481427979852, guid: 0bf0b4f693052f14496d1f846eaafe6f, type: 3}
-  sceneToLoadOnDefeat: 
+  sceneToLoadOnDefeat: StageSelect
   sceneLoadDelay: 1
-  _currentLocalHealth: 400
+  _currentLocalHealth: 600
 --- !u!114 &5468886479353494239
 MonoBehaviour:
   m_ObjectHideFlags: 0

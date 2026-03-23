@@ -239,7 +239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossStats: {fileID: 2139738608429885779}
   hitParticle: {fileID: 3959963481427979852, guid: 0bf0b4f693052f14496d1f846eaafe6f, type: 3}
-  sceneToLoadOnDefeat: 
+  sceneToLoadOnDefeat: StageSelect
   sceneLoadDelay: 1
   burstBulletPrefab: {fileID: 6893207421243802147, guid: e284470ff03437d46b56002cc88a9476, type: 3}
   burstBulletSpawnPoints:
@@ -285,7 +285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectsToDestroy:
-  - {fileID: 0}
+  - {fileID: 1175880892900810493, guid: 042e4cdd47cef644f93f0efdd8af2c37, type: 3}
   destroyTags: []
   skipChildren: 1
   destroyDelay: 0
