@@ -882,6 +882,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1582010203}
     - target: {fileID: 8076592247300661801, guid: 05c7fbda332f68b4391e3d43d818f6c1, type: 3}
+      propertyPath: pickupSlotBorder
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8076592247300661801, guid: 05c7fbda332f68b4391e3d43d818f6c1, type: 3}
       propertyPath: activeBorderColor.a
       value: 0.50980395
       objectReference: {fileID: 0}
