@@ -353,5 +353,5 @@ MonoBehaviour:
     weight: 1
   - prefab: {fileID: 3151577822987934068, guid: ec322599de946294296d8a960cce563e, type: 3}
     weight: 1
-  dropPoint: {fileID: 0}
+  dropPoint: {fileID: 281236254739055089}
   randomOffset: {x: 0.25, y: 0.1}
