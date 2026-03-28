@@ -134,7 +134,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1223759963762507096}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95251f2e1bce60e44af3a842dffd7c4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crossbowData: {fileID: 0}
+  crossbowData: {fileID: 11400000, guid: 3fcdfc090da2a104391e0d1314dd8c9b, type: 2}
   ammoOverride: 0
   destroyOnPickup: 1
   pickupEffectPrefab: {fileID: 0}

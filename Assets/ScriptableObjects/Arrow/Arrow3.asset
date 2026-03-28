@@ -22,8 +22,12 @@ MonoBehaviour:
   icon: {fileID: 0}
   impactVFX: {fileID: 0}
   isExplosive: 1
-  explosionRadius: 5
+  explosionRadius: 2
   explosionDamageMultiplier: 1
   explosionVFX: {fileID: 0}
+  appliesFrost: 0
+  frostSlowMultiplier: 0.6
+  frostDuration: 2
+  frostHitVFX: {fileID: 0}
   showExplosionRadiusGizmo: 1
   explosionGizmoColor: {r: 1, g: 0.35, b: 0.1, a: 0.9}

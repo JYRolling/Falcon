@@ -193,6 +193,8 @@ public class Arrow : MonoBehaviour
         else
             Debug.LogWarning($"Arrow: no damage method detected on '{enemyObject.name}' or its children/parents � no damage applied.");
 
+        TryApplyFrost(enemyObject, transform.position);
+
         if (arrowType != null && arrowType.isExplosive)
             ExplodeAt(transform.position);
 
@@ -217,6 +219,7 @@ public class Arrow : MonoBehaviour
             Instantiate(arrowType.explosionVFX, center, Quaternion.identity);
 
         Collider2D[] hits = Physics2D.OverlapCircleAll(center, radius);
+        var affectedEnemies = new HashSet<GameObject>();
         for (int i = 0; i < hits.Length; i++)
         {
             Collider2D col = hits[i];
@@ -227,12 +230,58 @@ public class Arrow : MonoBehaviour
             if (enemyTarget == null)
                 continue;
 
+            if (affectedEnemies.Contains(enemyTarget))
+                continue;
+
+            affectedEnemies.Add(enemyTarget);
+
             float[] attackDetails = new float[2];
             attackDetails[0] = explosionDamage;
             attackDetails[1] = center.x;
 
             TryInvokeDamageOnHierarchy(enemyTarget, attackDetails);
+            TryApplyFrost(enemyTarget, center);
         }
+    }
+
+    private void TryApplyFrost(GameObject enemyObject, Vector2 hitPosition)
+    {
+        if (enemyObject == null || arrowType == null || !arrowType.appliesFrost)
+            return;
+
+        float multiplier = Mathf.Clamp(arrowType.frostSlowMultiplier, 0.1f, 1f);
+        float duration = Mathf.Max(0f, arrowType.frostDuration);
+        if (duration <= 0f)
+            return;
+
+        GameObject frostTarget = GetTopmostEnemyObject(enemyObject);
+        var debuff = frostTarget.GetComponent<EnemyFrostDebuff>();
+        if (debuff == null)
+            debuff = frostTarget.AddComponent<EnemyFrostDebuff>();
+
+        debuff.ApplySlow(multiplier, duration);
+
+        if (arrowType.frostHitVFX != null)
+            Instantiate(arrowType.frostHitVFX, hitPosition, Quaternion.identity);
+    }
+
+    private static GameObject GetTopmostEnemyObject(GameObject enemyObject)
+    {
+        if (enemyObject == null)
+            return null;
+
+        GameObject topmostEnemy = enemyObject;
+        Transform current = enemyObject.transform.parent;
+
+        while (current != null)
+        {
+            if (current.gameObject.CompareTag("Enemy"))
+                topmostEnemy = current.gameObject;
+
+            current = current.parent;
+        }
+
+        return topmostEnemy;
     }
 
     // Attempts to find and invoke a Damage method on the target's components (children and parents are searched).

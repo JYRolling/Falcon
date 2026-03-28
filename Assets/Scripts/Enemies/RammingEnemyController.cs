@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RammingEnemyController : MonoBehaviour
 {
@@ -18,6 +19,12 @@ public class RammingEnemyController : MonoBehaviour
 
     [Header("Boss (optional)")]
     [SerializeField] private BossStats bossStats; // if present, will be used for health + UI
+
+    [Header("Optional: scene transition on boss defeat")]
+    [Tooltip("Name of scene to load when this boss is defeated. Leave empty to disable.")]
+    [SerializeField] private string sceneToLoadOnDefeat = "";
+    [Tooltip("Delay (seconds) before loading the scene after boss death.")]
+    [SerializeField] private float sceneLoadDelay = 1.0f;
 
     [Header("Touch Damage (Boss-like)")]
     [SerializeField] private Transform touchDamageCheck;
@@ -264,7 +271,16 @@ public class RammingEnemyController : MonoBehaviour
         // unregister UI
         BossHealthBar.Instance?.UnregisterBoss();
 
-        Destroy(gameObject);
+        if (!string.IsNullOrEmpty(sceneToLoadOnDefeat))
+            StartCoroutine(LoadSceneAfterDelay(sceneToLoadOnDefeat, sceneLoadDelay));
+        else
+            Destroy(gameObject);
+    }
+
+    private IEnumerator LoadSceneAfterDelay(string sceneName, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene(sceneName);
     }
 
     // --- Touch damage implementation (mirrors BossEnemyController) ---

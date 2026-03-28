@@ -18,8 +18,8 @@ MonoBehaviour:
   bulletSpeed: 18
   boltPrefab: {fileID: 5532093577241812150, guid: de2e469e1c4ca6544ab4c7daa576e97f, type: 3}
   projectileArrowType: {fileID: 11400000, guid: 1005ccd93b6c6a542b0a080d946ea505, type: 2}
-  ammoPerPickup: 99
-  maxAmmo: 99
+  ammoPerPickup: 5
+  maxAmmo: 10
   damage: 5
   groundLayer:
     serializedVersion: 2
