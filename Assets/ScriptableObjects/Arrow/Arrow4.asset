@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b64dcbba510d614b915d7ff39aaddd2, type: 3}
-  m_Name: Arrow3
+  m_Name: Arrow4
   m_EditorClassIdentifier: 
-  displayName: Explosive
-  damage: 30
+  displayName: Frost
+  damage: 1
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -21,13 +21,13 @@ MonoBehaviour:
   sprite: {fileID: 0}
   icon: {fileID: 0}
   impactVFX: {fileID: 0}
-  isExplosive: 1
-  explosionRadius: 2
+  isExplosive: 0
+  explosionRadius: 1.5
   explosionDamageMultiplier: 1
   explosionVFX: {fileID: 0}
-  appliesFrost: 0
+  appliesFrost: 1
   frostSlowMultiplier: 0.6
   frostDuration: 2
   frostHitVFX: {fileID: 0}
-  showExplosionRadiusGizmo: 1
+  showExplosionRadiusGizmo: 0
   explosionGizmoColor: {r: 1, g: 0.35, b: 0.1, a: 0.9}

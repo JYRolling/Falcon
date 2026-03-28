@@ -113,6 +113,15 @@ public class PlayerController : MonoBehaviour
         return isDashing;
     }
 
+    /// <summary>
+    /// Returns 0 when dash is on full cooldown, 1 when dash is ready.
+    /// </summary>
+    public float GetDashCooldownPercent()
+    {
+        if (dashCoolDown <= 0f) return 1f;
+        return Mathf.Clamp01((Time.time - lastDash) / dashCoolDown);
+    }
+
     public void Knockback(int direction)
     {
         audioManager.PlaySFX(audioManager.damage);

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
@@ -36,6 +37,27 @@ public class CrossbowController : MonoBehaviour
     [Tooltip("Color used when pickup weapon exists but slot 1 is currently active.")]
     [SerializeField] private Color inactiveUIColor = new Color(1f, 1f, 1f, 0.45f);
 
+    [Header("Slot UI (optional)")]
+    [Tooltip("Root RectTransform of slot 1 (normal bow).")]
+    [SerializeField] private RectTransform normalSlotRoot;
+
+    [Tooltip("Root RectTransform of slot 2 (pickup weapon).")]
+    [SerializeField] private RectTransform pickupSlotRoot;
+
+    [Tooltip("Optional border image for slot 1.")]
+    [SerializeField] private Image normalSlotBorder;
+
+    [Tooltip("Optional border image for slot 2.")]
+    [SerializeField] private Image pickupSlotBorder;
+
+    [SerializeField] private Color activeBorderColor = new Color(0.95f, 0.95f, 0.95f, 1f);
+    [SerializeField] private Color inactiveBorderColor = new Color(1f, 1f, 1f, 0.2f);
+
+    [Header("Switch Animation")]
+    [SerializeField] private bool usePopAnimation = true;
+    [SerializeField] private float popScale = 1.12f;
+    [SerializeField] private float popDuration = 0.12f;
+
     // Runtime state
     private CrossbowData currentData;
     private int currentAmmo;
@@ -45,6 +67,8 @@ public class CrossbowController : MonoBehaviour
 
     private Bow bowComponent;
     private AudioSource audioSource;
+    private Coroutine normalSlotPopRoutine;
+    private Coroutine pickupSlotPopRoutine;
 
     // Events – subscribe from UI or other systems
     public event Action<int, int> OnAmmoChanged;   // (current, max)
@@ -86,6 +110,30 @@ public class CrossbowController : MonoBehaviour
         {
             var go = GameObject.Find("CrossbowAmmoText");
             if (go != null) ammoText = go.GetComponent<TMP_Text>();
+        }
+
+        if (normalSlotRoot == null)
+        {
+            var go = GameObject.Find("WeaponSlot1Root");
+            if (go != null) normalSlotRoot = go.GetComponent<RectTransform>();
+        }
+
+        if (pickupSlotRoot == null)
+        {
+            var go = GameObject.Find("WeaponSlot2Root");
+            if (go != null) pickupSlotRoot = go.GetComponent<RectTransform>();
+        }
+
+        if (normalSlotBorder == null)
+        {
+            var go = GameObject.Find("WeaponSlot1Border");
+            if (go != null) normalSlotBorder = go.GetComponent<Image>();
+        }
+
+        if (pickupSlotBorder == null)
+        {
+            var go = GameObject.Find("WeaponSlot2Border");
+            if (go != null) pickupSlotBorder = go.GetComponent<Image>();
         }
 
         UpdateAmmoUI();
@@ -241,6 +289,8 @@ public class CrossbowController : MonoBehaviour
         if (bowComponent != null)
             bowComponent.ShootingOverridden = false;
 
+        PlaySlotPop(normalSlotRoot, ref normalSlotPopRoutine);
+
         UpdateAmmoUI();
     }
 
@@ -253,6 +303,8 @@ public class CrossbowController : MonoBehaviour
 
         if (bowComponent != null)
             bowComponent.ShootingOverridden = true;
+
+        PlaySlotPop(pickupSlotRoot, ref pickupSlotPopRoutine);
 
         UpdateAmmoUI();
         return true;
@@ -286,6 +338,8 @@ public class CrossbowController : MonoBehaviour
     {
         bool hasPickupWeapon = isEquipped && currentData != null;
         bool isPickupActive = activeSlot == WeaponSlot.Pickup;
+
+        ApplySlotBorderHighlights(hasPickupWeapon, isPickupActive);
 
         if (hasPickupWeapon)
         {
@@ -343,5 +397,62 @@ public class CrossbowController : MonoBehaviour
     {
         if (text == null) return;
         text.color = isActive ? activeUIColor : inactiveUIColor;
+    }
+
+    private void ApplySlotBorderHighlights(bool hasPickupWeapon, bool isPickupActive)
+    {
+        bool isNormalActive = !isPickupActive;
+
+        if (normalSlotBorder != null)
+        {
+            normalSlotBorder.enabled = true;
+            normalSlotBorder.color = isNormalActive ? activeBorderColor : inactiveBorderColor;
+        }
+
+        if (pickupSlotBorder != null)
+        {
+            pickupSlotBorder.enabled = hasPickupWeapon;
+            pickupSlotBorder.color = isPickupActive ? activeBorderColor : inactiveBorderColor;
+        }
+    }
+
+    private void PlaySlotPop(RectTransform slotRoot, ref Coroutine routine)
+    {
+        if (!usePopAnimation || slotRoot == null)
+            return;
+
+        if (routine != null)
+            StopCoroutine(routine);
+
+        routine = StartCoroutine(PopSlotRoutine(slotRoot));
+    }
+
+    private IEnumerator PopSlotRoutine(RectTransform slotRoot)
+    {
+        Vector3 baseScale = Vector3.one;
+        float duration = Mathf.Max(0.01f, popDuration);
+        float halfDuration = duration * 0.5f;
+
+        float t = 0f;
+        while (t < halfDuration)
+        {
+            t += Time.unscaledDeltaTime;
+            float p = Mathf.Clamp01(t / halfDuration);
+            float scale = Mathf.Lerp(1f, popScale, p);
+            slotRoot.localScale = baseScale * scale;
+            yield return null;
+        }
+
+        t = 0f;
+        while (t < halfDuration)
+        {
+            t += Time.unscaledDeltaTime;
+            float p = Mathf.Clamp01(t / halfDuration);
+            float scale = Mathf.Lerp(popScale, 1f, p);
+            slotRoot.localScale = baseScale * scale;
+            yield return null;
+        }
+
+        slotRoot.localScale = baseScale;
     }
 }
