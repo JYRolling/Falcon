@@ -119,42 +119,6 @@ public class Bow : MonoBehaviour
             if (go != null) arrowTypeNameText = go.GetComponent<TMP_Text>();
         }
 
-        // If still missing, try looser find (first matching component in scene).
-        if (shootTypeIcon == null)
-        {
-            var found = FindObjectOfType<Image>();
-            if (found != null) shootTypeIcon = found;
-        }
-        if (shootingStyleIcon == null)
-        {
-            var images = FindObjectsOfType<Image>();
-            foreach (var img in images)
-            {
-                if (img.name.ToLower().Contains("shooting") || img.name.ToLower().Contains("style"))
-                {
-                    shootingStyleIcon = img;
-                    break;
-                }
-            }
-        }
-        if (shootingStyleNameText == null)
-        {
-            var t = FindObjectOfType<TMP_Text>();
-            if (t != null) shootingStyleNameText = t;
-        }
-        if (arrowTypeNameText == null)
-        {
-            var texts = FindObjectsOfType<TMP_Text>();
-            foreach (var tt in texts)
-            {
-                if (tt.name.ToLower().Contains("arrow") || tt.name.ToLower().Contains("type"))
-                {
-                    arrowTypeNameText = tt;
-                    break;
-                }
-            }
-        }
-
         // Final diagnostic logs
         if (shootTypeIcon == null) Debug.LogWarning("[Bow] shootTypeIcon not assigned and was not found in scene.");
         if (shootingStyleIcon == null) Debug.LogWarning("[Bow] shootingStyleIcon not assigned and was not found in scene.");
