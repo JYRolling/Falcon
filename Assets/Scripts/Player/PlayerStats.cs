@@ -23,6 +23,24 @@ public class PlayerStats : MonoBehaviour
     [SerializeField]
     private bool isInvulnerable = false;
 
+    [Header("Damage Blink")]
+    [SerializeField]
+    private int damageBlinkCount = 4;
+
+    [SerializeField]
+    private float damageBlinkInterval = 0.06f;
+
+    [SerializeField, Range(0f, 1f)]
+    private float damageBlinkMinAlpha = 0.25f;
+
+    private SpriteRenderer[] spriteRenderers;
+    private Coroutine damageBlinkCoroutine;
+
+    private void Awake()
+    {
+        spriteRenderers = GetComponentsInChildren<SpriteRenderer>(true);
+    }
+
     private void Start()
     {
         currentHealth = maxHealth;
@@ -90,10 +108,13 @@ public class PlayerStats : MonoBehaviour
 
     public void DecreaseHealth(float amount)
     {
+        if (amount <= 0f)
+            return;
+
         // Respect invulnerability
         if (isInvulnerable)
         {
-            Debug.Log("[PlayerStats] Player is invulnerable — damage ignored.");
+            Debug.Log("[PlayerStats] Player is invulnerable ï¿½ damage ignored.");
             return;
         }
 
@@ -104,6 +125,9 @@ public class PlayerStats : MonoBehaviour
             healthBar.SetHealth(currentHealth);
         else
             Debug.LogWarning("[PlayerStats] Tried to update HealthBar but reference is null.");
+
+        if (currentHealth > 0f)
+            TriggerDamageBlink();
 
         if (currentHealth <= 0.0f)
         {
@@ -165,5 +189,63 @@ public class PlayerStats : MonoBehaviour
         }
 
         return null;
+    }
+
+    private void TriggerDamageBlink()
+    {
+        if (!isActiveAndEnabled)
+            return;
+
+        if (spriteRenderers == null || spriteRenderers.Length == 0)
+            spriteRenderers = GetComponentsInChildren<SpriteRenderer>(true);
+
+        if (spriteRenderers == null || spriteRenderers.Length == 0)
+            return;
+
+        if (damageBlinkCoroutine != null)
+            StopCoroutine(damageBlinkCoroutine);
+
+        damageBlinkCoroutine = StartCoroutine(DamageBlinkRoutine());
+    }
+
+    private IEnumerator DamageBlinkRoutine()
+    {
+        int blinkCount = Mathf.Max(1, damageBlinkCount);
+        float interval = Mathf.Max(0.01f, damageBlinkInterval);
+
+        var originalColors = new Color[spriteRenderers.Length];
+        for (int i = 0; i < spriteRenderers.Length; i++)
+        {
+            if (spriteRenderers[i] != null)
+                originalColors[i] = spriteRenderers[i].color;
+        }
+
+        for (int i = 0; i < blinkCount; i++)
+        {
+            SetSpriteAlpha(originalColors, damageBlinkMinAlpha);
+            yield return new WaitForSeconds(interval);
+
+            SetSpriteAlpha(originalColors, 1f);
+            yield return new WaitForSeconds(interval);
+        }
+
+        SetSpriteAlpha(originalColors, 1f);
+        damageBlinkCoroutine = null;
+    }
+
+    private void SetSpriteAlpha(Color[] originalColors, float alphaScale)
+    {
+        float clampedScale = Mathf.Clamp01(alphaScale);
+
+        for (int i = 0; i < spriteRenderers.Length; i++)
+        {
+            var sr = spriteRenderers[i];
+            if (sr == null)
+                continue;
+
+            Color c = originalColors[i];
+            c.a = originalColors[i].a * clampedScale;
+            sr.color = c;
+        }
     }
 }
