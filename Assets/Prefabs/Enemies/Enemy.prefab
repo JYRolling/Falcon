@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &466322391641290276
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7741143256514650828}
+  m_Layer: 10
+  m_Name: DropPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7741143256514650828
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466322391641290276}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4994157300945197892}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2600587920457425584
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,6 +329,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 281236254739055089}
+  - {fileID: 7741143256514650828}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1918753980708302951
@@ -347,11 +379,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53bc2ce10371470490757ad0f9af2f53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropChance: 0.2
+  dropChance: 0.35
   possibleDrops:
   - prefab: {fileID: 3151577822987934068, guid: ec322599de946294296d8a960cce563e, type: 3}
     weight: 1
-  - prefab: {fileID: 3151577822987934068, guid: ec322599de946294296d8a960cce563e, type: 3}
+  - prefab: {fileID: 1223759963762507096, guid: 3bec0443c4596714ca1b9f7047d0f606, type: 3}
     weight: 1
-  dropPoint: {fileID: 281236254739055089}
-  randomOffset: {x: 0.25, y: 0.1}
+  - prefab: {fileID: 5824748092268862110, guid: 5a4c8fb3790f4f64fa92dba8c0748d54, type: 3}
+    weight: 1
+  - prefab: {fileID: 886693222175953280, guid: 09ced2d2cf84c8941b0f0f62beb09ae5, type: 3}
+    weight: 1
+  dropPoint: {fileID: 7741143256514650828}
+  randomOffset: {x: 0, y: 0}
