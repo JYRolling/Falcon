@@ -34,7 +34,16 @@ public class DashCooldownUI : MonoBehaviour
 
     private void Update()
     {
-        if (cooldownFillImage == null || playerController == null) return;
+        if (cooldownFillImage == null) return;
+
+        // ถ้า player ถูก Destroy (เช่น ตาย) ให้รีเซ็ต UI เป็นพร้อมใช้ แล้วหา player ตัวใหม่
+        if (playerController == null)
+        {
+            cooldownFillImage.fillAmount = 1f;
+            cooldownFillImage.color = readyColor;
+            playerController = FindObjectOfType<PlayerController>();
+            return;
+        }
 
         float percent = playerController.GetDashCooldownPercent();
         cooldownFillImage.fillAmount = percent;
