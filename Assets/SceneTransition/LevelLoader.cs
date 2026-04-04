@@ -24,18 +24,8 @@ public class LevelLoader : MonoBehaviour
         // DontDestroyOnLoad(gameObject);
     }
 
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            LoadNextLevel();
-        }
-    }
-
-    public void LoadNextLevel()
-    {
-        StartCoroutine(Loadlevel(SceneManager.GetActiveScene().buildIndex + 1));
-    }
+    // NOTE: removed the previous Update() that triggered LoadNextLevel by mouse and removed the build-index based LoadNextLevel.
+    // Scene changes should now be requested via LoadSceneByName / LoadSceneWithDelay.
 
     // Public API: load by scene name using the animated transition.
     public void LoadSceneByName(string sceneName)
@@ -71,15 +61,6 @@ public class LevelLoader : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         SceneManager.LoadScene(sceneName);
-    }
-
-    IEnumerator Loadlevel(int levelIndex)
-    {
-        if (transition != null) transition.SetTrigger("Start");
-
-        yield return new WaitForSeconds(transitionTime);
-
-        SceneManager.LoadScene(levelIndex);
     }
 
     // Coroutine used to load by name, with optional pre-delay.
