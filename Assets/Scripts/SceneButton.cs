@@ -11,7 +11,11 @@ public class SceneButton : MonoBehaviour
     {
         if (!string.IsNullOrEmpty(sceneName))
         {
-            SceneManager.LoadScene(sceneName);
+            // Prefer LevelLoader if present so transitions are used consistently.
+            if (LevelLoader.Instance != null)
+                LevelLoader.Instance.LoadSceneByName(sceneName);
+            else
+                SceneManager.LoadScene(sceneName);
         }
         else
         {

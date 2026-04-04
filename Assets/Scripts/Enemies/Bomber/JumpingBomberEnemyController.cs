@@ -517,7 +517,14 @@ public class JumpingBomberEnemyController : MonoBehaviour
         // optional scene load or destroy
         if (!string.IsNullOrEmpty(sceneToLoadOnDefeat))
         {
-            StartCoroutine(LoadSceneAfterDelay(sceneToLoadOnDefeat, sceneLoadDelay));
+            if (LevelLoader.Instance != null)
+            {
+                LevelLoader.Instance.LoadSceneWithDelay(sceneToLoadOnDefeat, sceneLoadDelay);
+            }
+            else
+            {
+                StartCoroutine(LoadSceneAfterDelay(sceneToLoadOnDefeat, sceneLoadDelay));
+            }
         }
         else
         {
