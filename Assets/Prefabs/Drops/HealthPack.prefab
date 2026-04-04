@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4838150909330073553}
   - component: {fileID: 6268636807955907463}
   m_Layer: 12
-  m_Name: Square (1)
+  m_Name: HealthPack
   m_TagString: Drops
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

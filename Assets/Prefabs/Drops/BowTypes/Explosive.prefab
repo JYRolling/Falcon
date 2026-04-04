@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2595374015728732141}
   - component: {fileID: 3172022078266486061}
   m_Layer: 12
-  m_Name: CrossBow
+  m_Name: Explosive
   m_TagString: Drops
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -31,6 +31,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 281236254739055089}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &857612944454842358
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 454842537626967141}
+  m_Layer: 10
+  m_Name: DropPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &454842537626967141
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 857612944454842358}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 281236254739055089}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2600587920457425584
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,6 +254,7 @@ Transform:
   - {fileID: 3061302827813953966}
   - {fileID: 1465943785891706287}
   - {fileID: 5077166461892280567}
+  - {fileID: 454842537626967141}
   m_Father: {fileID: 4994157300945197892}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4172441254343601062
@@ -370,6 +402,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4994157300945197892}
   - component: {fileID: 2882892697183174931}
+  - component: {fileID: -6150017232828223429}
   m_Layer: 10
   m_Name: AirEnemyChase
   m_TagString: Enemy
@@ -429,3 +462,21 @@ MonoBehaviour:
   hitParticle: {fileID: 6240072112886026631, guid: b422d378313ccbb4d8acb6196f1cdbbd, type: 3}
   deathChunkParticle: {fileID: 1962614393226834858, guid: 914644236e87d4d409304bcf9d8d3eb7, type: 3}
   deathBloodParticle: {fileID: 5096148057906189823, guid: 8b6a10ca53360a94eb6e376bb2a49079, type: 3}
+--- !u!114 &-6150017232828223429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8426724655607775949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53bc2ce10371470490757ad0f9af2f53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropChance: 0.4
+  possibleDrops:
+  - prefab: {fileID: 886693222175953280, guid: 09ced2d2cf84c8941b0f0f62beb09ae5, type: 3}
+    weight: 1
+  dropPoint: {fileID: 454842537626967141}
+  randomOffset: {x: 0, y: 0}

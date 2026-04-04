@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6976733815302679008}
   - component: {fileID: 5836404399154153969}
   m_Layer: 12
-  m_Name: Bow
+  m_Name: Auto
   m_TagString: Drops
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
