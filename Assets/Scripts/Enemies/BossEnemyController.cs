@@ -322,7 +322,15 @@ public class BossEnemyController : MonoBehaviour
         // optional scene load
         if (!string.IsNullOrEmpty(sceneToLoadOnDefeat))
         {
-            StartCoroutine(LoadSceneAfterDelay(sceneToLoadOnDefeat, sceneLoadDelay));
+            // Prefer LevelLoader to get animated transition; fall back to local coroutine if LevelLoader not present.
+            if (LevelLoader.Instance != null)
+            {
+                LevelLoader.Instance.LoadSceneWithDelay(sceneToLoadOnDefeat, sceneLoadDelay);
+            }
+            else
+            {
+                StartCoroutine(LoadSceneAfterDelay(sceneToLoadOnDefeat, sceneLoadDelay));
+            }
         }
         else
         {

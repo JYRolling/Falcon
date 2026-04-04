@@ -317,7 +317,12 @@ public class PatrolSpreadLaserEnemy : MonoBehaviour
         if (deathParticle) Instantiate(deathParticle, transform.position, Quaternion.identity);
 
         if (!string.IsNullOrEmpty(sceneToLoadOnDefeat))
-            StartCoroutine(LoadSceneAfterDelay(sceneToLoadOnDefeat, sceneLoadDelay));
+        {
+            if (LevelLoader.Instance != null)
+                LevelLoader.Instance.LoadSceneWithDelay(sceneToLoadOnDefeat, sceneLoadDelay);
+            else
+                StartCoroutine(LoadSceneAfterDelay(sceneToLoadOnDefeat, sceneLoadDelay));
+        }
         else
             Destroy(gameObject);
     }
