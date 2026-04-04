@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4f9d6d1068873fb4d90996a4aa2c4b94
+guid: cf396b2826ec40f4ab4fa336881b6ebc
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SlimeEnemy_Attack_0
+      name: GoblinBomberIdle_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 0
-        width: 200
-        height: 206
+        x: 0
+        y: 214
+        width: 300
+        height: 300
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,20 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a6ca4109db7b8e47b2a29a79e6ee272
-      internalID: 614786580
+      spriteID: b58285fac4e5c4046b7767f366ffb879
+      internalID: -1690425621
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SlimeEnemy_Attack_1
+      name: GoblinBomberIdle_1
       rect:
         serializedVersion: 2
-        x: 208
-        y: 0
-        width: 200
-        height: 206
+        x: 300
+        y: 214
+        width: 300
+        height: 300
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,20 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3bcf528eabe67b94686fadf96c9b07fe
-      internalID: 1451874629
+      spriteID: f6624a965f94d91449957fa838fcf7a4
+      internalID: 296410689
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SlimeEnemy_Attack_2
+      name: GoblinBomberIdle_2
       rect:
         serializedVersion: 2
-        x: 408
-        y: 0
-        width: 200
-        height: 206
+        x: 603
+        y: 214
+        width: 300
+        height: 300
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d86f1c6230df13548bdd1a4a991b2689
-      internalID: -324278069
+      spriteID: 6aa28c34f04a64348b308429ec9425ab
+      internalID: 187424159
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SlimeEnemy_Attack_3
+      name: GoblinBomberIdle_3
       rect:
         serializedVersion: 2
-        x: 608
-        y: 0
-        width: 200
-        height: 206
+        x: 902
+        y: 214
+        width: 300
+        height: 300
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,20 +174,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: abf792715f17fb34c9d8ebc597bef26b
-      internalID: -1762121246
+      spriteID: 3869145b81c5eb64da719eba362a5c37
+      internalID: 1061211621
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SlimeEnemy_Attack_4
+      name: GoblinBomberIdle_4
       rect:
         serializedVersion: 2
-        x: 808
-        y: 0
-        width: 200
-        height: 206
+        x: 1200
+        y: 214
+        width: 300
+        height: 300
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,20 +195,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5313e5f0ff75cd042b3a244317e4803a
-      internalID: -829964923
+      spriteID: 4cf64e3e6b926df469d37c177d5f1ee8
+      internalID: -737246837
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SlimeEnemy_Attack_5
+      name: Bomb
       rect:
         serializedVersion: 2
-        x: 1008
-        y: 0
-        width: 200
-        height: 206
+        x: 108
+        y: 17
+        width: 86
+        height: 96
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,8 +216,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b97298c6042d13644a3d1ebe3eb45b96
-      internalID: -124100056
+      spriteID: 9e3fdda4b525d244d81685bd6498e195
+      internalID: 1057286201
       vertices: []
       indices: 
       edges: []
@@ -233,12 +233,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SlimeEnemy_Attack_0: 614786580
-      SlimeEnemy_Attack_1: 1451874629
-      SlimeEnemy_Attack_2: -324278069
-      SlimeEnemy_Attack_3: -1762121246
-      SlimeEnemy_Attack_4: -829964923
-      SlimeEnemy_Attack_5: -124100056
+      Bomb: 1057286201
+      GoblinBomberIdle_0: -1690425621
+      GoblinBomberIdle_1: 296410689
+      GoblinBomberIdle_2: 187424159
+      GoblinBomberIdle_3: 1061211621
+      GoblinBomberIdle_4: -737246837
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

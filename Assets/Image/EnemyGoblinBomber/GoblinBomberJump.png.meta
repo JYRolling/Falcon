@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3a2a16f8c590d07498379a460187232a
+guid: bbea2fc2f5e77f24f8a0359dc94182a1
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -95,18 +95,40 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: GoblinBomberJump_0
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 80
+        width: 208
+        height: 540
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6e5ec7d545dfc445bf09e07e2541c6f
+      internalID: -267964226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      GoblinBomberJump_0: -267964226
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
