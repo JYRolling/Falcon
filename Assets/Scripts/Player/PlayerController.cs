@@ -73,6 +73,8 @@ public class PlayerController : MonoBehaviour
 
     AudioManager audioManager;
 
+    private float _fallSpeedYDampingChangeThreshold;
+
     private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
@@ -88,6 +90,8 @@ public class PlayerController : MonoBehaviour
         canFlip = true;
         wallHopDirection.Normalize();
         wallJumpDirection.Normalize();
+
+        _fallSpeedYDampingChangeThreshold = CameraManager.instance._fallSpeedYDampingChangeThreshold;
     }
 
     // Update is called once per frame
@@ -100,6 +104,18 @@ public class PlayerController : MonoBehaviour
         CheckJump();
         CheckDash();
         CheckKnockback();
+
+        if (rb.velocity.y < _fallSpeedYDampingChangeThreshold && !CameraManager.instance.IsLerpingYDamping && !CameraManager.instance.LerpedFromPlayerFalling)
+        {
+            CameraManager.instance.LerpYDamping(true);
+        }
+
+        if (rb.velocity.y >= 0f && !CameraManager.instance.IsLerpingYDamping && CameraManager.instance.LerpedFromPlayerFalling)
+        {
+            CameraManager.instance.LerpedFromPlayerFalling = false;
+
+            CameraManager.instance.LerpYDamping(false);
+        }
     }
 
     private void FixedUpdate()

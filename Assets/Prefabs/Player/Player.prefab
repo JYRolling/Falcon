@@ -592,7 +592,7 @@ MonoBehaviour:
   maxHealth: 100
   deathChunkParticle: {fileID: 1962614393226834858, guid: 914644236e87d4d409304bcf9d8d3eb7, type: 3}
   deathBloodParticle: {fileID: 5096148057906189823, guid: 8b6a10ca53360a94eb6e376bb2a49079, type: 3}
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 2199656009705631411, guid: 6ad7dd446af4a744db2348bc8ab47cb0, type: 3}
   isInvulnerable: 0
 --- !u!114 &8763148718262939808
 MonoBehaviour:
@@ -691,6 +691,15 @@ MonoBehaviour:
   ammoText: {fileID: 0}
   activeUIColor: {r: 1, g: 1, b: 1, a: 1}
   inactiveUIColor: {r: 1, g: 1, b: 1, a: 0.45}
+  normalSlotRoot: {fileID: 0}
+  pickupSlotRoot: {fileID: 0}
+  normalSlotBorder: {fileID: 0}
+  pickupSlotBorder: {fileID: 0}
+  activeBorderColor: {r: 0.95, g: 0.95, b: 0.95, a: 1}
+  inactiveBorderColor: {r: 1, g: 1, b: 1, a: 0.2}
+  usePopAnimation: 1
+  popScale: 1.12
+  popDuration: 0.12
 --- !u!1 &7027389780524856748
 GameObject:
   m_ObjectHideFlags: 0

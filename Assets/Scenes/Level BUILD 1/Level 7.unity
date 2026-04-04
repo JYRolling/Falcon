@@ -1903,7 +1903,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -45.71
+      value: -51.54
       objectReference: {fileID: 0}
     - target: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1947,7 +1947,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8681712251414161917, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: touchDamage
-      value: 20
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8797116067654289679, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
       propertyPath: m_Color.a
@@ -5367,7 +5367,7 @@ Transform:
   m_GameObject: {fileID: 541468430}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.030929964, w: 0.99952155}
-  m_LocalPosition: {x: -15.12, y: -12.15, z: 0.025183687}
+  m_LocalPosition: {x: -15.12, y: -12.95, z: 0.025183687}
   m_LocalScale: {x: 3.2002106, y: 3.8003037, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -66854,6 +66854,15 @@ MonoBehaviour:
   ammoText: {fileID: 0}
   activeUIColor: {r: 1, g: 1, b: 1, a: 1}
   inactiveUIColor: {r: 1, g: 1, b: 1, a: 0.45}
+  normalSlotRoot: {fileID: 0}
+  pickupSlotRoot: {fileID: 0}
+  normalSlotBorder: {fileID: 0}
+  pickupSlotBorder: {fileID: 0}
+  activeBorderColor: {r: 0.95, g: 0.95, b: 0.95, a: 1}
+  inactiveBorderColor: {r: 1, g: 1, b: 1, a: 0.2}
+  usePopAnimation: 1
+  popScale: 1.12
+  popDuration: 0.12
 --- !u!4 &8101168395342175004
 Transform:
   m_ObjectHideFlags: 0
