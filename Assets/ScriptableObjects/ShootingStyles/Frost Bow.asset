@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Frost Bow
   m_EditorClassIdentifier: 
   displayName: Frost Bow
-  icon: {fileID: 21300000, guid: 7fef51de681c5494285e430a2654e883, type: 3}
+  icon: {fileID: -2087043950, guid: ac14efe6b08b57b4aa86fb7a1d4c5da0, type: 3}
   fireRate: 2
   bulletSpeed: 18
   boltPrefab: {fileID: 5532093577241812150, guid: edc9adeb8f11f8444933b798cdcffe61, type: 3}

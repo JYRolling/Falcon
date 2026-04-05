@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ExplosiveBowData
   m_EditorClassIdentifier: 
   displayName: Explosive Bow
-  icon: {fileID: 21300000, guid: 72b8bf38269c3d948aee1d4ffd70539e, type: 3}
+  icon: {fileID: -350954402, guid: ac14efe6b08b57b4aa86fb7a1d4c5da0, type: 3}
   fireRate: 2
   bulletSpeed: 18
   boltPrefab: {fileID: 5532093577241812150, guid: de2e469e1c4ca6544ab4c7daa576e97f, type: 3}

@@ -24,7 +24,7 @@ MonoBehaviour:
   isExplosive: 1
   explosionRadius: 2
   explosionDamageMultiplier: 1
-  explosionVFX: {fileID: 0}
+  explosionVFX: {fileID: 1226031520979461127, guid: 9c692d73cd82e0d409bec909e987a5b8, type: 3}
   appliesFrost: 0
   frostSlowMultiplier: 0.6
   frostDuration: 2

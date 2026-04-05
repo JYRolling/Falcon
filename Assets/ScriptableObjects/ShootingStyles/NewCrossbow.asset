@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: NewCrossbow
   m_EditorClassIdentifier: 
   displayName: Crossbow
-  icon: {fileID: 21300000, guid: 3c8cacf42123ef24ca4dbf7673c505b4, type: 3}
+  icon: {fileID: 785172481, guid: ac14efe6b08b57b4aa86fb7a1d4c5da0, type: 3}
   fireRate: 5
   bulletSpeed: 18
   boltPrefab: {fileID: 5532093577241812150, guid: 3c66a315653425c44aae7478f43fbcf3, type: 3}

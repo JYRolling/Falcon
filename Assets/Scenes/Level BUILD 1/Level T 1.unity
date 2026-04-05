@@ -13692,6 +13692,63 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxFactor: -0.4
+--- !u!1001 &1664465981
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4471925530003209815, guid: 6a8a751b419ed8a44b098e0fbcbfa375, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 960
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471925530003209815, guid: 6a8a751b419ed8a44b098e0fbcbfa375, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 540
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471925530003209815, guid: 6a8a751b419ed8a44b098e0fbcbfa375, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471925530003209815, guid: 6a8a751b419ed8a44b098e0fbcbfa375, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471925530003209815, guid: 6a8a751b419ed8a44b098e0fbcbfa375, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471925530003209815, guid: 6a8a751b419ed8a44b098e0fbcbfa375, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471925530003209815, guid: 6a8a751b419ed8a44b098e0fbcbfa375, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471925530003209815, guid: 6a8a751b419ed8a44b098e0fbcbfa375, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471925530003209815, guid: 6a8a751b419ed8a44b098e0fbcbfa375, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471925530003209815, guid: 6a8a751b419ed8a44b098e0fbcbfa375, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6264419097596655581, guid: 6a8a751b419ed8a44b098e0fbcbfa375, type: 3}
+      propertyPath: m_Name
+      value: LevelLoader
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6a8a751b419ed8a44b098e0fbcbfa375, type: 3}
 --- !u!1 &1669138180
 GameObject:
   m_ObjectHideFlags: 0
@@ -48684,6 +48741,9 @@ MonoBehaviour:
   deathBloodParticle: {fileID: 5096148057906189823, guid: 8b6a10ca53360a94eb6e376bb2a49079, type: 3}
   healthBar: {fileID: 0}
   isInvulnerable: 0
+  damageBlinkCount: 4
+  damageBlinkInterval: 0.06
+  damageBlinkMinAlpha: 0.25
 --- !u!212 &6426713850001675871
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -48997,6 +49057,15 @@ MonoBehaviour:
   ammoText: {fileID: 0}
   activeUIColor: {r: 1, g: 1, b: 1, a: 1}
   inactiveUIColor: {r: 1, g: 1, b: 1, a: 0.45}
+  normalSlotRoot: {fileID: 0}
+  pickupSlotRoot: {fileID: 0}
+  normalSlotBorder: {fileID: 0}
+  pickupSlotBorder: {fileID: 0}
+  activeBorderColor: {r: 0.95, g: 0.95, b: 0.95, a: 1}
+  inactiveBorderColor: {r: 1, g: 1, b: 1, a: 0.2}
+  usePopAnimation: 1
+  popScale: 1.12
+  popDuration: 0.12
 --- !u!4 &8219946638009909460
 Transform:
   m_ObjectHideFlags: 0
@@ -49195,6 +49264,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 771058298}
+  - {fileID: 1664465981}
   - {fileID: 212933557}
   - {fileID: 1437861644}
   - {fileID: 1951293853}
