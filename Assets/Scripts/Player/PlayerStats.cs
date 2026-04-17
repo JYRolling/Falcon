@@ -34,11 +34,13 @@ public class PlayerStats : MonoBehaviour
     private float damageBlinkMinAlpha = 0.25f;
 
     private SpriteRenderer[] spriteRenderers;
+    private Color[] baseSpriteColors;
     private Coroutine damageBlinkCoroutine;
 
     private void Awake()
     {
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>(true);
+        CacheBaseSpriteColors();
     }
 
     private void Start()
@@ -197,13 +199,20 @@ public class PlayerStats : MonoBehaviour
             return;
 
         if (spriteRenderers == null || spriteRenderers.Length == 0)
+        {
             spriteRenderers = GetComponentsInChildren<SpriteRenderer>(true);
+            CacheBaseSpriteColors();
+        }
 
         if (spriteRenderers == null || spriteRenderers.Length == 0)
             return;
 
         if (damageBlinkCoroutine != null)
+        {
+            RestoreBaseSpriteColors();
             StopCoroutine(damageBlinkCoroutine);
+            damageBlinkCoroutine = null;
+        }
 
         damageBlinkCoroutine = StartCoroutine(DamageBlinkRoutine());
     }
@@ -213,27 +222,23 @@ public class PlayerStats : MonoBehaviour
         int blinkCount = Mathf.Max(1, damageBlinkCount);
         float interval = Mathf.Max(0.01f, damageBlinkInterval);
 
-        var originalColors = new Color[spriteRenderers.Length];
-        for (int i = 0; i < spriteRenderers.Length; i++)
-        {
-            if (spriteRenderers[i] != null)
-                originalColors[i] = spriteRenderers[i].color;
-        }
+        if (baseSpriteColors == null || baseSpriteColors.Length != spriteRenderers.Length)
+            CacheBaseSpriteColors();
 
         for (int i = 0; i < blinkCount; i++)
         {
-            SetSpriteAlpha(originalColors, damageBlinkMinAlpha);
-            yield return new WaitForSeconds(interval);
+            SetSpriteAlpha(damageBlinkMinAlpha);
+            yield return new WaitForSecondsRealtime(interval);
 
-            SetSpriteAlpha(originalColors, 1f);
-            yield return new WaitForSeconds(interval);
+            SetSpriteAlpha(1f);
+            yield return new WaitForSecondsRealtime(interval);
         }
 
-        SetSpriteAlpha(originalColors, 1f);
+        RestoreBaseSpriteColors();
         damageBlinkCoroutine = null;
     }
 
-    private void SetSpriteAlpha(Color[] originalColors, float alphaScale)
+    private void SetSpriteAlpha(float alphaScale)
     {
         float clampedScale = Mathf.Clamp01(alphaScale);
 
@@ -243,9 +248,49 @@ public class PlayerStats : MonoBehaviour
             if (sr == null)
                 continue;
 
-            Color c = originalColors[i];
-            c.a = originalColors[i].a * clampedScale;
+            Color c = baseSpriteColors[i];
+            c.a = baseSpriteColors[i].a * clampedScale;
             sr.color = c;
         }
+    }
+
+    private void CacheBaseSpriteColors()
+    {
+        if (spriteRenderers == null)
+        {
+            baseSpriteColors = null;
+            return;
+        }
+
+        baseSpriteColors = new Color[spriteRenderers.Length];
+        for (int i = 0; i < spriteRenderers.Length; i++)
+        {
+            if (spriteRenderers[i] != null)
+                baseSpriteColors[i] = spriteRenderers[i].color;
+        }
+    }
+
+    private void RestoreBaseSpriteColors()
+    {
+        if (spriteRenderers == null || baseSpriteColors == null)
+            return;
+
+        int count = Mathf.Min(spriteRenderers.Length, baseSpriteColors.Length);
+        for (int i = 0; i < count; i++)
+        {
+            if (spriteRenderers[i] != null)
+                spriteRenderers[i].color = baseSpriteColors[i];
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (damageBlinkCoroutine != null)
+        {
+            StopCoroutine(damageBlinkCoroutine);
+            damageBlinkCoroutine = null;
+        }
+
+        RestoreBaseSpriteColors();
     }
 }
