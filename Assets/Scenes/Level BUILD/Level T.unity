@@ -5313,46 +5313,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pause canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 4381780643730319188, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4796123918424729686, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
-      propertyPath: m_fontStyle
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5704699400174644569, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: e20c987fc14e49745887377b27d1dec1, type: 2}
-    - target: {fileID: 5704699400174644569, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
-      propertyPath: m_fontStyle
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5704699400174644569, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -6943800111879788889, guid: e20c987fc14e49745887377b27d1dec1, type: 2}
-    - target: {fileID: 5704699400174644569, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7879814634192600616, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: e20c987fc14e49745887377b27d1dec1, type: 2}
-    - target: {fileID: 7879814634192600616, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
-      propertyPath: m_fontStyle
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7879814634192600616, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -6943800111879788889, guid: e20c987fc14e49745887377b27d1dec1, type: 2}
-    - target: {fileID: 7879814634192600616, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8684782866218170112, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
       propertyPath: m_Pivot.x
       value: 0
