@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,6 +33,10 @@ public class GameManager : MonoBehaviour
 
     // Track current active player instance in scene (may be a spawned prefab)
     private GameObject currentPlayer;
+    public GameObject CurrentPlayer => currentPlayer;
+
+    // Event fired when a player GameObject has been spawned / respawned.
+    public event Action<GameObject> PlayerRespawned;
 
     private void Awake()
     {
@@ -107,6 +112,9 @@ public class GameManager : MonoBehaviour
                 {
                     Debug.LogWarning("GameManager: Spawned player prefab does not contain PlayerStats component.");
                 }
+
+                // Notify subscribers that a new player has been spawned
+                PlayerRespawned?.Invoke(playerTemp);
             }
             else
             {
@@ -192,7 +200,8 @@ public class GameManager : MonoBehaviour
         if (IsValidPlayerHealthBar(healthBar))
             return healthBar;
 
-        var bars = Object.FindObjectsByType<HealthBar>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        // qualify UnityEngine.Object to avoid ambiguity with System.Object
+        var bars = UnityEngine.Object.FindObjectsByType<HealthBar>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         foreach (var hb in bars)
         {
             if (!IsValidPlayerHealthBar(hb))
