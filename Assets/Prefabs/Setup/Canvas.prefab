@@ -1592,7 +1592,7 @@ GameObject:
   - component: {fileID: 4006806090555652677}
   - component: {fileID: 760510079356914164}
   m_Layer: 5
-  m_Name: CrossbowWeaponDefaultBG
+  m_Name: WeaponSlot1Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2639,7 +2639,7 @@ GameObject:
   - component: {fileID: 4168517116111366464}
   - component: {fileID: 2155980068325530553}
   m_Layer: 5
-  m_Name: CrossbowWeaponIconBG
+  m_Name: WeaponSlot2Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3619,7 +3619,7 @@ PrefabInstance:
       objectReference: {fileID: -583066246, guid: ac14efe6b08b57b4aa86fb7a1d4c5da0, type: 3}
     - target: {fileID: 8745417085537518682, guid: de6696a1d1e9ca447a033f97de25a262, type: 3}
       propertyPath: m_Name
-      value: CrossbowWeaponDefault
+      value: WeaponSlot1Border
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
