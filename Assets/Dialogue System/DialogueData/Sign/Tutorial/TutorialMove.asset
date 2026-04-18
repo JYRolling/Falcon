@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
   - '"Welcome to Tutorial"'
-  - 'Press (A D) to move.
+  - 'Press (A D) to "move".
 
-    press (spacebar) to jump.'
+    press (spacebar) to "jump".'
   responses: []

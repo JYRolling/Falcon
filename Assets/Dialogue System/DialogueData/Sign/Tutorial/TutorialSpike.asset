@@ -15,5 +15,5 @@ MonoBehaviour:
   dialogue:
   - This vine can damaging you.
   - Try avoid them.
-  - you can dash by press (Shift).
+  - you can "dash" by press (Shift).
   responses: []

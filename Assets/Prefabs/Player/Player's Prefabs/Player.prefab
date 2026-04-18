@@ -365,7 +365,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrowPrefabs:
   - {fileID: 5532093577241812150, guid: 491747f74ec6be94da0fef8fa5f364ec, type: 3}
-  - {fileID: 5532093577241812150, guid: ac1760d6413323f4c963b0b187fb1e93, type: 3}
   shootTypeIcon: {fileID: 0}
   shootingStyleIcon: {fileID: 0}
   shootingStyleNameText: {fileID: 0}
@@ -374,8 +373,6 @@ MonoBehaviour:
   shotPoint: {fileID: 8846919672141812297}
   shootingTypes:
   - {fileID: 11400000, guid: 420f0b06bde9b894d9818e0e5f8c19cd, type: 2}
-  - {fileID: 11400000, guid: 5b6652a3bd9ea5e41929223cceb89a1d, type: 2}
-  - {fileID: 11400000, guid: b4e537688b0652d47b1ed128a3e44237, type: 2}
   point: {fileID: 4155587531777718160, guid: 725040c6f08463c44948c45cc90279e9, type: 3}
   numberOfPoints: 50
   spaceBetweenPoints: 0.025

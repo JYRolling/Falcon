@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TutorialAttack
   m_EditorClassIdentifier: 
   dialogue:
-  - 'Press (Left Click) to attack.
+  - 'Press (Left Click) to "attack".
 
-    Use mouse to aim.'
+    Use (mouse) to "aim".'
   responses: []

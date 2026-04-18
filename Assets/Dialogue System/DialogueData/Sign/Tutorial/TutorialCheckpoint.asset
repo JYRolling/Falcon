@@ -15,5 +15,5 @@ MonoBehaviour:
   dialogue:
   - This is checkpoint.
   - touch them.
-  - you will respawn at last checkpoint that you touch.
+  - you will "respawn" at the last checkpoint that you touch.
   responses: []
