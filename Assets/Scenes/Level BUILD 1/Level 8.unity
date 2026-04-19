@@ -385,6 +385,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2716436103445719783, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
+      propertyPath: m_text
+      value: Goblin Bomber
+      objectReference: {fileID: 0}
     - target: {fileID: 4114592898598269434, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -4903,6 +4907,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 564494855457097614, guid: 651156e77bf3c014ba7f6be00089dc99, type: 3}
   m_PrefabInstance: {fileID: 392206645}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &393609677 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9067439057120311598, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
+  m_PrefabInstance: {fileID: 30714398}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e5725d6a45ed7342829cff1a1ef4d1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &394832100 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8689926068179049728, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
@@ -60962,6 +60977,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3667775125250315754, guid: 05c7fbda332f68b4391e3d43d818f6c1, type: 3}
+      propertyPath: dialogueUI
+      value: 
+      objectReference: {fileID: 393609677}
     - target: {fileID: 4738613970221817403, guid: 05c7fbda332f68b4391e3d43d818f6c1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -19.57
@@ -62480,7 +62499,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 2.14, y: 4.225, z: 0}
   m_MaxChunkCount: 16
@@ -65461,57 +65480,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 754652953255021144, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 754652953255021144, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 754652953255021144, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1185617306298582278, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
       propertyPath: m_Name
       value: Pause canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 1713826471446155707, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2316743234169211792, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2316743234169211792, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2316743234169211792, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6943870878307270949, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7801207190433928493, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7801207190433928493, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8044887491530635332, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8044887491530635332, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8684782866218170112, guid: 613368086f6ecc64591d8d720e6802ad, type: 3}
       propertyPath: m_Pivot.x
