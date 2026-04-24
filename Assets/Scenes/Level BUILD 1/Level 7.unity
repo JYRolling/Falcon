@@ -1358,6 +1358,22 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367334900063588835, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
+      propertyPath: m_Name
+      value: Sign Point (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 3264219919891074760, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.7071068
@@ -1409,22 +1425,6 @@ PrefabInstance:
     - target: {fileID: 8628651365922266075, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2367334900063588835, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
-      propertyPath: m_Name
-      value: Sign Point (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1525,6 +1525,22 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367334900063588835, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
+      propertyPath: m_Name
+      value: Sign Point (8)
+      objectReference: {fileID: 0}
     - target: {fileID: 8628651365922266075, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 71.85
@@ -1564,22 +1580,6 @@ PrefabInstance:
     - target: {fileID: 8628651365922266075, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2367334900063588835, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
-      propertyPath: m_Name
-      value: Sign Point (8)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4953,24 +4953,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8628651365922266075, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
   m_PrefabInstance: {fileID: 1154841190}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &401731591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c06b3a829783bb4687e22b5ea34ec75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-    dialogueLines:
-    - character:
-        name: Sign
-        icon: {fileID: 0}
-      line: Slime hideout.
 --- !u!1 &423376148
 GameObject:
   m_ObjectHideFlags: 0
@@ -20322,34 +20304,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8628651365922266075, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.101
-      objectReference: {fileID: 0}
-    - target: {fileID: 8628651365922266075, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 8628651365922266075, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8628651365922266075, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8628651365922266075, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8628651365922266075, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8628651365922266075, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8689926068179049728, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
       propertyPath: m_LocalPosition.x
       value: 172.54874
@@ -20407,8 +20361,32 @@ PrefabInstance:
       value: Sign Point (7)
       objectReference: {fileID: 0}
     - target: {fileID: 8628651365922266075, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.101
+      objectReference: {fileID: 0}
+    - target: {fileID: 8628651365922266075, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
       propertyPath: m_LocalPosition.y
       value: -1.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8628651365922266075, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8628651365922266075, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8628651365922266075, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8628651365922266075, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8628651365922266075, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -38883,6 +38861,22 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367334900063588835, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
+      propertyPath: m_Name
+      value: Sign Point
+      objectReference: {fileID: 0}
     - target: {fileID: 3264219919891074760, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.7071068
@@ -38935,22 +38929,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2367334900063588835, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
-      propertyPath: m_Name
-      value: Sign Point
-      objectReference: {fileID: 0}
     - target: {fileID: 8725403184114361741, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
       propertyPath: m_Radius
       value: 0.40336913
@@ -38965,8 +38943,31 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2367334900063588835, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 401731591}
+      addedObject: {fileID: 1154841192}
   m_SourcePrefab: {fileID: 100100000, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
+--- !u!1 &1154841191 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2367334900063588835, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
+  m_PrefabInstance: {fileID: 1154841190}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1154841192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154841191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c06b3a829783bb4687e22b5ea34ec75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    dialogueLines:
+    - character:
+        name: sign
+        icon: {fileID: 0}
+      line: '"Slime hideout"'
 --- !u!1001 &1155084292
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43111,6 +43112,22 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367334900063588835, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
+      propertyPath: m_Name
+      value: Sign Point (3)
+      objectReference: {fileID: 0}
     - target: {fileID: 8628651365922266075, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 214.09
@@ -43150,22 +43167,6 @@ PrefabInstance:
     - target: {fileID: 8628651365922266075, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2367334900063588835, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
-      propertyPath: m_Name
-      value: Sign Point (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -43972,6 +43973,22 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367334900063588835, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
+      propertyPath: m_Name
+      value: Sign Point (4)
+      objectReference: {fileID: 0}
     - target: {fileID: 8628651365922266075, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 82.2
@@ -44011,22 +44028,6 @@ PrefabInstance:
     - target: {fileID: 8628651365922266075, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2367334900063588835, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
-      propertyPath: m_Name
-      value: Sign Point (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -50647,6 +50648,22 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367334900063588835, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
+      propertyPath: m_Name
+      value: Sign Point (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 3264219919891074760, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.7071068
@@ -50698,22 +50715,6 @@ PrefabInstance:
     - target: {fileID: 8628651365922266075, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2367334900063588835, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
-      propertyPath: m_Name
-      value: Sign Point (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -56233,6 +56234,22 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367334900063588835, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
+      propertyPath: m_Name
+      value: Sign Point (6)
+      objectReference: {fileID: 0}
     - target: {fileID: 3264219919891074760, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.7071068
@@ -56284,22 +56301,6 @@ PrefabInstance:
     - target: {fileID: 8628651365922266075, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8930380192007259914, guid: 1351bc7da73539b4cae0303ba670cb48, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2367334900063588835, guid: 0791b6ea2f6ae2444bf0eab6f0702db5, type: 3}
-      propertyPath: m_Name
-      value: Sign Point (6)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

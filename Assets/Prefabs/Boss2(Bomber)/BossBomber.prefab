@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7268659598810111725}
   - component: {fileID: 6798621734082151031}
   - component: {fileID: 5894288882147142752}
+  - component: {fileID: -7251937014054169971}
   m_Layer: 10
   m_Name: BossBomber
   m_TagString: Untagged
@@ -73,6 +74,7 @@ MonoBehaviour:
   touchDamageWidth: 2
   touchDamageHeight: 3
   touchDamageCooldown: 3
+  damageBlink: {fileID: -7251937014054169971}
 --- !u!114 &5894288882147142752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,6 +96,22 @@ MonoBehaviour:
   deathChunkParticle: {fileID: 1962614393226834858, guid: 914644236e87d4d409304bcf9d8d3eb7, type: 3}
   deathBloodParticle: {fileID: 5096148057906189823, guid: 8b6a10ca53360a94eb6e376bb2a49079, type: 3}
   bossHealthBar: {fileID: 7039205943127652353, guid: a99cbc49819cd91459bcd5523f6d303d, type: 3}
+--- !u!114 &-7251937014054169971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4913374926099169719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a745ad324406704099be4bc923e40e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageBlinkCount: 4
+  damageBlinkInterval: 0.06
+  damageBlinkMinAlpha: 0.25
+  useRealtime: 1
 --- !u!1 &5408749350559865255
 GameObject:
   m_ObjectHideFlags: 0

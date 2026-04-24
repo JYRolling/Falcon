@@ -48,6 +48,9 @@ public class PatrolSpreadLaserEnemy : MonoBehaviour
     [Tooltip("Assign BossStats to enable BossHealthBar registration")]
     [SerializeField] private BossStats bossStats;
 
+    // Added: optional DamageBlink reference (assign in Inspector or auto-find at Start)
+    [SerializeField] private DamageBlink damageBlink;
+
     [Header("Death / Drops")]
     [SerializeField] private GameObject deathParticle;
     [SerializeField] private string sceneToLoadOnDefeat = "";
@@ -81,6 +84,17 @@ public class PatrolSpreadLaserEnemy : MonoBehaviour
         {
             bossStats.Initialize();
             BossHealthBar.Instance?.RegisterBoss(bossStats.maxHealth, bossStats.currentHealth);
+        }
+
+        // Auto-find DamageBlink on 'Alive' child or anywhere in children if not assigned in Inspector
+        if (damageBlink == null)
+        {
+            var aliveObj = transform.Find("Alive")?.gameObject;
+            if (aliveObj != null)
+                damageBlink = aliveObj.GetComponentInChildren<DamageBlink>();
+
+            if (damageBlink == null)
+                damageBlink = GetComponentInChildren<DamageBlink>();
         }
 
         if (startOnAwake)
@@ -295,6 +309,12 @@ public class PatrolSpreadLaserEnemy : MonoBehaviour
             // local health fallback if BossStats not provided
             _currentLocalHealth -= dmg;
             if (_currentLocalHealth <= 0f) died = true;
+        }
+
+        // Trigger damage blink if present and enemy did not die from this hit
+        if (!died && damageBlink != null)
+        {
+            damageBlink.TriggerBlink();
         }
 
         if (died) Die();

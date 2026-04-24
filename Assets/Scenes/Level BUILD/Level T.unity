@@ -4654,17 +4654,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &382151057 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 329706151064773977, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
-  m_PrefabInstance: {fileID: 591454161}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c83b5ecc2a10db4a91729da79eb7fd9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &396930714
 GameObject:
   m_ObjectHideFlags: 0
@@ -6379,18 +6368,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2068700144806025089, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
-      propertyPath: m_Type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2068700144806025089, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -267964226, guid: bbea2fc2f5e77f24f8a0359dc94182a1, type: 3}
-    - target: {fileID: 2068700144806025089, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
-      propertyPath: m_PreserveAspect
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2276945258510010487, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -6471,42 +6448,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2716436103445719783, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
-      propertyPath: m_text
-      value: Great Slime
-      objectReference: {fileID: 0}
-    - target: {fileID: 3006073096247313339, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3006073096247313339, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3006073096247313339, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 382151057}
-    - target: {fileID: 3006073096247313339, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3006073096247313339, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: DisplayNextDialogueLine
-      objectReference: {fileID: 0}
-    - target: {fileID: 3006073096247313339, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: DialogueManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 3006073096247313339, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407890704179495006, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 220.05
-      objectReference: {fileID: 0}
     - target: {fileID: 4114592898598269434, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -6514,34 +6455,6 @@ PrefabInstance:
     - target: {fileID: 4114592898598269434, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5716292384263031655, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
-      propertyPath: m_text
-      value: Continiue
-      objectReference: {fileID: 0}
-    - target: {fileID: 5807480301022059292, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
-      propertyPath: m_text
-      value: Sign
-      objectReference: {fileID: 0}
-    - target: {fileID: 7239085037084951055, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7265569039327050012, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 498.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 7265569039327050012, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 643.431
-      objectReference: {fileID: 0}
-    - target: {fileID: 7265569039327050012, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -712.11
-      objectReference: {fileID: 0}
-    - target: {fileID: 7265569039327050012, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 147.29247
       objectReference: {fileID: 0}
     - target: {fileID: 7347213971761101093, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
       propertyPath: m_Name
@@ -6555,12 +6468,8 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    m_RemovedGameObjects:
-    - {fileID: 3905412159601360516, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 729047d9160c64c4a96ad8b284abd7b4, type: 3}
@@ -12166,13 +12075,25 @@ PrefabInstance:
         use your (mouse) to aim. '
       objectReference: {fileID: 0}
     - target: {fileID: 4587956649063979599, guid: 15b8406e86fa71946af4829a4c1da87b, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[0].character.icon
+      value: 
+      objectReference: {fileID: -1363883459, guid: 054713ae19c9fcd4f89b14d5cb147e0f, type: 3}
+    - target: {fileID: 4587956649063979599, guid: 15b8406e86fa71946af4829a4c1da87b, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].character.name
       value: training sign
       objectReference: {fileID: 0}
     - target: {fileID: 4587956649063979599, guid: 15b8406e86fa71946af4829a4c1da87b, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[1].character.icon
+      value: 
+      objectReference: {fileID: -1363883459, guid: 054713ae19c9fcd4f89b14d5cb147e0f, type: 3}
+    - target: {fileID: 4587956649063979599, guid: 15b8406e86fa71946af4829a4c1da87b, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[1].character.name
       value: training sign
       objectReference: {fileID: 0}
+    - target: {fileID: 4587956649063979599, guid: 15b8406e86fa71946af4829a4c1da87b, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[2].character.icon
+      value: 
+      objectReference: {fileID: -1363883459, guid: 054713ae19c9fcd4f89b14d5cb147e0f, type: 3}
     - target: {fileID: 4587956649063979599, guid: 15b8406e86fa71946af4829a4c1da87b, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[2].character.name
       value: training sign
@@ -12863,6 +12784,10 @@ PrefabInstance:
       value: pess (s) to go through platform.
       objectReference: {fileID: 0}
     - target: {fileID: 4587956649063979599, guid: 15b8406e86fa71946af4829a4c1da87b, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[0].character.icon
+      value: 
+      objectReference: {fileID: -1363883459, guid: 054713ae19c9fcd4f89b14d5cb147e0f, type: 3}
+    - target: {fileID: 4587956649063979599, guid: 15b8406e86fa71946af4829a4c1da87b, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].character.name
       value: training sign
       objectReference: {fileID: 0}
@@ -13170,9 +13095,17 @@ PrefabInstance:
       value: try to avoid them.
       objectReference: {fileID: 0}
     - target: {fileID: 4587956649063979599, guid: 15b8406e86fa71946af4829a4c1da87b, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[0].character.icon
+      value: 
+      objectReference: {fileID: -1363883459, guid: 054713ae19c9fcd4f89b14d5cb147e0f, type: 3}
+    - target: {fileID: 4587956649063979599, guid: 15b8406e86fa71946af4829a4c1da87b, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].character.name
       value: training sign
       objectReference: {fileID: 0}
+    - target: {fileID: 4587956649063979599, guid: 15b8406e86fa71946af4829a4c1da87b, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[1].character.icon
+      value: 
+      objectReference: {fileID: -1363883459, guid: 054713ae19c9fcd4f89b14d5cb147e0f, type: 3}
     - target: {fileID: 4587956649063979599, guid: 15b8406e86fa71946af4829a4c1da87b, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[1].character.name
       value: training sign
@@ -49501,12 +49434,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4587956649063979599, guid: 15b8406e86fa71946af4829a4c1da87b, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[1].line
-      value: press [A D] to move.
+      value: press (A D) to move.
       objectReference: {fileID: 0}
+    - target: {fileID: 4587956649063979599, guid: 15b8406e86fa71946af4829a4c1da87b, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[0].character.icon
+      value: 
+      objectReference: {fileID: -1363883459, guid: 054713ae19c9fcd4f89b14d5cb147e0f, type: 3}
     - target: {fileID: 4587956649063979599, guid: 15b8406e86fa71946af4829a4c1da87b, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].character.name
       value: training sign
       objectReference: {fileID: 0}
+    - target: {fileID: 4587956649063979599, guid: 15b8406e86fa71946af4829a4c1da87b, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[1].character.icon
+      value: 
+      objectReference: {fileID: -1363883459, guid: 054713ae19c9fcd4f89b14d5cb147e0f, type: 3}
     - target: {fileID: 4587956649063979599, guid: 15b8406e86fa71946af4829a4c1da87b, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[1].character.name
       value: training sign

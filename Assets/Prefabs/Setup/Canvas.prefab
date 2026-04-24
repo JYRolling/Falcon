@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: narrator Sign
+  m_text: Sign
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e20c987fc14e49745887377b27d1dec1, type: 2}
   m_sharedMaterial: {fileID: -6943800111879788889, guid: e20c987fc14e49745887377b27d1dec1, type: 2}
@@ -1703,7 +1703,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2425408079766513190}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 329706151064773977}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: DisplayNextDialogueLine
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6867608369755366617
 GameObject:
   m_ObjectHideFlags: 0
@@ -2426,7 +2438,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 286, y: -95}
+  m_AnchoredPosition: {x: 220.05, y: -95}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3271849099300569972
@@ -2457,7 +2469,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press E
+  m_text: Continiue
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e20c987fc14e49745887377b27d1dec1, type: 2}
   m_sharedMaterial: {fileID: -6943800111879788889, guid: e20c987fc14e49745887377b27d1dec1, type: 2}
@@ -2636,8 +2648,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -708, y: 163}
-  m_SizeDelta: {x: 428.8568, y: 228.83}
+  m_AnchoredPosition: {x: -712.11, y: 147.29247}
+  m_SizeDelta: {x: 498.03, y: 643.431}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5216654899017838597
 CanvasRenderer:
@@ -2667,9 +2679,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1660301538, guid: 29e9f3f3c8fc11944952fec15b9af796, type: 3}
+  m_Sprite: {fileID: -1363883459, guid: 054713ae19c9fcd4f89b14d5cb147e0f, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -3023,7 +3035,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3509889359586149214, guid: a99cbc49819cd91459bcd5523f6d303d, type: 3}
       propertyPath: m_text
-      value: Summoner
+      value: Great Slime
       objectReference: {fileID: 0}
     - target: {fileID: 3509889359586149214, guid: a99cbc49819cd91459bcd5523f6d303d, type: 3}
       propertyPath: m_fontAsset

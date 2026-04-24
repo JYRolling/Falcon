@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 2666777523671379087}
   - component: {fileID: 5468886479353494239}
   - component: {fileID: 4114088242371749645}
+  - component: {fileID: -1505539764593220923}
   m_Layer: 10
   m_Name: TurretBoss
   m_TagString: Enemy
@@ -149,6 +150,7 @@ MonoBehaviour:
   startOnAwake: 1
   initialDelay: 0.2
   bossStats: {fileID: 5468886479353494239}
+  damageBlink: {fileID: -1505539764593220923}
   deathParticle: {fileID: 3959963481427979852, guid: 0bf0b4f693052f14496d1f846eaafe6f, type: 3}
   sceneToLoadOnDefeat: StageSelect
   sceneLoadDelay: 1
@@ -191,6 +193,22 @@ MonoBehaviour:
   destroyTags: []
   skipChildren: 1
   destroyDelay: 0
+--- !u!114 &-1505539764593220923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711247730942498631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a745ad324406704099be4bc923e40e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageBlinkCount: 4
+  damageBlinkInterval: 0.06
+  damageBlinkMinAlpha: 0.25
+  useRealtime: 1
 --- !u!1 &7328011578439013919
 GameObject:
   m_ObjectHideFlags: 0

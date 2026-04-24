@@ -246,6 +246,7 @@ GameObject:
   - component: {fileID: 8828891384557518352}
   - component: {fileID: 684720401313741092}
   - component: {fileID: -8761963187479114033}
+  - component: {fileID: 524282499296262131}
   m_Layer: 10
   m_Name: MiniBomber
   m_TagString: Untagged
@@ -309,6 +310,7 @@ MonoBehaviour:
   touchDamageWidth: 2
   touchDamageHeight: 2
   touchDamageCooldown: 3
+  damageBlink: {fileID: 524282499296262131}
 --- !u!114 &684720401313741092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,6 +350,22 @@ MonoBehaviour:
     weight: 1
   dropPoint: {fileID: 576303829226621422}
   randomOffset: {x: 0, y: 0}
+--- !u!114 &524282499296262131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7216015022762153912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a745ad324406704099be4bc923e40e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageBlinkCount: 4
+  damageBlinkInterval: 0.06
+  damageBlinkMinAlpha: 0.25
+  useRealtime: 1
 --- !u!1 &8197120097648619379
 GameObject:
   m_ObjectHideFlags: 0
