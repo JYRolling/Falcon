@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 8756161265854428411}
   - component: {fileID: 2824547944886862630}
   - component: {fileID: 5963907450562184949}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: FrostBow
-  m_TagString: Untagged
+  m_TagString: Drops
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 91
   m_Sprite: {fileID: -2087043950, guid: ac14efe6b08b57b4aa86fb7a1d4c5da0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

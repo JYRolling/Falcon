@@ -516,6 +516,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Pole
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 124
+        width: 50
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f858ec8167e19f1429fb42c0fa53370b
+      internalID: 191562984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -527,8 +548,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Pole: -1453683542
       SpikeForest_0: 1292137036
-      SpikeForest_1: -1453683542
       SpikeForest_10: -1949723142
       SpikeForest_11: 1444375880
       SpikeForest_12: -616052949

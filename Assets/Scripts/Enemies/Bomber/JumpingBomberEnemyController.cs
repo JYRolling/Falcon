@@ -91,6 +91,10 @@ public class JumpingBomberEnemyController : MonoBehaviour
     {
         // Unregister health UI if it was registered
         BossHealthBar.Instance?.UnregisterBoss();
+
+        // Unsubscribe from GameManager event to avoid memory leaks / null callbacks
+        if (GameManager.Instance != null)
+            GameManager.Instance.PlayerRespawned -= OnPlayerRespawned;
     }
 
     private void Start()
@@ -108,6 +112,16 @@ public class JumpingBomberEnemyController : MonoBehaviour
 
         var p = GameObject.FindGameObjectWithTag("Player");
         if (p != null) _player = p.transform;
+
+        // Subscribe to respawn notifications so we always target the current player instance
+        if (GameManager.Instance != null)
+        {
+            // if GameManager already has a current player, prefer that
+            if (GameManager.Instance.CurrentPlayer != null)
+                _player = GameManager.Instance.CurrentPlayer.transform;
+
+            GameManager.Instance.PlayerRespawned += OnPlayerRespawned;
+        }
 
         // If a BossStats component was assigned (or present on the same GameObject) use it and register with BossHealthBar.
         if (bossStats == null)
@@ -605,5 +619,12 @@ public class JumpingBomberEnemyController : MonoBehaviour
             return;
         }
         animator.SetBool(param, value);
+    }
+
+    // Called by GameManager when a new player GameObject is spawned
+    private void OnPlayerRespawned(GameObject newPlayer)
+    {
+        if (newPlayer == null) return;
+        _player = newPlayer.transform;
     }
 }

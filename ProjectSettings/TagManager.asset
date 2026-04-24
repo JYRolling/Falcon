@@ -57,3 +57,6 @@ TagManager:
   - name: Front
     uniqueID: 2449742683
     locked: 0
+  - name: Drops
+    uniqueID: 4026378003
+    locked: 0
