@@ -186,6 +186,7 @@ GameObject:
   - component: {fileID: 8006260633284284431}
   - component: {fileID: 8768467482845431533}
   - component: {fileID: 4828269630168783179}
+  - component: {fileID: -4490268838701698087}
   m_Layer: 10
   m_Name: Boss()
   m_TagString: Enemy
@@ -264,6 +265,10 @@ MonoBehaviour:
   timeBetweenBullets: 0.15
   timeBetweenSets: 3
   timeBetweenVolleys: 3
+  continuousShooting: 0
+  triggerRange: 4
+  fireInterval: 2
+  bulletSpeed: 10
   groundCheck: {fileID: 8412950683029543036}
   wallCheck: {fileID: 8119100353311553616}
   touchDamageCheck: {fileID: 3280992652494893110}
@@ -274,8 +279,25 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   hitParticle: {fileID: 6240072112886026631, guid: b422d378313ccbb4d8acb6196f1cdbbd, type: 3}
+  damageBlink: {fileID: -4490268838701698087}
   sceneToLoadOnDefeat: 
   sceneLoadDelay: 1
+--- !u!114 &-4490268838701698087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5017185110751606982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a745ad324406704099be4bc923e40e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageBlinkCount: 4
+  damageBlinkInterval: 0.06
+  damageBlinkMinAlpha: 0.25
+  useRealtime: 1
 --- !u!1 &5251117327365484032
 GameObject:
   m_ObjectHideFlags: 0

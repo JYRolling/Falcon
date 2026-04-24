@@ -403,6 +403,7 @@ GameObject:
   - component: {fileID: 4994157300945197892}
   - component: {fileID: 2882892697183174931}
   - component: {fileID: -6150017232828223429}
+  - component: {fileID: 102060181340325738}
   m_Layer: 10
   m_Name: AirEnemyChase
   m_TagString: Enemy
@@ -462,6 +463,7 @@ MonoBehaviour:
   hitParticle: {fileID: 6240072112886026631, guid: b422d378313ccbb4d8acb6196f1cdbbd, type: 3}
   deathChunkParticle: {fileID: 1962614393226834858, guid: 914644236e87d4d409304bcf9d8d3eb7, type: 3}
   deathBloodParticle: {fileID: 5096148057906189823, guid: 8b6a10ca53360a94eb6e376bb2a49079, type: 3}
+  damageBlink: {fileID: 102060181340325738}
 --- !u!114 &-6150017232828223429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -480,3 +482,19 @@ MonoBehaviour:
     weight: 1
   dropPoint: {fileID: 454842537626967141}
   randomOffset: {x: 0, y: 0}
+--- !u!114 &102060181340325738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8426724655607775949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a745ad324406704099be4bc923e40e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageBlinkCount: 4
+  damageBlinkInterval: 0.06
+  damageBlinkMinAlpha: 0.25
+  useRealtime: 1

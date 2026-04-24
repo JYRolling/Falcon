@@ -48,6 +48,9 @@ public class BasicEnemyController : MonoBehaviour
         hitParticle,
         deathChunkParticle,
         deathBloodParticle;
+    // Add DamageBlink reference (optional in Inspector; will auto-find in Start)
+    [SerializeField]
+    private DamageBlink damageBlink;
 
     private float 
         currentHealth,
@@ -137,6 +140,17 @@ public class BasicEnemyController : MonoBehaviour
         alive = transform.Find("Alive").gameObject;
         aliveRb = alive.GetComponent<Rigidbody2D>();
         aliveAnim = alive.GetComponent<Animator>();
+
+        // auto-find DamageBlink on the alive child if not assigned in inspector
+        if (damageBlink == null)
+        {
+            damageBlink = alive.GetComponentInChildren<DamageBlink>();
+            if (damageBlink == null)
+            {
+                // optional: no damage blink configured for this enemy
+                // Debug.Log("[BasicEnemyController] No DamageBlink component found on enemy '" + gameObject.name + "'.");
+            }
+        }
 
         currentHealth = maxHealth;
         facingDirection = 1;
@@ -246,6 +260,12 @@ public class BasicEnemyController : MonoBehaviour
         else
         {
             damageDirection = 1;
+        }
+
+        // Trigger damage blink if present and still alive after hit
+        if (damageBlink != null && currentHealth > 0.0f)
+        {
+            damageBlink.TriggerBlink();
         }
 
         //Hit particle

@@ -71,6 +71,9 @@ public class BossEnemyController : MonoBehaviour
     [SerializeField] private LayerMask whatIsPlayer;
     [SerializeField] private GameObject hitParticle;
 
+    // Added: optional DamageBlink reference (assign in Inspector or will be auto-found at Start)
+    [SerializeField] private DamageBlink damageBlink;
+
     [Header("Optional: scene transition on boss defeat")]
     [Tooltip("Name of scene to load when this boss is defeated. Leave empty to disable.")]
     [SerializeField] private string sceneToLoadOnDefeat = "";
@@ -150,6 +153,13 @@ public class BossEnemyController : MonoBehaviour
         var playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null) playerTransform = playerObj.transform;
         else Debug.LogWarning("Player with tag 'Player' not found. Boss will not face player.");
+
+        // auto-find DamageBlink on the alive child if not assigned in inspector
+        if (damageBlink == null && alive != null)
+        {
+            damageBlink = alive.GetComponentInChildren<DamageBlink>();
+            // if null it's fine — boss simply won't blink on damage
+        }
 
         // ensure facingDirection default
         facingDirection = 1;
@@ -349,6 +359,12 @@ public class BossEnemyController : MonoBehaviour
         bool died = bossStats.ApplyDamage(attackDetails[0]);
 
         if (hitParticle) Instantiate(hitParticle, alive.transform.position, Quaternion.Euler(0.0f, 0.0f, Random.Range(0.0f, 360.0f)));
+
+        // Trigger damage blink if present and boss did not die from this hit
+        if (!died && damageBlink != null)
+        {
+            damageBlink.TriggerBlink();
+        }
 
         if (!died)
             SwitchState(State.Moving);

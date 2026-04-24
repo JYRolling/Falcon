@@ -71,6 +71,9 @@ public class JumpingBomberEnemyController : MonoBehaviour
     [SerializeField] private float touchDamageHeight = 1f;
     [SerializeField] private float touchDamageCooldown = 3f;
 
+    // Added: optional DamageBlink component reference (assign in Inspector or auto-find at runtime)
+    [SerializeField] private DamageBlink damageBlink;
+
     private GameObject alive;
     private float _currentHealth;
     private Transform _player;
@@ -102,6 +105,10 @@ public class JumpingBomberEnemyController : MonoBehaviour
         // try to find an 'Alive' child (consistent with BossEnemyController) and animator
         alive = transform.Find("Alive")?.gameObject ?? gameObject;
         if (animator == null && alive != null) animator = alive.GetComponentInChildren<Animator>();
+
+        // auto-find DamageBlink on the alive child if not assigned in inspector
+        if (damageBlink == null && alive != null)
+            damageBlink = alive.GetComponentInChildren<DamageBlink>();
 
         // Ensure touchDamageCheck fallback
         if (touchDamageCheck == null)
@@ -507,6 +514,12 @@ public class JumpingBomberEnemyController : MonoBehaviour
             // fallback local health
             _currentHealth -= dmg;
             if (_currentHealth <= 0f) died = true;
+        }
+
+        // Trigger damage blink if present and the bomber did not die from this hit
+        if (!died && damageBlink != null)
+        {
+            damageBlink.TriggerBlink();
         }
 
         if (died)
