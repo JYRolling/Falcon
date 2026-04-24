@@ -357,14 +357,14 @@ public class JumpingBomberEnemyController : MonoBehaviour
         Rigidbody2D rb = go.GetComponent<Rigidbody2D>();
         if (rb == null)
         {
-            Debug.LogWarning("Bomb prefab has no Rigidbody2D — cannot apply ballistic velocity.");
+            Debug.LogWarning("Bomb prefab has no Rigidbody2D ï¿½ cannot apply ballistic velocity.");
             return;
         }
 
         // Ensure projectile will be affected by gravity (common reason it looks like a straight line)
         if (Mathf.Approximately(rb.gravityScale, 0f))
         {
-            Debug.LogWarning($"Bomb Rigidbody2D.gravityScale was 0 — forcing to 1.0. Set correct gravityScale on prefab instead.");
+            Debug.LogWarning($"Bomb Rigidbody2D.gravityScale was 0 ï¿½ forcing to 1.0. Set correct gravityScale on prefab instead.");
             rb.gravityScale = 1f;
         }
 
